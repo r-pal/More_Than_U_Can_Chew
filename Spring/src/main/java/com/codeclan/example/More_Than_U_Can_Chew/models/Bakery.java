@@ -2,9 +2,9 @@ package com.codeclan.example.More_Than_U_Can_Chew.models;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class Bakery {
     private String email;
 
     @Column(name="collectionTime")
-    private DateTimeFormat collectionTime;
+    private LocalTime collectionTime;
 
     @OneToMany(mappedBy="availableItems", fetch = FetchType.LAZY)
     @JsonBackReference
@@ -38,7 +38,7 @@ public class Bakery {
     @JsonBackReference
     private List<Order> currentOrders;
 
-    public Bakery(String name, String location, String email, DateTimeFormat collectionTime) {
+    public Bakery(String name, String location, String email, LocalTime collectionTime) {
         this.name = name;
         this.location = location;
         this.email = email;
@@ -82,11 +82,11 @@ public class Bakery {
         this.email = email;
     }
 
-    public DateTimeFormat getCollectionTime() {
+    public LocalTime getCollectionTime() {
         return collectionTime;
     }
 
-    public void setCollectionTime(DateTimeFormat collectionTime) {
+    public void setCollectionTime(LocalTime collectionTime) {
         this.collectionTime = collectionTime;
     }
 

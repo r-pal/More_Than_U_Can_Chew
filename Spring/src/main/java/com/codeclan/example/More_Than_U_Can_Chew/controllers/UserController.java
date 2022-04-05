@@ -2,6 +2,7 @@ package com.codeclan.example.More_Than_U_Can_Chew.controllers;
 
 import com.codeclan.example.More_Than_U_Can_Chew.models.Order;
 import com.codeclan.example.More_Than_U_Can_Chew.models.User;
+import com.codeclan.example.More_Than_U_Can_Chew.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,13 +26,20 @@ public class UserController {
         return new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
     }
 
-
-
-    
-    @GetMapping(value = "/users/{id}/orders")
-    public ResponseEntity<List<Order>> findOrdersFromSpecificUser(@PathVariable Long id){
-        return new ResponseEntity<>(userRepository.getOrders());
+    @PostMapping(value = "/users")
+    public ResponseEntity<User> postUser(@RequestBody User user){
+        userRepository.save(user);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
+
+    @PatchMapping(value="/users/{id}")
+    public ResponseEntity<User> updateUser(@RequestBody User user){
+        userRepository.save(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+//    @PostMapping(value="")
+
 
 
 
