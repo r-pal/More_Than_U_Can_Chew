@@ -21,7 +21,7 @@ const BakeryNewExisting = () => {
             </select>
             <button type="submit">Login</button>
         </form>
-        <Link to={"bakeries/new"}><button type="button">New Baker</button></Link>
+        <Link to={"new"}><button type="button">New Baker</button></Link>
         </div>
     )
 
