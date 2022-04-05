@@ -1,6 +1,8 @@
 package com.codeclan.example.More_Than_U_Can_Chew.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,14 +24,27 @@ public class BakeryItem {
     @Column(name="allergens")
     private String allergens;
 
+//    @ManyToOne
+//    @JoinColumn(name="bakery_id", nullable = false)
+//    private Bakery bakery;
+
     @Column(name="imageUrl")
     private String imageUrl;
 
-    public BakeryItem(String name, String ingredients, String allergens, String imageUrl) {
+    @ManyToOne
+    @JoinColumn(name="bakery_id", nullable = false)
+    private Bakery bakery;
+
+    @ManyToOne
+    @JoinColumn(name="order_id")
+    private Order order;
+
+    public BakeryItem(String name, String ingredients, String allergens, String imageUrl, Bakery bakery) {
         this.name = name;
         this.ingredients = ingredients;
         this.allergens = allergens;
         this.imageUrl = imageUrl;
+        this.bakery = bakery;
     }
 
     public BakeryItem() {
@@ -73,5 +88,21 @@ public class BakeryItem {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Bakery getBakery() {
+        return bakery;
+    }
+
+    public void setBakery(Bakery bakery) {
+        this.bakery = bakery;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

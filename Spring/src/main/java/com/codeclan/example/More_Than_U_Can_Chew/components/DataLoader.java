@@ -35,18 +35,18 @@ public class DataLoader implements ApplicationRunner {
     }
 
     public void run(ApplicationArguments args) {
-        Bakery pita = new Bakery("Pain in the Ass","GEO1", "hello@painintheass.com",
-                LocalTime.parse("18:00:00"));
-        bakeryRepository.save(pita);
-
-        User terry = new User("Terry Rex", "GEO2", "T@rex.com");
-        userRepository.save(terry);
-
-        BakeryItem croissant = new BakeryItem("Croissant", "flour, water, butter", "gluten, lactose", "something");
-        bakeryItemRepository.save(croissant);
-
-        Order order1 = new Order(pita, terry, false);
-        orderRepository.save(order1);
+//        Bakery pita = new Bakery("Pain in the Ass","GEO1", "hello@painintheass.com",
+//                LocalTime.parse("18:00:00"));
+//        bakeryRepository.save(pita);
+//
+//        User terry = new User("Terry Rex", "GEO2", "T@rex.com");
+//        userRepository.save(terry);
+//
+//        BakeryItem croissant = new BakeryItem("Croissant", "flour, water, butter", "gluten, lactose", "something", pita);
+//        bakeryItemRepository.save(croissant);
+//
+//        Order order1 = new Order(pita, terry, false);
+//        orderRepository.save(order1);
 
     }
 }

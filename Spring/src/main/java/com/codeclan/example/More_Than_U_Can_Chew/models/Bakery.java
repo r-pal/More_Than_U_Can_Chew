@@ -30,13 +30,14 @@ public class Bakery {
     @Column(name="collectionTime")
     private LocalTime collectionTime;
 
-    @OneToMany(mappedBy="availableItems", fetch = FetchType.LAZY)
-    @JsonBackReference
+    @OneToMany(mappedBy="bakery", fetch = FetchType.LAZY)
+//    @JsonBackReference
+//    @Column(name="availableItems")
     private List<BakeryItem> availableItems;
-
-    @OneToMany(mappedBy="currentOrders", fetch = FetchType.LAZY)
-    @JsonBackReference
-    private List<Order> currentOrders;
+//
+//    @OneToMany(mappedBy="currentOrders", fetch = FetchType.LAZY)
+//    @JsonBackReference
+//    private List<Order> currentOrders;
 
     public Bakery(String name, String location, String email, LocalTime collectionTime) {
         this.name = name;
@@ -44,7 +45,7 @@ public class Bakery {
         this.email = email;
         this.collectionTime = collectionTime;
         this.availableItems = new ArrayList<>();
-        this.currentOrders = new ArrayList<>();
+//        this.currentOrders = new ArrayList<>();
     }
 
     public Bakery() {
@@ -98,11 +99,15 @@ public class Bakery {
         this.availableItems = availableItems;
     }
 
-    public List<Order> getCurrentOrders() {
-        return currentOrders;
+    public void addABakeryItemToAvailability(BakeryItem bakeryItem){
+        this.availableItems.add(bakeryItem);
     }
-
-    public void setCurrentOrders(List<Order> currentOrders) {
-        this.currentOrders = currentOrders;
-    }
+//
+//    public List<Order> getCurrentOrders() {
+//        return currentOrders;
+//    }
+//
+//    public void setCurrentOrders(List<Order> currentOrders) {
+//        this.currentOrders = currentOrders;
+//    }
 }

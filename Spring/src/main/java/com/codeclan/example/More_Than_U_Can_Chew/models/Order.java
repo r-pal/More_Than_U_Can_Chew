@@ -11,9 +11,11 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name="id")
 
+    @Column(name="id")
+    private Long id;
+
+    @OneToMany(mappedBy = "order")
     private List<BakeryItem> itemsOrdered;
 
     @ManyToOne
@@ -51,6 +53,10 @@ public class Order {
 
     public void setItemsOrdered(List<BakeryItem> itemsOrdered) {
         this.itemsOrdered = itemsOrdered;
+    }
+
+    public void addABakeryItemToOrder(BakeryItem bakeryItem){
+        this.itemsOrdered.add(bakeryItem);
     }
 
     public Bakery getBakery() {
