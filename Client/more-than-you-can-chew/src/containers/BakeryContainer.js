@@ -1,10 +1,11 @@
 import React from 'react';
+import BakeryNewExisting from '../components/bakeries/BakeryNewExisting';
 
 const BakeryContainer = () => {
 
     return(
         <>
-        <h1>Bakery Container is working!</h1>
+        <BakeryNewExisting />
         </>
     )
 }
