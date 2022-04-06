@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class OrderController {
@@ -45,17 +46,17 @@ public class OrderController {
         return new ResponseEntity<>(orderRepository.findByUserId(id), HttpStatus.OK);
     }
 
-//    @PostMapping(value = "/orders")
-//    public ResponseEntity<Order> postOrder(@RequestBody Order order){
-//        BakeryItem item = bakeryItemRepository.findById(order.getItemsOrdered()[0].id);
-//        User orderUser = userRepository.findById(data.userId);
-//        Bakery bakery = bakeryRepository.findById(data.bakeryId);
-//        Order newOrder = new Order(bakery, orderUser, false);
-//        orderRepository.save(newOrder);
-//        item.setOrder(newOrder);
-//        orderRepository.save(newOrder);
-//        return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
-//    }
+    @PostMapping(value = "/orders")
+    public ResponseEntity<Order> postOrder(@RequestBody Order order){
+        BakeryItem bakeryItem = bakeryItemRepository.findById(order.getItemsOrdered().get(0).getId()).get();
+        User orderUser = userRepository.findById(order.getUser().getId()).get();
+        Bakery bakery = bakeryRepository.findById(order.getBakery().getId()).get();
+        Order newOrder = new Order(bakery, orderUser, false);
+        orderRepository.save(newOrder);
+        bakeryItem.setOrder(newOrder);
+        bakeryItemRepository.save(bakeryItem);
+        return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
+    }
 
     @PatchMapping(value="/orders/{id}")
     public ResponseEntity<Order> updateOrder(@RequestBody Order order){
