@@ -1,6 +1,7 @@
 package com.codeclan.example.More_Than_U_Can_Chew.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -24,27 +25,24 @@ public class BakeryItem {
     @Column(name="allergens")
     private String allergens;
 
-//    @ManyToOne
-//    @JoinColumn(name="bakery_id", nullable = false)
-//    private Bakery bakery;
-
-    @Column(name="imageUrl")
-    private String imageUrl;
-
     @ManyToOne
     @JoinColumn(name="bakery_id", nullable = false)
     private Bakery bakery;
 
+    @Column(name="image_id")
+    private Long imageId;
+
     @ManyToOne
-    @JoinColumn(name="order_id")
+    @JoinColumn(name = "order_id")
     private Order order;
 
-    public BakeryItem(String name, String ingredients, String allergens, String imageUrl, Bakery bakery) {
+    public BakeryItem(String name, String ingredients, String allergens, Long imageId, Bakery bakery, Order order) {
         this.name = name;
         this.ingredients = ingredients;
         this.allergens = allergens;
-        this.imageUrl = imageUrl;
+        this.imageId = imageId;
         this.bakery = bakery;
+        this.order = null;
     }
 
     public BakeryItem() {
@@ -82,12 +80,12 @@ public class BakeryItem {
         this.allergens = allergens;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public Long getImageId() {
+        return imageId;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageId(Long imageId) {
+        this.imageId = imageId;
     }
 
     public Bakery getBakery() {

@@ -57,7 +57,8 @@ class MoreThanUCanChewApplicationTests {
 	public void canCreateABakeryItem(){
 		Bakery pita = new Bakery("Pain in the Ass","GEO1", "hello@painintheass.com",
 				LocalTime.parse("18:00:00"));
-		BakeryItem croissant = new BakeryItem("Croissant", "flour, water, butter", "gluten, lactose", "something", pita);
+		bakeryRepository.save(pita);
+		BakeryItem croissant = new BakeryItem("Croissant", "flour, water, butter", "gluten, lactose", 78978L , pita, null);
 		bakeryItemRepository.save(croissant);
 		assertEquals(1, bakeryItemRepository.findAll().size());
 	}
@@ -74,7 +75,7 @@ class MoreThanUCanChewApplicationTests {
 		User terry = new User("Terry Rex", "GEO2", "T@rex.com");
 		userRepository.save(terry);
 
-		BakeryItem croissant = new BakeryItem("Croissant", "flour, water, butter", "gluten, lactose", "something", pita);
+		BakeryItem croissant = new BakeryItem("Croissant", "flour, water, butter", "gluten, lactose", 78978L, pita, null);
 		bakeryItemRepository.save(croissant);
 
 		Order order1 = new Order(pita, terry, false);

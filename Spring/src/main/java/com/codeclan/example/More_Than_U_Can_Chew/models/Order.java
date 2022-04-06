@@ -1,5 +1,7 @@
 package com.codeclan.example.More_Than_U_Can_Chew.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +17,9 @@ public class Order {
     @Column(name="id")
     private Long id;
 
-    @OneToMany(mappedBy = "order")
-    private List<BakeryItem> itemsOrdered;
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    @JsonBackReference
+    List<BakeryItem> itemsOrdered;
 
     @ManyToOne
     @JoinColumn(name="bakery_id", nullable = false)
@@ -26,7 +29,7 @@ public class Order {
     @JoinColumn(name="user_id", nullable = false)
     private User user;
 
-    @Column(name="collectedStatus")
+    @Column(name="collected_status")
     private boolean collectedStatus;
 
     public Order(Bakery bakery, User user, boolean collectedStatus) {

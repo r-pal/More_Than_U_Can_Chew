@@ -27,17 +27,22 @@ public class Bakery {
     @Column(name="email")
     private String email;
 
-    @Column(name="collectionTime")
+    @Column(name="collection_time")
     private LocalTime collectionTime;
 
     @OneToMany(mappedBy="bakery", fetch = FetchType.LAZY)
-//    @JsonBackReference
-//    @Column(name="availableItems")
+    @JsonBackReference
+    @Column(name="available_items")
     private List<BakeryItem> availableItems;
-//
-//    @OneToMany(mappedBy="currentOrders", fetch = FetchType.LAZY)
-//    @JsonBackReference
-//    private List<Order> currentOrders;
+
+    @OneToMany(mappedBy="bakery", fetch = FetchType.LAZY)
+    @JsonBackReference
+    @Column(name="menu_items")
+    private List<BakeryItem> menuItems;
+
+    @OneToMany(mappedBy = "bakery", fetch= FetchType.LAZY)
+    @JsonBackReference
+    private List<Order> orders;
 
     public Bakery(String name, String location, String email, LocalTime collectionTime) {
         this.name = name;
@@ -45,7 +50,8 @@ public class Bakery {
         this.email = email;
         this.collectionTime = collectionTime;
         this.availableItems = new ArrayList<>();
-//        this.currentOrders = new ArrayList<>();
+        this.menuItems = new ArrayList<>();
+        this.orders = new ArrayList<>();
     }
 
     public Bakery() {
@@ -102,12 +108,20 @@ public class Bakery {
     public void addABakeryItemToAvailability(BakeryItem bakeryItem){
         this.availableItems.add(bakeryItem);
     }
-//
-//    public List<Order> getCurrentOrders() {
-//        return currentOrders;
-//    }
-//
-//    public void setCurrentOrders(List<Order> currentOrders) {
-//        this.currentOrders = currentOrders;
-//    }
+
+    public List<BakeryItem> getMenuItems() {
+        return menuItems;
+    }
+
+    public void setMenuItems(List<BakeryItem> menuItems) {
+        this.menuItems = menuItems;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 }
