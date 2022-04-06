@@ -36,7 +36,7 @@ public class BakeryItem {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    public BakeryItem(String name, String ingredients, String allergens, Long imageId, Bakery bakery, Order order) {
+    public BakeryItem(String name, String ingredients, String allergens, Long imageId, Bakery bakery) {
         this.name = name;
         this.ingredients = ingredients;
         this.allergens = allergens;

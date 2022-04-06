@@ -38,5 +38,10 @@ public class BakeryItemController {
         return new ResponseEntity<>(bakeryItem, HttpStatus.OK);
     }
 
+    @GetMapping(value="/bakeryItems/orders/{id}")
+    public ResponseEntity<List<BakeryItem>> getBakeryItemsByOrderId(@PathVariable Long id){
+        return new ResponseEntity<>(bakeryItemRepository.findByOrderId(id), HttpStatus.OK);
+    }
+
 
 }
