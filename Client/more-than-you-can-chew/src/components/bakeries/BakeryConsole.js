@@ -6,9 +6,6 @@ const BakeryConsole = ({selectedBakery}) => {
 
 
 
-    
-
-    // function to map over Bakery.orders
 
   return (
       <>

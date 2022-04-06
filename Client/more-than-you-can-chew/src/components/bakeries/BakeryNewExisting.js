@@ -21,27 +21,6 @@ const BakeryNewExisting = ({bakeries, setSelectedBakery, selectedBakery}) => {
         setBakeryChosen(true);
     }
 
-    // const handleBakeryLogin = () => {
-    //     // Event.preventDefault()
-    //     let url = "/bakeries/" + selectedBakery.id;
-    //     console.log(url);
-    //     window.location(url)
-    // }
-
-    // console.log(selectedBakery)
-
-    // look at pirate form 
-    
-    const handleSubmit = () => {
-        this.props.history.push('/bakeries' + selectedBakery.id);
-        // return window.location.href='/id';
-    }
-
-    const handleBakery= () => {
-        
-        return null
-    }
-
     if(bakeryChosen){
         let url = "/bakeries/" + selectedBakery.id
         return(
