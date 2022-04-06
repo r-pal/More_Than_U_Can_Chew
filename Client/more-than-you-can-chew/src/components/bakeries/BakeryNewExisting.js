@@ -1,14 +1,40 @@
-import React from "react";
-import {Link} from 'react-router-dom';
+import React, { useState } from "react";
+import {Link, Navigate} from 'react-router-dom';
 
 
 
-const BakeryNewExisting = () => {
+const BakeryNewExisting = ({bakeries, setSelectedBakery, selectedBakery}) => {
+
+    const [bakeryChosen, setBakeryChosen] = useState(false);
+
+    const bakeryOptions = bakeries.map((bakery, index) => {
+        return <option key={index} value={index}>{bakery.name}</option>
+
+    })
+
+    const handleExistingBakeryChange = (event) => {
+        let newSelectedBakery = bakeries[event.target.value];
+        setSelectedBakery(newSelectedBakery)
+    }
+
+    const handleBakeryUpdate = () => {
+        setBakeryChosen(true);
+    }
+
+    // const handleBakeryLogin = () => {
+    //     // Event.preventDefault()
+    //     let url = "/bakeries/" + selectedBakery.id;
+    //     console.log(url);
+    //     window.location(url)
+    // }
+
+    // console.log(selectedBakery)
 
     // look at pirate form 
     
     const handleSubmit = () => {
-        return window.location.href='/id';
+        this.props.history.push('/bakeries' + selectedBakery.id);
+        // return window.location.href='/id';
     }
 
     const handleBakery= () => {
@@ -16,17 +42,25 @@ const BakeryNewExisting = () => {
         return null
     }
 
+    if(bakeryChosen){
+        let url = "/bakeries/" + selectedBakery.id
+        return(
+            <Navigate to={url} />
+
+        )
+    }
+
     return (
         <div className="BakeryNewExisting">
-        <form onSubmit={<Link to={"/id"}/>}>
-            <select name="bakery" onchange={handleBakery} defaultValue="select-bakery">
+        <form onSubmit={handleBakeryUpdate}>
+            <select name="bakery" onChange={handleExistingBakeryChange} defaultValue="select-bakery">
                 <option disabled value="select-bakery">Select Bakery</option>
-                <option value="test">Test</option>
-                {/* put in list of bakeries */}
+                {bakeryOptions}
             </select>
             <button type="submit">Login</button>
         </form>
         <Link to={"new"}><button type="button">New Baker</button></Link>
+        <Link to={handleBakeryUpdate}><button type="button">LOGIN</button></Link>
         </div>
     )
 
