@@ -1,12 +1,12 @@
+import React from 'react';
+import UserNewExisting from '../components/users/UserNewExisting';
+
 const UserContainer = () => {
 
-
-
     return(
-
-        <p>user container</p>
-
-    
+        <>
+        <UserNewExisting />
+        </>
     )
 }
 
