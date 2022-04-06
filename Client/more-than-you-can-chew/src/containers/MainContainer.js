@@ -5,6 +5,9 @@ import BakeryContainer from './BakeryContainer';
 import HomePage from '../components/HomePage';
 import NewBakerForm from '../components/bakeries/NewBakerForm';
 import BakeryConsole from '../components/bakeries/BakeryConsole';
+import NewUserForm from '../components/users/NewUserForm';
+import UserConsole from '../components/users/UserConsole';
+
 
 
 
@@ -13,11 +16,13 @@ const MainContainer = () => {
     const [bakeries, setBakeries] = useState([]);
     const [users, setUsers] = useState([]);
     const [orders, setOrders] = useState([]);
-    const [selectedBakery, setSelectedBakery] = useState(null)
+    const [selectedBakery, setSelectedBakery] = useState(null);
+    const [selectedUser, setSelectedUser] = useState(null);
+
 
     useEffect(() => {
         fetchBakeries();
-        // fetchUsers();
+        fetchUsers();
         // fetchOrders();
     }, [])
 
@@ -33,6 +38,20 @@ const MainContainer = () => {
     const fetchBakeries = () => {
         setBakeries(bakery1)
     }
+
+    const fetchUsers = () => {
+        setUsers(User1)
+    }
+
+    const User1 = [{
+      "name": "Chris",
+      "id": 1,
+      "email": "pastry@gmail"
+        },
+      {"name": "Tam",
+      "id": 2,
+      "email": "bread@gmail"}]
+
 
     // const fetchBakeries = () => {
     //     fetch('http://localhost:8080/api/bakeries')
@@ -68,7 +87,11 @@ const MainContainer = () => {
     
         <Routes>
             <Route path="/" element={<HomePage/>}/>
-          <Route path="/users" element={<UserContainer/>}/>
+
+          <Route path="/users" element={<UserContainer users={users} setSelectedUser={setSelectedUser} selectedUser={selectedUser} />} />
+          <Route path="/users/new" element={<NewUserForm />} />
+          <Route path="users/:id" element={<UserConsole selectedUser={selectedUser} bakeries={bakeries}/>}/>
+
           <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
           <Route path="bakeries/new" element={<NewBakerForm/>}/>
           <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery}/>}/>

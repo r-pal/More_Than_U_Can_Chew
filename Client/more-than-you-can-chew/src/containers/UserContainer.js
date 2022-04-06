@@ -1,11 +1,11 @@
 import React from 'react';
 import UserNewExisting from '../components/users/UserNewExisting';
 
-const UserContainer = () => {
+const UserContainer = ({users, setSelectedUser, selectedUser}) => {
 
     return(
         <>
-        <UserNewExisting />
+        <UserNewExisting users={users} setSelectedUser={setSelectedUser} selectedUser={selectedUser}/>
         </>
     )
 }
