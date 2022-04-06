@@ -23,10 +23,12 @@ const MainContainer = () => {
 
     const bakery1 = [{
         "name": "Baker",
-        "id": 1
+        "id": 1,
+        "orders": "pastry"
           },
         {"name": "Baker2",
-        "id": 2}]
+        "id": 2,
+        "orders": "bread"}]
 
     const fetchBakeries = () => {
         setBakeries(bakery1)
@@ -69,7 +71,7 @@ const MainContainer = () => {
           <Route path="/users" element={<UserContainer/>}/>
           <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
           <Route path="bakeries/new" element={<NewBakerForm/>}/>
-          <Route path="bakeries/:id" element={<BakeryConsole/>}/>
+          <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery}/>}/>
 
   
         </Routes>
