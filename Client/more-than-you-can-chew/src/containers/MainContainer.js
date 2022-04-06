@@ -13,36 +13,48 @@ const MainContainer = () => {
     const [bakeries, setBakeries] = useState([]);
     const [users, setUsers] = useState([]);
     const [orders, setOrders] = useState([]);
+    const [selectedBakery, setSelectedBakery] = useState(null)
 
     useEffect(() => {
         fetchBakeries();
-        fetchUsers();
-        fetchOrders();
+        // fetchUsers();
+        // fetchOrders();
     }, [])
 
+    const bakery1 = [{
+        "name": "Baker",
+        "id": 1
+          },
+        {"name": "Baker2",
+        "id": 2}]
+
     const fetchBakeries = () => {
-        fetch('http://localhost:8080/api/bakeries')
-        .then(response => response.json())
-        .then(data => setBakeries(data))
+        setBakeries(bakery1)
     }
 
-    const fetchUsers = () => {
-        fetch('http://localhost:8080/api/users')
-        .then(response => response.json())
-        .then(data => setUsers(data))
-    }
+    // const fetchBakeries = () => {
+    //     fetch('http://localhost:8080/api/bakeries')
+    //     .then(response => response.json())
+    //     .then(data => setBakeries(data))
+    // }
 
-    const fetchOrders = () => {
-        fetch('http://localhost:8080/api/orders')
-        .then(response => response.json())
-        .then(data => setOrders(data))
-    }
+    // const fetchUsers = () => {
+    //     fetch('http://localhost:8080/api/users')
+    //     .then(response => response.json())
+    //     .then(data => setUsers(data))
+    // }
 
-    const findBakeryById = (id) => {
-        return bakeries.find((bakery) => {
-            return bakery.id === parseInt(id);
-        })
-    }
+    // const fetchOrders = () => {
+    //     fetch('http://localhost:8080/api/orders')
+    //     .then(response => response.json())
+    //     .then(data => setOrders(data))
+    // }
+
+    // const findBakeryById = (id) => {
+    //     return bakeries.find((bakery) => {
+    //         return bakery.id === parseInt(id);
+    //     })
+    // }
 
 
 
@@ -55,9 +67,9 @@ const MainContainer = () => {
         <Routes>
             <Route path="/" element={<HomePage/>}/>
           <Route path="/users" element={<UserContainer/>}/>
-          <Route path="/bakeries" element={<BakeryContainer/>}/>
+          <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
           <Route path="bakeries/new" element={<NewBakerForm/>}/>
-          <Route path="bakeries/id" element={<BakeryConsole/>}/>
+          <Route path="bakeries/:id" element={<BakeryConsole/>}/>
 
   
         </Routes>

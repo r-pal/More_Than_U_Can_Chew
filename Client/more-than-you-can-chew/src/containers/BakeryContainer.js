@@ -1,12 +1,13 @@
 import React from 'react';
 import BakeryNewExisting from '../components/bakeries/BakeryNewExisting';
 
-const BakeryContainer = () => {
+const BakeryContainer = ({bakeries, setSelectedBakery, selectedBakery}) => {
+
 
     return(
         
         <>
-        <BakeryNewExisting />
+        <BakeryNewExisting bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>
         </>
     )
 }
