@@ -2,21 +2,22 @@ import React from 'react';
 import BakeryOrder from './BakeryOrder';
 
 
-const BakeryConsole = () => {
+const BakeryConsole = ({selectedBakery}) => {
 
-    const bakeryName = 'Tams Cakes'
-    const bakeryDescription = 'Small independent bakers, specialising in cakes!'
+
+
+    
 
     // function to map over Bakery.orders
 
   return (
       <>
-      <h1>{bakeryName}</h1>
-      <h3>{bakeryDescription}</h3>
+      <h1>{selectedBakery.name}</h1>
+      <h3>Bakery ID: {selectedBakery.id}</h3>
       <div className='orders-container'>
       <ul>
         <li>
-            <BakeryOrder />
+            <BakeryOrder selectedBakery={selectedBakery}/>
         </li>
       </ul>
 

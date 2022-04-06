@@ -1,12 +1,14 @@
 import React from 'react'
 
-const BakeryOrder = () => {
+const BakeryOrder = ({selectedBakery}) => {
+  
+
   return (
     <div className='Bakery-Order'>
-       <p>Order No. 3729472</p>
-       <p>item: white loaf</p>
-       <p>collection time 5pm - 6pm</p>
-       <p>Timer: 32 min 20 sec</p>
+       <p>Order No.</p>
+       <p>items: {selectedBakery.orders}</p>
+       <p>collection time: </p>
+       
     </div>
   )
 }
