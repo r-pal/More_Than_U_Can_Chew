@@ -1,6 +1,5 @@
 package com.codeclan.example.More_Than_U_Can_Chew.controllers;
 
-import com.codeclan.example.More_Than_U_Can_Chew.models.Bakery;
 import com.codeclan.example.More_Than_U_Can_Chew.models.BakeryItem;
 import com.codeclan.example.More_Than_U_Can_Chew.repositories.BakeryItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;

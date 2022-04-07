@@ -23,6 +23,17 @@ const MainContainer = () => {
         "orders": stateUserOrders
     }
 
+    const stateBakeryName = localStorage.getItem("bakeryName")
+    const stateBakeryEmail = localStorage.getItem("bakeryEmail")
+    const stateBakeryLocation = localStorage.getItem("bakeryLocation")
+    const stateBakeryOrders = localStorage.getItem("bakeryOrders")
+    const stateBakery = {
+        "name": stateBakeryName,
+        "email": stateBakeryEmail,
+        "location": stateBakeryLocation,
+        "orders": stateBakeryOrders
+    }
+
     // console.log("stateUserName", stateUserName);
     // console.log("stateUserEmail", stateUserEmail);
     // console.log("stateUserLocation", stateUserLocation);
@@ -31,7 +42,7 @@ const MainContainer = () => {
     const [bakeries, setBakeries] = useState([]);
     const [users, setUsers] = useState([]);
     const [orders, setOrders] = useState([]);
-    const [selectedBakery, setSelectedBakery] = useState(null);
+    const [selectedBakery, setSelectedBakery] = useState(stateBakery ? stateBakery : null);
     const [selectedUser, setSelectedUser] = useState(stateUser ? stateUser : null);
 
     

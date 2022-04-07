@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import {Link, Navigate} from 'react-router-dom';
 import "../stylesheets/Main.css";
+import {Link, Navigate, useNavigate} from 'react-router-dom';
+
 
 
 
@@ -12,6 +13,24 @@ const BakeryNewExisting = ({bakeries, setSelectedBakery, selectedBakery}) => {
         return <option key={index} value={index}>{bakery.name}</option>
 
     })
+
+    let navigate = useNavigate();
+
+    const nextPath = () =>{
+        let newStateBakery = {
+            "name": selectedBakery.name,
+            "email": selectedBakery.email,
+            "location": selectedBakery.location
+        }
+        localStorage.setItem("bakeryName", JSON.stringify(newStateBakery.name));
+        localStorage.setItem("bakeryEmail", JSON.stringify(newStateBakery.email));
+        localStorage.setItem("bakeryLocation", JSON.stringify(newStateBakery.location));
+        let id = selectedBakery.id
+        console.log(id);
+        let path = "/bakeries/" + parseInt(id)
+        console.log(navigate);
+        navigate(path)
+    }
 
     const handleExistingBakeryChange = (event) => {
         let newSelectedBakery = bakeries[event.target.value];
@@ -32,7 +51,7 @@ const BakeryNewExisting = ({bakeries, setSelectedBakery, selectedBakery}) => {
 
     return (
         <div className="BakeryNewExisting">
-        <form onSubmit={handleBakeryUpdate}>
+        <form onSubmit={nextPath}>
             <select name="bakery" onChange={handleExistingBakeryChange} defaultValue="select-bakery">
                 <option disabled value="select-bakery">Select Bakery</option>
                 {bakeryOptions}
@@ -40,7 +59,6 @@ const BakeryNewExisting = ({bakeries, setSelectedBakery, selectedBakery}) => {
             <button type="submit">Login</button>
         </form>
         <Link to={"new"}><button type="button">New Baker</button></Link>
-        <Link to={handleBakeryUpdate}><button type="button">LOGIN</button></Link>
         </div>
     )
 

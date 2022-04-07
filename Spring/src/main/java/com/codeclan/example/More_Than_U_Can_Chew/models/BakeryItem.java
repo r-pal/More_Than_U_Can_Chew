@@ -27,6 +27,7 @@ public class BakeryItem {
 
     @ManyToOne
     @JoinColumn(name="bakery_id", nullable = false)
+    @JsonIgnoreProperties({"availableItems", "menuItems"})
     private Bakery bakery;
 
     @Column(name="image_id")
@@ -34,6 +35,7 @@ public class BakeryItem {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
+    @JsonIgnoreProperties({"itemsOrdered"})
     private Order order;
 
     public BakeryItem(String name, String ingredients, String allergens, Long imageId, Bakery bakery) {
