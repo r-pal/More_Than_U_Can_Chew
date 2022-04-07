@@ -5,15 +5,10 @@ const BakeryListItem = ({bakery}) => {
 
   return (
     <li>
-        <p>
-            {bakery.name}
-        </p>
-        <p>
-            {bakery.id}
-        </p>
-        <p>
-            {bakery.orders}
-        </p>
+        <h2>{bakery.name}</h2>
+      <h3>Location: {bakery.location}</h3>
+      <h3>email: {bakery.email}</h3>
+      <h3>Collection Time: {bakery.collectionTime}</h3>
     </li>
   )
 }

@@ -11,6 +11,9 @@ const BakeryConsole = ({selectedBakery}) => {
       <>
       <h1>{selectedBakery.name}</h1>
       <h3>Bakery ID: {selectedBakery.id}</h3>
+      <h3>Location: {selectedBakery.location}</h3>
+      <h3>email: {selectedBakery.email}</h3>
+      <h3>Collection Time: {selectedBakery.collectionTime}</h3>
       <div className='orders-container'>
       <ul>
         <li>
