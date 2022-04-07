@@ -25,6 +25,9 @@ public class BakeryItem {
     @Column(name="allergens")
     private String allergens;
 
+    @Column(name="quantity")
+    private Integer quantity;
+
     @ManyToOne
     @JoinColumn(name="bakery_id", nullable = false)
     @JsonIgnoreProperties({"availableItems", "menuItems"})
@@ -38,13 +41,14 @@ public class BakeryItem {
     @JsonIgnoreProperties({"itemsOrdered"})
     private Order order;
 
-    public BakeryItem(String name, String ingredients, String allergens, Long imageId, Bakery bakery) {
+    public BakeryItem(String name, String ingredients, String allergens, Long imageId, Bakery bakery, Integer quantity) {
         this.name = name;
         this.ingredients = ingredients;
         this.allergens = allergens;
         this.imageId = imageId;
         this.bakery = bakery;
         this.order = null;
+        this.quantity = quantity;
     }
 
     public BakeryItem() {
@@ -104,5 +108,13 @@ public class BakeryItem {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }
