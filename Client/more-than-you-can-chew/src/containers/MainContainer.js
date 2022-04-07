@@ -119,6 +119,13 @@ const MainContainer = () => {
     //     })
     // }
 
+    const handlePost = (user) => {
+        const request = new Request();
+        const url = "/api/users";
+        request.post(url, user)
+        .then(() => {window.location = "/users"})
+      }
+
 
 
 
@@ -131,7 +138,7 @@ const MainContainer = () => {
             <Route path="/" element={<HomePage/>}/>
 
           <Route path="/users" element={<UserContainer users={users} setSelectedUser={setSelectedUser} selectedUser={selectedUser} />} />
-          <Route path="/users/new" element={<NewUserForm />} />
+          <Route path="/users/new" element={<NewUserForm selectedUser={selectedUser} onCreate={handlePost} />} />
           <Route path="users/:id" element={<UserConsole selectedUser={selectedUser} bakeries={bakeries}/>}/>
 
           <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
