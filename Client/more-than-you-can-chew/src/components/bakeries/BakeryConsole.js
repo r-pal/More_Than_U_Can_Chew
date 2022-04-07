@@ -1,5 +1,6 @@
 import React from 'react';
 import BakeryOrder from './BakeryOrder';
+import "../stylesheets/Main.css";
 
 
 const BakeryConsole = ({selectedBakery}) => {

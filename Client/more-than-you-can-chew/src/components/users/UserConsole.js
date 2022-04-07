@@ -1,5 +1,6 @@
 import React from 'react'
 import BakeriesNearYou from './BakeriesNearYou'
+import "../stylesheets/Main.css";
 
 function UserConsole({selectedUser, bakeries}) {
 

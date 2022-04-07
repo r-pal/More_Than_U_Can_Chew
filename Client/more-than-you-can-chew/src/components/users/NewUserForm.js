@@ -1,4 +1,5 @@
 import React from 'react'
+import "../stylesheets/Main.css";
 
 function NewUserForm() {
 
