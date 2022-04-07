@@ -7,6 +7,7 @@ import NewBakerForm from '../components/bakeries/NewBakerForm';
 import BakeryConsole from '../components/bakeries/BakeryConsole';
 import NewUserForm from '../components/users/NewUserForm';
 import UserConsole from '../components/users/UserConsole';
+import BakeryNavBar from '../components/bakeries/BakeryNavBar';
 
 
 
@@ -16,22 +17,26 @@ const MainContainer = () => {
     const stateUserEmail = localStorage.getItem("userEmail")
     const stateUserLocation = localStorage.getItem("userLocation")
     const stateUserOrders = localStorage.getItem("userOrders")
+    const stateUserId = localStorage.getItem("id")
     const stateUser = {
         "name": stateUserName,
         "email": stateUserEmail,
         "location": stateUserLocation,
-        "orders": stateUserOrders
+        "orders": stateUserOrders,
+        "id": stateUserId
     }
 
     const stateBakeryName = localStorage.getItem("bakeryName")
     const stateBakeryEmail = localStorage.getItem("bakeryEmail")
     const stateBakeryLocation = localStorage.getItem("bakeryLocation")
     const stateBakeryOrders = localStorage.getItem("bakeryOrders")
+    const stateBakeryId = localStorage.getItem("bakeryId")
     const stateBakery = {
         "name": stateBakeryName,
         "email": stateBakeryEmail,
         "location": stateBakeryLocation,
-        "orders": stateBakeryOrders
+        "orders": stateBakeryOrders,
+        "id": stateBakeryId
     }
 
     // console.log("stateUserName", stateUserName);
@@ -121,7 +126,7 @@ const MainContainer = () => {
     return(
         <Router>
         <Fragment>
-    
+        {/* <BakeryNavBar/> */}
         <Routes>
             <Route path="/" element={<HomePage/>}/>
 
