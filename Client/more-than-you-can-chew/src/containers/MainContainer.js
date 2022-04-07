@@ -8,6 +8,7 @@ import BakeryConsole from '../components/bakeries/BakeryConsole';
 import NewUserForm from '../components/users/NewUserForm';
 import UserConsole from '../components/users/UserConsole';
 import BakeryNavBar from '../components/bakeries/BakeryNavBar';
+import Request from '../helpers/Request';
 
 
 
@@ -121,6 +122,7 @@ const MainContainer = () => {
 
 
     const handlePost = (user) => {
+        console.log(user);
         const request = new Request();
         const url = "/api/users";
         request.post(url, user)
