@@ -124,7 +124,7 @@ public class DataLoader implements ApplicationRunner {
         BakeryItem fruits = new BakeryItem("Fruit Scone", "flour, water", "gluten", 123L, bakeThat);
         bakeryItemRepository.save(fruits);
         BakeryItem plains = new BakeryItem("Plain Scone", "flour, water", "gluten", 123L, bakeThat);
-        bakeryItemRepository.save(fruits);
+        bakeryItemRepository.save(plains);
 
 
         BakeryItem lemcran = new BakeryItem("Lemon & Cranberry Cake", "flour, water", "gluten", 123L, cakeMyDay);
@@ -245,7 +245,7 @@ public class DataLoader implements ApplicationRunner {
         BakeryItem biscc = new BakeryItem("Biscoff Cake", "flour, water", "gluten", 123L, hitb);
         bakeryItemRepository.save(biscc);
         BakeryItem sausr = new BakeryItem("Sausage Roll", "flour, water", "gluten", 123L, hitb);
-        bakeryItemRepository.save(suasr);
+        bakeryItemRepository.save(sausr);
         BakeryItem scotp = new BakeryItem("Scotch Pie", "flour, water", "gluten", 123L, hitb);
         bakeryItemRepository.save(scotp);
         BakeryItem beefp = new BakeryItem("Beef & Vegetable Pasty", "flour, water", "gluten", 123L, hitb);
