@@ -1,14 +1,8 @@
 package com.codeclan.example.More_Than_U_Can_Chew.components;
 
 
-import com.codeclan.example.More_Than_U_Can_Chew.models.Bakery;
-import com.codeclan.example.More_Than_U_Can_Chew.models.BakeryItem;
-import com.codeclan.example.More_Than_U_Can_Chew.models.Order;
-import com.codeclan.example.More_Than_U_Can_Chew.models.User;
-import com.codeclan.example.More_Than_U_Can_Chew.repositories.BakeryItemRepository;
-import com.codeclan.example.More_Than_U_Can_Chew.repositories.BakeryRepository;
-import com.codeclan.example.More_Than_U_Can_Chew.repositories.OrderRepository;
-import com.codeclan.example.More_Than_U_Can_Chew.repositories.UserRepository;
+import com.codeclan.example.More_Than_U_Can_Chew.models.*;
+import com.codeclan.example.More_Than_U_Can_Chew.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -30,6 +24,10 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     BakeryItemRepository bakeryItemRepository;
+
+    @Autowired
+    ImageRepository imageRepository;
+
 
     public DataLoader() {
     }
@@ -74,7 +72,7 @@ public class DataLoader implements ApplicationRunner {
         userRepository.save(sarah);
         User blondie = new User("Blondie", "GEO9", "tophits@yahoo.com");
         userRepository.save(blondie);
-        User mads = new User("Madeleine Busby", "GE1O", "mds@gmail.com");
+        User mads = new User("Madeleine Busby", "GE1O", "madeleine@gmail.com");
         userRepository.save(mads);
         User cc = new User("Cookie Crumboule", "GE11", "sweetlikechocolate@aol.com");
         userRepository.save(cc);
@@ -280,6 +278,9 @@ public class DataLoader implements ApplicationRunner {
         bakeryItemRepository.save(mvbgd);
 
 
+        Image image1 = new Image("string");
+        imageRepository.save(image1);
+
 
 
         Order order1 = new Order(pita, terry, false);
@@ -294,36 +295,6 @@ public class DataLoader implements ApplicationRunner {
         orderRepository.save(order2);
         order2.addABakeryItemToOrder(croissant);
         orderRepository.save(order2);
-
-//        Bakery pita = new Bakery("Pain in the Ass","GEO1", "hello@painintheass.com",
-//                LocalTime.parse("18:00:00"));
-//        bakeryRepository.save(pita);
-//
-//        User terry = new User("Terry Rex", "GEO2", "T@rex.com");
-//        userRepository.save(terry);
-//
-//        BakeryItem croissant = new BakeryItem("Croissant", "flour, water, butter", "gluten, lactose", 78978L, pita);
-//        bakeryItemRepository.save(croissant);
-//
-//        BakeryItem croissant2 = new BakeryItem("Croissant", "flour, water, butter", "gluten, lactose", 78978L, pita);
-//        bakeryItemRepository.save(croissant2);
-//
-//        Order order1 = new Order(pita, terry, false);
-//        orderRepository.save(order1);
-//
-//        croissant.setOrder(order1);
-//        bakeryItemRepository.save(croissant);
-//
-//        croissant2.setOrder(order1);
-//        bakeryItemRepository.save(croissant2);
-
-//        order1.addABakeryItemToOrder(croissant);
-//        order1.addABakeryItemToOrder(croissant2);
-//
-//
-//
-//        orderRepository.save(order1);
-
 
 
 

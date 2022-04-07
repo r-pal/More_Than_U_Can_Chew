@@ -1,6 +1,7 @@
 package com.codeclan.example.More_Than_U_Can_Chew.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class Order {
     private Long id;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnoreProperties({"order"})
     List<BakeryItem> itemsOrdered;
 
     @ManyToOne
