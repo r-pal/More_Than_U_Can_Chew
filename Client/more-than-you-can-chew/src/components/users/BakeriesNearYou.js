@@ -1,5 +1,6 @@
 import React from 'react'
 import BakeryListItem from './BakeryListItem'
+import "../stylesheets/Main.css";
 
 const BakeriesNearYou = ({bakeries}) => {
 
