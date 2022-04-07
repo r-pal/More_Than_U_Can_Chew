@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Link, Navigate} from 'react-router-dom';
+import {Link, Navigate, useNavigate} from 'react-router-dom';
 
 
 
@@ -12,6 +12,24 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
 
     })
 
+    let navigate = useNavigate();
+
+    const nextPath = () =>{
+        let newStateUser = {
+            "name": selectedUser.name,
+            "email": selectedUser.email,
+            "location": selectedUser.location
+        }
+        localStorage.setItem("userName", JSON.stringify(newStateUser.name));
+        localStorage.setItem("userEmail", JSON.stringify(newStateUser.email));
+        localStorage.setItem("userLocation", JSON.stringify(newStateUser.location));
+        let id = selectedUser.id
+        console.log(id);
+        let path = "/users/" + parseInt(id)
+        console.log(navigate);
+        navigate(path)
+    }
+
     const handleExistingUserChange = (event) => {
         let newSelectedUser = users[event.target.value];
         setSelectedUser(newSelectedUser)
@@ -20,6 +38,7 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
     const handleUserUpdate = () => {
         setUserChosen(true);
     }
+
 
     if(userChosen){
         let url = "/users/" + selectedUser.id
@@ -31,7 +50,7 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
 
     return (
         <div className="UserNewExisting">
-        <form onSubmit={handleUserUpdate}>
+        <form onSubmit={nextPath}>
             <select name="user" onChange={handleExistingUserChange} defaultValue="select-user">
                 <option disabled value="select-user">Select user</option>
                 {userOptions}
