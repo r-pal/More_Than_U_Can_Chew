@@ -1,0 +1,21 @@
+.HomePageContainer{
+    background-color: aquamarine;
+    height:100vh;
+    
+}
+
+.ButtonUsers{
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: pink
+
+}
+
+.ButtonUsers{
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: pink
+}
+
