@@ -282,19 +282,21 @@ public class DataLoader implements ApplicationRunner {
         imageRepository.save(image1);
 
 
-
-        Order order1 = new Order(pita, terry, false);
-        orderRepository.save(order1);
-        order1.addABakeryItemToOrder(croissant);
-        orderRepository.save(order1);
-
-
-        Order order2 = new Order(pita, jambo, false);
-        orderRepository.save(order2);
-        order2.addABakeryItemToOrder(roll);
-        orderRepository.save(order2);
-        order2.addABakeryItemToOrder(croissant);
-        orderRepository.save(order2);
+//
+//        Order order1 = new Order(pita, terry, false);
+//        orderRepository.save(order1);
+//        order1.addABakeryItemToOrder(croissant);
+//        croissant.setOrder(order1);
+//        bakeryItemRepository.save(croissant);
+//        orderRepository.save(order1);
+//
+//
+//        Order order2 = new Order(pita, jambo, false);
+//        orderRepository.save(order2);
+//        order2.addABakeryItemToOrder(roll);
+//        orderRepository.save(order2);
+//        order2.addABakeryItemToOrder(croissant);
+//        orderRepository.save(order2);
 
 
 

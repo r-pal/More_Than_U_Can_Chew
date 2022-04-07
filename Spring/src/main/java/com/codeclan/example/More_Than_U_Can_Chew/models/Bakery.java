@@ -1,13 +1,13 @@
 package com.codeclan.example.More_Than_U_Can_Chew.models;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name="bakeries")
@@ -41,7 +41,7 @@ public class Bakery {
     @Column(name="menu_items")
     private List<BakeryItem> menuItems;
 
-    @OneToMany(mappedBy = "bakery", fetch= FetchType.LAZY)
+    @OneToMany(mappedBy ="bakery", fetch= FetchType.LAZY)
     @JsonIgnoreProperties({"bakery"})
     private List<Order> orders;
 

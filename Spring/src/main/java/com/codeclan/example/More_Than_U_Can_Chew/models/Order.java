@@ -1,6 +1,5 @@
 package com.codeclan.example.More_Than_U_Can_Chew.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -19,15 +18,18 @@ public class Order {
     private Long id;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({"order"})
+    @JsonIgnoreProperties({"order", "bakery"})
+//    @JsonIgnoreProperties({"bakery"})
     List<BakeryItem> itemsOrdered;
 
     @ManyToOne
     @JoinColumn(name="bakery_id", nullable = false)
+    @JsonIgnoreProperties({"orders", "menuItems", "availableItems"})
     private Bakery bakery;
 
     @ManyToOne
     @JoinColumn(name="user_id", nullable = false)
+    @JsonIgnoreProperties({"orders"})
     private User user;
 
     @Column(name="collected_status")

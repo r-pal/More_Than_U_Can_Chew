@@ -1,8 +1,6 @@
 package com.codeclan.example.More_Than_U_Can_Chew.controllers;
 
 import com.codeclan.example.More_Than_U_Can_Chew.models.Image;
-import com.codeclan.example.More_Than_U_Can_Chew.models.Order;
-import com.codeclan.example.More_Than_U_Can_Chew.models.User;
 import com.codeclan.example.More_Than_U_Can_Chew.repositories.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
