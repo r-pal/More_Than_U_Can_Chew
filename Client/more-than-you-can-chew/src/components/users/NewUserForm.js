@@ -7,10 +7,11 @@ function NewUserForm({selectedUser, onCreate}) {
     name: "",
     location: "",
     email: ""
-  })
+  }, [])
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(newUser.name);
         onCreate(newUser)
     }
 
@@ -20,13 +21,15 @@ function NewUserForm({selectedUser, onCreate}) {
       let copiedUser = {...newUser};
       copiedUser[propertyName] = event.target.value;
       setNewUser(copiedUser)
+      console.log(newUser.name);
+
   }
   return (
     <>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder='User Name' name='name' onChange={handleChange} value="name"/>
-                <input type="text" placeholder='Location' name='location' onChange={handleChange} value="location"/>
-                <input type="text" placeholder='Email' name='email' onChange={handleChange} value="email"/>
+                <input type="text" placeholder='User Name' name='name' onChange={handleChange} value={newUser.name}/>
+                <input type="text" placeholder='Location' name='location' onChange={handleChange} value={newUser.location}/>
+                <input type="text" placeholder='Email' name='email' onChange={handleChange} value={newUser.email}/>
 
             
                 <button type="submit">Save New User</button>
