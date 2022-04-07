@@ -43,5 +43,11 @@ public class BakeryItemController {
         return new ResponseEntity<>(bakeryItemRepository.findByOrderId(id), HttpStatus.OK);
     }
 
+    @DeleteMapping(value = "/bakeryItems/{id}")
+    public ResponseEntity<Long> deleteBakeryItem(@PathVariable Long id) {
+        bakeryItemRepository.deleteById(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
+
 
 }

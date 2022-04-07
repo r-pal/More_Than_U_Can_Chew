@@ -38,4 +38,13 @@ public class ImageController {
         imageRepository.save(image);
         return new ResponseEntity<>(image, HttpStatus.OK);
     }
+
+    @DeleteMapping(value = "/images/{id}")
+    public ResponseEntity<Long> deleteImage(@PathVariable Long id) {
+        imageRepository.deleteById(id);
+//        if (!isRemoved) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
 }
