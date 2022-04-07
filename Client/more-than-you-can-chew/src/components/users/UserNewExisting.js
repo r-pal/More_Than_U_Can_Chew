@@ -19,11 +19,13 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
         let newStateUser = {
             "name": selectedUser.name,
             "email": selectedUser.email,
-            "location": selectedUser.location
+            "location": selectedUser.location,
+            "id": selectedUser.id
         }
         localStorage.setItem("userName", JSON.stringify(newStateUser.name));
         localStorage.setItem("userEmail", JSON.stringify(newStateUser.email));
         localStorage.setItem("userLocation", JSON.stringify(newStateUser.location));
+        localStorage.setItem("userId", JSON.stringify(newStateUser.id));
         let id = selectedUser.id
         console.log(id);
         let path = "/users/" + parseInt(id)
