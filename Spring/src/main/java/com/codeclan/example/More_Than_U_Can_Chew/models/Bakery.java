@@ -36,10 +36,10 @@ public class Bakery {
     @Column(name="available_items")
     private List<BakeryItem> availableItems;
 
-    @OneToMany(mappedBy="bakery", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({"bakery"})
-    @Column(name="menu_items")
-    private List<BakeryItem> menuItems;
+//    @OneToMany(mappedBy="bakery", fetch = FetchType.LAZY)
+//    @JsonIgnoreProperties({"bakery"})
+//    @Column(name="menu_items")
+//    private List<BakeryItem> menuItems;
 
     @OneToMany(mappedBy ="bakery", fetch= FetchType.LAZY)
     @JsonIgnoreProperties({"bakery"})
@@ -51,7 +51,7 @@ public class Bakery {
         this.email = email;
         this.collectionTime = collectionTime;
         this.availableItems = new ArrayList<>();
-        this.menuItems = new ArrayList<>();
+//        this.menuItems = new ArrayList<>();
         this.orders = new ArrayList<>();
     }
 
@@ -106,17 +106,21 @@ public class Bakery {
         this.availableItems = availableItems;
     }
 
+    public void clearAvailableItems() {
+        this.availableItems = new ArrayList<>();
+    }
+
     public void addABakeryItemToAvailability(BakeryItem bakeryItem){
         this.availableItems.add(bakeryItem);
     }
 
-    public List<BakeryItem> getMenuItems() {
-        return menuItems;
-    }
-
-    public void setMenuItems(List<BakeryItem> menuItems) {
-        this.menuItems = menuItems;
-    }
+//    public List<BakeryItem> getMenuItems() {
+//        return menuItems;
+//    }
+//
+//    public void setMenuItems(List<BakeryItem> menuItems) {
+//        this.menuItems = menuItems;
+//    }
 
     public List<Order> getOrders() {
         return orders;
