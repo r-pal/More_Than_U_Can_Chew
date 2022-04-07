@@ -12,19 +12,45 @@ import UserConsole from '../components/users/UserConsole';
 
 
 const MainContainer = () => {
+    const stateUserName = localStorage.getItem("userName")
+    const stateUserEmail = localStorage.getItem("userEmail")
+    const stateUserLocation = localStorage.getItem("userLocation")
+    const stateUserOrders = localStorage.getItem("userOrders")
+    const stateUser = {
+        "name": stateUserName,
+        "email": stateUserEmail,
+        "location": stateUserLocation,
+        "orders": stateUserOrders
+    }
+
+    // console.log("stateUserName", stateUserName);
+    // console.log("stateUserEmail", stateUserEmail);
+    // console.log("stateUserLocation", stateUserLocation);
+    // console.log("stateUserOrders", stateUserOrders);
 
     const [bakeries, setBakeries] = useState([]);
     const [users, setUsers] = useState([]);
     const [orders, setOrders] = useState([]);
     const [selectedBakery, setSelectedBakery] = useState(null);
-    const [selectedUser, setSelectedUser] = useState(null);
+    const [selectedUser, setSelectedUser] = useState(stateUser ? stateUser : null);
 
+    
 
     useEffect(() => {
         fetchBakeries();
         fetchUsers();
         // fetchOrders();
+
     }, [])
+
+    
+
+    // useEffect(() => {
+        
+    //     setSelectedUser(JSON.parse(window.sessionStorage.getItem("selectedUser")));
+    //   }, []);
+    
+
 
     // const bakery1 = [{
     //     "name": "Baker",
