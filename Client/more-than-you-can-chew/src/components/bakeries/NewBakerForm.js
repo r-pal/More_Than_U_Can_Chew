@@ -9,9 +9,9 @@ function NewBakerForm() {
     <>
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder='Bakery Name' name='bakeryName' onChange="handleChangeFunctionHere" value="Bakery Name"/>
-                <input type="text" placeholder='Description' name='description' onChange="handleChangeFunctionHere" value="Description"/>
                 <input type="text" placeholder='Location' name='location' onChange="handleChangeFunctionHere" value="Location"/>
-                <input type="text" placeholder='Email' name='email' onChange="handleChangeFunctionHere" value="email"/>
+                <input type="text" placeholder='Email' name='email' onChange="handleChangeFunctionHere" value="Email"/>
+                <input type="text" placeholder='Collection Time' name='collectionTime' onChange="handleChangeFunctionHere" value="Collection Time"/>
 
             
                 <button type="submit">Save New Bakery</button>

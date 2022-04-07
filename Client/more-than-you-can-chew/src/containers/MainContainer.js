@@ -26,44 +26,44 @@ const MainContainer = () => {
         // fetchOrders();
     }, [])
 
-    const bakery1 = [{
-        "name": "Baker",
-        "id": 1,
-        "orders": "pastry"
-          },
-        {"name": "Baker2",
-        "id": 2,
-        "orders": "bread"}]
-
-    const fetchBakeries = () => {
-        setBakeries(bakery1)
-    }
-
-    const fetchUsers = () => {
-        setUsers(User1)
-    }
-
-    const User1 = [{
-      "name": "Chris",
-      "id": 1,
-      "email": "pastry@gmail"
-        },
-      {"name": "Tam",
-      "id": 2,
-      "email": "bread@gmail"}]
-
+    // const bakery1 = [{
+    //     "name": "Baker",
+    //     "id": 1,
+    //     "orders": "pastry"
+    //       },
+    //     {"name": "Baker2",
+    //     "id": 2,
+    //     "orders": "bread"}]
 
     // const fetchBakeries = () => {
-    //     fetch('http://localhost:8080/api/bakeries')
-    //     .then(response => response.json())
-    //     .then(data => setBakeries(data))
+    //     setBakeries(bakery1)
     // }
 
     // const fetchUsers = () => {
-    //     fetch('http://localhost:8080/api/users')
-    //     .then(response => response.json())
-    //     .then(data => setUsers(data))
+    //     setUsers(User1)
     // }
+
+    // const User1 = [{
+    //   "name": "Chris",
+    //   "id": 1,
+    //   "email": "pastry@gmail"
+    //     },
+    //   {"name": "Tam",
+    //   "id": 2,
+    //   "email": "bread@gmail"}]
+
+
+    const fetchBakeries = () => {
+        fetch('http://localhost:8080/api/bakeries')
+        .then(response => response.json())
+        .then(data => setBakeries(data))
+    }
+
+    const fetchUsers = () => {
+        fetch('http://localhost:8080/api/users')
+        .then(response => response.json())
+        .then(data => setUsers(data))
+    }
 
     // const fetchOrders = () => {
     //     fetch('http://localhost:8080/api/orders')

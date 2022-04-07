@@ -39,7 +39,6 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
             <button type="submit">Login</button>
         </form>
         <Link to={"new"}><button type="button">New User</button></Link>
-        <Link to={handleUserUpdate}><button type="button">LOGIN</button></Link>
         </div>
     )
 
