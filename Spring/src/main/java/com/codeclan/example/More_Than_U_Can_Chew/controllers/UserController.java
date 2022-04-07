@@ -1,6 +1,5 @@
 package com.codeclan.example.More_Than_U_Can_Chew.controllers;
 
-import com.codeclan.example.More_Than_U_Can_Chew.models.Order;
 import com.codeclan.example.More_Than_U_Can_Chew.models.User;
 import com.codeclan.example.More_Than_U_Can_Chew.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
