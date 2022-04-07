@@ -1,18 +1,35 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "../stylesheets/Main.css";
 
-function NewUserForm() {
+function NewUserForm({selectedUser, onCreate}) {
 
-    const handleSubmit = () => {
-        return null
+  const [newUser, setNewUser] = useState({
+    name: "",
+    location: "",
+    email: ""
+  }, [])
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(newUser.name);
+        onCreate(newUser)
     }
+
+
+    const handleChange = (event) => {
+      let propertyName = event.target.name
+      let copiedUser = {...newUser};
+      copiedUser[propertyName] = event.target.value;
+      setNewUser(copiedUser)
+      console.log(newUser.name);
+
+  }
   return (
     <>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder='User Name' name='userName' onChange="handleChangeFunctionHere" value="User Name"/>
-                <input type="text" placeholder='Description' name='description' onChange="handleChangeFunctionHere" value="Description"/>
-                <input type="text" placeholder='Location' name='location' onChange="handleChangeFunctionHere" value="Location"/>
-                <input type="text" placeholder='Email' name='email' onChange="handleChangeFunctionHere" value="email"/>
+                <input type="text" placeholder='User Name' name='name' onChange={handleChange} value={newUser.name}/>
+                <input type="text" placeholder='Location' name='location' onChange={handleChange} value={newUser.location}/>
+                <input type="text" placeholder='Email' name='email' onChange={handleChange} value={newUser.email}/>
 
             
                 <button type="submit">Save New User</button>
