@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, setState} from 'react'
 import "../stylesheets/Main.css";
 
-function NewBakerForm({selectedBakery, onCreateB}) {
+function EditBakerForm({selectedBakery, onCreateB}) {
 
-  const [newBakery, setNewBakery] = useState({
-    name: "",
+  const [selectedBakery, setBakery] = useState({
+    name: {selectedBakeryName},
     location: "",
     email: "",
     collectionTime: ""
