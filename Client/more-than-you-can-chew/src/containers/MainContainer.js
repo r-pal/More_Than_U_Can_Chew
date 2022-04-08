@@ -173,7 +173,7 @@ const MainContainer = () => {
           <Route path="/users" element={<UserContainer users={users} setSelectedUser={setSelectedUser} selectedUser={selectedUser} />} />
 
           <Route path="/users/new" element={<NewUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
-          <Route path="/users/:id/edit" element={<EditUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
+          <Route path="/users/:id/edit" element={<EditUserForm setSelectedUser={setSelectedUser} selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
 
           <Route path="users/:id" element={<UserConsole selectedUser={selectedUser} bakeries={bakeries}/>}/>
 

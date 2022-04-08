@@ -4,12 +4,13 @@ import NavBar from '../NavBar';
 import {Link, Navigate, useNavigate} from 'react-router-dom';
 
 
-function EditUserForm({selectedUser, onCreate, onUpdate}) {
+function EditUserForm({setSelectedUser, selectedUser, onCreate, onUpdate}) {
 
   const [newUser, setNewUser] = useState({
     name: "",
     location: "",
-    email: ""
+    email: "",
+    id: selectedUser.id
   })
 
   useEffect(() => {
@@ -30,6 +31,7 @@ function EditUserForm({selectedUser, onCreate, onUpdate}) {
         event.preventDefault();
         if(newUser.id){
           onUpdate(newUser)
+          setSelectedUser(newUser)
         }else{
         console.log("did handlesubmit else");
         // onCreate(newUser)

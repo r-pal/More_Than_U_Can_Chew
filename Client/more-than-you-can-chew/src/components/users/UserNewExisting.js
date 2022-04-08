@@ -54,10 +54,11 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
 
     return (
 
-        <div className="HomePageContainer">
+       
 
         <>
         <NavBar />
+        <div className="HomePageContainer">
 
         <div className="UserNewExisting">
         <form className="login" onSubmit={nextPath}>
