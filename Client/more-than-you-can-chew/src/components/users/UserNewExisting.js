@@ -28,9 +28,9 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
         localStorage.setItem("userLocation", JSON.stringify(newStateUser.location));
         localStorage.setItem("userId", JSON.stringify(newStateUser.id));
         let id = selectedUser.id
-        console.log(id);
+        // console.log(id);
         let path = "/users/" + parseInt(id)
-        console.log(navigate);
+        // console.log(navigate);
         navigate(path)
     }
 
