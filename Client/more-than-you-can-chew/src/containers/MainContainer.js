@@ -9,6 +9,7 @@ import NewUserForm from '../components/users/NewUserForm';
 import UserConsole from '../components/users/UserConsole';
 import BakeryNavBar from '../components/bakeries/BakeryNavBar';
 import Request from '../helpers/Request';
+import CreateBakeryItem from '../components/bakeryItems/CreateBakeryItem';
 
 
 
@@ -50,6 +51,7 @@ const MainContainer = () => {
     const [orders, setOrders] = useState([]);
     const [selectedBakery, setSelectedBakery] = useState(stateBakery ? stateBakery : null);
     const [selectedUser, setSelectedUser] = useState(stateUser ? stateUser : null);
+    // const [selectedItem, setSelectedItem] = useState(stateItem ? stateItem : null);
 
     
 
@@ -120,6 +122,13 @@ const MainContainer = () => {
     //     })
     // }
 
+    const handleItemPost = (item) => {
+        const request = new Request();
+        const url ="/api/bakeryitems"
+        request.post(url, item)
+        .then(() => {window.location = "/bakeries"})
+    }
+
 
     const handlePost = (user) => {
         console.log(user);
@@ -129,6 +138,10 @@ const MainContainer = () => {
         .then(() => {window.location = "/users"})
       }
 
+
+    
+
+
     const handlePostB = (bakery) => {
       console.log(bakery);
       const request = new Request();
@@ -136,6 +149,7 @@ const MainContainer = () => {
       request.post(url, bakery)
       .then(() => {window.location = "/bakeries"})
     }
+
 
 
    
@@ -166,6 +180,8 @@ const MainContainer = () => {
           <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
           <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery}/>}/>
 
+          <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} handleItemPost={handleItemPost}/>} />
+
   
         </Routes>
   
@@ -173,6 +189,7 @@ const MainContainer = () => {
         </Fragment>
         </Router>
       )
+    
 }
 
 export default MainContainer
