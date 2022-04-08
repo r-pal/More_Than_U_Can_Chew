@@ -1,28 +1,13 @@
 import NavBar from '../NavBar';
 import React, {useState} from 'react'
 import "../stylesheets/Main.css";
+import BakeryItem from './BakeryItem';
 
-const showBakeryItemsOfBakery = ({selectedBakery, bakeryItems}) => {
+const showBakeryItems = ({selectedBakery}) => {
 
-
-    //find items where selectedBakery.id === items.bakery.id
-    const findBakeryItemsOfBakery = bakeryItems.map((item, index, selectedBakery) => {
-        item.bakery.id === selectedBakery.id
-        return <BakeryItem  />
-
-
-
+    const findBakeryItemsOfBakery = selectedBakery.availableItems.map((item, index) => {
+        return <BakeryItem item={item} key={index}/>
     })
-    
-    
-    
-    bakeries.map((bakery, index) => {
-
-
-        return <BakeryItem selectedItem={selectedItem} key={index} />
-
-    })
-
 
 
 return(
@@ -31,9 +16,11 @@ return(
             Items Available
         </h2>
         <ul >
-            {}
+            {findBakeryItemsOfBakery}
         </ul>
+        hello
     </div>
-)
+)}
 
-export default showBakeryItemsOfBakery;
+
+export default showBakeryItems;

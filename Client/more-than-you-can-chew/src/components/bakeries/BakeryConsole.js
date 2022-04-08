@@ -4,6 +4,7 @@ import "../stylesheets/Main.css";
 import CreateBakeryItem from '../bakeryItems/CreateBakeryItem';
 import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import BakeryNavBar from './BakeryNavBar';
+import ShowBakeryItems from '../bakeryItems/ShowBakeryItems';
 
 
 
@@ -27,14 +28,8 @@ const BakeryConsole = ({selectedBakery}) => {
             <BakeryOrder selectedBakery={selectedBakery}/>
         </li>
       </ul>
-      <div className='itemss-container'>
-      <ul>
-        <li>
-            <ShowBakeryItems selectedBakery={selectedBakery} bakeryItems={bakeryItems}/>
-        </li>
-      </ul>
-
       </div>
+      <ShowBakeryItems selectedBakery={selectedBakery}/>
     </>
   )
 }

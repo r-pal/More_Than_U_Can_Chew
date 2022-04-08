@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import "../stylesheets/Main.css";
 
 
-const BakeryItem = ({selectedItem}) => {
+const BakeryItem = ({item}) => {
 
 
 
@@ -13,12 +13,13 @@ return(
             Item Details
         </h2>
         <ul >
-            Name: {selectedItem.name}
-            Allergens: {selectedItem.allergens}
-            Quantity: {selectedItem.quantity}
-            {selectedItem.imageId}
+            Name: {item.name}
+            Allergens: {item.allergens}
+            Quantity: {item.quantity}
+            {item.imageId}
         </ul>
     </div>
 )
+}
 
-export default BakeryItem;
+export default BakeryItem
