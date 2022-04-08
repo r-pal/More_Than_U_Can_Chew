@@ -9,6 +9,7 @@ import NewUserForm from '../components/users/NewUserForm';
 import UserConsole from '../components/users/UserConsole';
 import BakeryNavBar from '../components/bakeries/BakeryNavBar';
 import Request from '../helpers/Request';
+import EditUserForm from '../components/users/EditUserForm';
 
 
 
@@ -18,7 +19,7 @@ const MainContainer = () => {
     const stateUserEmail = localStorage.getItem("userEmail")
     const stateUserLocation = localStorage.getItem("userLocation")
     const stateUserOrders = localStorage.getItem("userOrders")
-    const stateUserId = localStorage.getItem("id")
+    const stateUserId = localStorage.getItem("userId")
     const stateUser = {
         "name": stateUserName,
         "email": stateUserEmail,
@@ -138,14 +139,23 @@ const MainContainer = () => {
     }
 
 
+    // const handleUpdate = (pirate) => {
+    //     const request = new Request();
+    //     request.patch("/api/pirates/" + pirate.id, pirate)
+    //     .then(() => {
+    //       window.location = "/pirates/" + pirate.id;
+    //     })
+
+
    
     
       const handleUserUpdate = (user) => {
         const request = new Request();
         request.patch("/api/users/" + user.id, user)
-        // .then(() => {
-        //   window.location = "/pirates/" + pirate.id
-      }
+        .then(() => {
+          window.location = "/users/" + user.id
+      })
+    }
 
 
 
@@ -158,7 +168,8 @@ const MainContainer = () => {
 
           <Route path="/users" element={<UserContainer users={users} setSelectedUser={setSelectedUser} selectedUser={selectedUser} />} />
 
-          <Route path="/users/new" element={<NewUserForm selectedUser={selectedUser} onCreate={handlePost} />} />
+          <Route path="/users/new" element={<NewUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
+          <Route path="/users/:id/edit" element={<EditUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
 
           <Route path="users/:id" element={<UserConsole selectedUser={selectedUser} bakeries={bakeries}/>}/>
 
@@ -174,5 +185,6 @@ const MainContainer = () => {
         </Router>
       )
 }
+
 
 export default MainContainer
