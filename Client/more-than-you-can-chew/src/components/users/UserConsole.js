@@ -5,13 +5,13 @@ import UserNavBar from './UserNavBar';
 import {Link, Navigate, useNavigate} from 'react-router-dom';
 
 
-function UserConsole({selectedUser, bakeries}) {
+function UserConsole({selectedUser, bakeries, handleDelete}) {
 
 
   if(selectedUser.name){
     return (
       <>
-      <UserNavBar selectedUser={selectedUser}/>
+      <UserNavBar selectedUser={selectedUser} handleDelete={handleDelete}/>
       <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"edit"}><button type="button">Edit User</button></Link>
 
       <div className='UserConsoleContainer'>
