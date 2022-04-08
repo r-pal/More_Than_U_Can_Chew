@@ -52,6 +52,7 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
     }
 
     return (
+        <div className="HomePageContainer">
         <div className="UserNewExisting">
         <form onSubmit={nextPath}>
             <select name="user" onChange={handleExistingUserChange} defaultValue="select-user">
@@ -61,6 +62,7 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
             <button type="submit">Login</button>
         </form>
         <Link to={"new"}><button type="button">New User</button></Link>
+        </div>
         </div>
     )
 
