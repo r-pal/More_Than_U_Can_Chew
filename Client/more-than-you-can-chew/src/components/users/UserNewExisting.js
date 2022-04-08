@@ -54,7 +54,7 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
 
     return (
 
-        <div className="HomePageContainer">
+
 
         <>
         <NavBar />
@@ -70,7 +70,7 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
         <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"new"}><button type="button">New User</button></Link>
         </div>
 
-        </div>
+
 
         </>
 

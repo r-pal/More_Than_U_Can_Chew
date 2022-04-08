@@ -49,15 +49,17 @@ const MainContainer = () => {
     const [bakeries, setBakeries] = useState([]);
     const [users, setUsers] = useState([]);
     const [orders, setOrders] = useState([]);
+    const [bakeryItems, setItems] = useState([]);
     const [selectedBakery, setSelectedBakery] = useState(stateBakery ? stateBakery : null);
     const [selectedUser, setSelectedUser] = useState(stateUser ? stateUser : null);
-    // const [selectedItem, setSelectedItem] = useState(stateItem ? stateItem : null);
+    const [selectedItem, setSelectedItem] = useState(stateItem ? stateItem : null);
 
     
 
     useEffect(() => {
         fetchBakeries();
         fetchUsers();
+        fetchItems();
         // fetchOrders();
 
     }, [])
@@ -109,6 +111,12 @@ const MainContainer = () => {
         .then(response => response.json())
         .then(data => setUsers(data))
     }
+
+    const fetchItems = () => {
+      fetch('http://localhost:8080/api/bakeryItems')
+      .then(response => response.json())
+      .then(data => setItems(data))
+  }
 
     // const fetchOrders = () => {
     //     fetch('http://localhost:8080/api/orders')
@@ -176,10 +184,9 @@ const MainContainer = () => {
 
           <Route path="users/:id" element={<UserConsole selectedUser={selectedUser} bakeries={bakeries}/>}/>
 
-          <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
+          <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} bakeryItems={bakeryItems} selectedItem={selectedItem}/>}/>
           <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
           <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery}/>}/>
-
           <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} handleItemPost={handleItemPost}/>} />
 
   

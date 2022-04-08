@@ -27,6 +27,12 @@ const BakeryConsole = ({selectedBakery}) => {
             <BakeryOrder selectedBakery={selectedBakery}/>
         </li>
       </ul>
+      <div className='itemss-container'>
+      <ul>
+        <li>
+            <ShowBakeryItems selectedBakery={selectedBakery} bakeryItems={bakeryItems}/>
+        </li>
+      </ul>
 
       </div>
     </>
