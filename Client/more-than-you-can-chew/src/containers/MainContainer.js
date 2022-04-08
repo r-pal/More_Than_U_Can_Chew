@@ -9,7 +9,9 @@ import NewUserForm from '../components/users/NewUserForm';
 import UserConsole from '../components/users/UserConsole';
 import BakeryNavBar from '../components/bakeries/BakeryNavBar';
 import Request from '../helpers/Request';
+import EditUserForm from '../components/users/EditUserForm';
 import CreateBakeryItem from '../components/bakeryItems/CreateBakeryItem';
+
 
 
 
@@ -19,7 +21,7 @@ const MainContainer = () => {
     const stateUserEmail = localStorage.getItem("userEmail")
     const stateUserLocation = localStorage.getItem("userLocation")
     const stateUserOrders = localStorage.getItem("userOrders")
-    const stateUserId = localStorage.getItem("id")
+    const stateUserId = localStorage.getItem("userId")
     const stateUser = {
         "name": stateUserName,
         "email": stateUserEmail,
@@ -49,15 +51,17 @@ const MainContainer = () => {
     const [bakeries, setBakeries] = useState([]);
     const [users, setUsers] = useState([]);
     const [orders, setOrders] = useState([]);
+    // const [bakeryItems, setItems] = useState([]);
     const [selectedBakery, setSelectedBakery] = useState(stateBakery ? stateBakery : null);
     const [selectedUser, setSelectedUser] = useState(stateUser ? stateUser : null);
-    // const [selectedItem, setSelectedItem] = useState(stateItem ? stateItem : null);
+
 
     
 
     useEffect(() => {
         fetchBakeries();
         fetchUsers();
+        // fetchItems();
         // fetchOrders();
 
     }, [])
@@ -110,6 +114,12 @@ const MainContainer = () => {
         .then(data => setUsers(data))
     }
 
+  //   const fetchItems = () => {
+  //     fetch('http://localhost:8080/api/bakeryItems')
+  //     .then(response => response.json())
+  //     .then(data => setItems(data))
+  // }
+
     // const fetchOrders = () => {
     //     fetch('http://localhost:8080/api/orders')
     //     .then(response => response.json())
@@ -150,16 +160,14 @@ const MainContainer = () => {
       .then(() => {window.location = "/bakeries"})
     }
 
-
-
-   
     
       const handleUserUpdate = (user) => {
         const request = new Request();
         request.patch("/api/users/" + user.id, user)
-        // .then(() => {
-        //   window.location = "/pirates/" + pirate.id
-      }
+        .then(() => {
+          window.location = "/users/" + user.id
+      })
+    }
 
 
 
@@ -172,7 +180,8 @@ const MainContainer = () => {
 
           <Route path="/users" element={<UserContainer users={users} setSelectedUser={setSelectedUser} selectedUser={selectedUser} />} />
 
-          <Route path="/users/new" element={<NewUserForm selectedUser={selectedUser} onCreate={handlePost} />} />
+          <Route path="/users/new" element={<NewUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
+          <Route path="/users/:id/edit" element={<EditUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
 
           <Route path="users/:id" element={<UserConsole selectedUser={selectedUser} bakeries={bakeries}/>}/>
 
@@ -180,7 +189,11 @@ const MainContainer = () => {
           <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
           <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery}/>}/>
 
+
           <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost}/>} />
+
+          <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} handleItemPost={handleItemPost}/>} />
+
 
   
         </Routes>
@@ -191,5 +204,6 @@ const MainContainer = () => {
       )
     
 }
+
 
 export default MainContainer
