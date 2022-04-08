@@ -19,9 +19,6 @@ public class BakeryItem {
     @Column(name="name")
     private String name;
 
-    @Column(name="ingredients")
-    private String ingredients;
-
     @Column(name="allergens")
     private String allergens;
 
@@ -41,9 +38,8 @@ public class BakeryItem {
     @JsonIgnoreProperties({"itemsOrdered"})
     private Order order;
 
-    public BakeryItem(String name, String ingredients, String allergens, Long imageId, Bakery bakery, Integer quantity) {
+    public BakeryItem(String name, String allergens, Long imageId, Bakery bakery, Integer quantity) {
         this.name = name;
-        this.ingredients = ingredients;
         this.allergens = allergens;
         this.imageId = imageId;
         this.bakery = bakery;
@@ -68,14 +64,6 @@ public class BakeryItem {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
     }
 
     public String getAllergens() {

@@ -53,8 +53,12 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
     }
 
     return (
+
+        <div className="HomePageContainer">
+
         <>
         <NavBar />
+
         <div className="UserNewExisting">
         <form className="login" onSubmit={nextPath}>
             <select name="user" onChange={handleExistingUserChange} defaultValue="select-user">
@@ -65,7 +69,11 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
         </form>
         <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"new"}><button type="button">New User</button></Link>
         </div>
+
+        </div>
+
         </>
+
     )
 
 

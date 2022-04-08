@@ -10,6 +10,8 @@ import UserConsole from '../components/users/UserConsole';
 import BakeryNavBar from '../components/bakeries/BakeryNavBar';
 import Request from '../helpers/Request';
 import EditUserForm from '../components/users/EditUserForm';
+import CreateBakeryItem from '../components/bakeryItems/CreateBakeryItem';
+
 
 
 
@@ -51,6 +53,7 @@ const MainContainer = () => {
     const [orders, setOrders] = useState([]);
     const [selectedBakery, setSelectedBakery] = useState(stateBakery ? stateBakery : null);
     const [selectedUser, setSelectedUser] = useState(stateUser ? stateUser : null);
+    // const [selectedItem, setSelectedItem] = useState(stateItem ? stateItem : null);
 
     
 
@@ -121,6 +124,13 @@ const MainContainer = () => {
     //     })
     // }
 
+    const handleItemPost = (item) => {
+        const request = new Request();
+        const url ="/api/bakeryitems"
+        request.post(url, item)
+        .then(() => {window.location = "/bakeries"})
+    }
+
 
     const handlePost = (user) => {
         console.log(user);
@@ -130,6 +140,10 @@ const MainContainer = () => {
         .then(() => {window.location = "/users"})
       }
 
+
+    
+
+
     const handlePostB = (bakery) => {
       console.log(bakery);
       const request = new Request();
@@ -138,16 +152,6 @@ const MainContainer = () => {
       .then(() => {window.location = "/bakeries"})
     }
 
-
-    // const handleUpdate = (pirate) => {
-    //     const request = new Request();
-    //     request.patch("/api/pirates/" + pirate.id, pirate)
-    //     .then(() => {
-    //       window.location = "/pirates/" + pirate.id;
-    //     })
-
-
-   
     
       const handleUserUpdate = (user) => {
         const request = new Request();
@@ -177,6 +181,8 @@ const MainContainer = () => {
           <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
           <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery}/>}/>
 
+          <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} handleItemPost={handleItemPost}/>} />
+
   
         </Routes>
   
@@ -184,6 +190,7 @@ const MainContainer = () => {
         </Fragment>
         </Router>
       )
+    
 }
 
 
