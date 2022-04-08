@@ -1,4 +1,5 @@
 import React from 'react'
+import NavBar from '../NavBar';
 import "../stylesheets/Main.css";
 
 function NewBakerForm() {
@@ -8,6 +9,7 @@ function NewBakerForm() {
     }
   return (
     <>
+    <NavBar />
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder='Bakery Name' name='bakeryName' onChange="handleChangeFunctionHere" value="Bakery Name"/>
                 <input type="text" placeholder='Location' name='location' onChange="handleChangeFunctionHere" value="Location"/>

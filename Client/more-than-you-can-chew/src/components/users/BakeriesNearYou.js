@@ -14,7 +14,7 @@ const BakeriesNearYou = ({bakeries}) => {
         <h2>
             Bakeries Near You
         </h2>
-        <ul>
+        <ul >
             {bakeryListitems}
         </ul>
 
