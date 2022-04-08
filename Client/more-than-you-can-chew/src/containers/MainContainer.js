@@ -138,7 +138,17 @@ const MainContainer = () => {
         .then(() => {window.location = "/users"})
       }
 
+
     
+
+
+    const handlePostB = (bakery) => {
+      console.log(bakery);
+      const request = new Request();
+      const url = "/api/bakeries";
+      request.post(url, bakery)
+      .then(() => {window.location = "/bakeries"})
+    }
 
 
 
@@ -157,7 +167,6 @@ const MainContainer = () => {
     return(
         <Router>
         <Fragment>
-        {/* <BakeryNavBar/> */}
         <Routes>
             <Route path="/" element={<HomePage/>}/>
 
@@ -168,7 +177,7 @@ const MainContainer = () => {
           <Route path="users/:id" element={<UserConsole selectedUser={selectedUser} bakeries={bakeries}/>}/>
 
           <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
-          <Route path="bakeries/new" element={<NewBakerForm/>}/>
+          <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
           <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery}/>}/>
 
           <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} handleItemPost={handleItemPost}/>} />

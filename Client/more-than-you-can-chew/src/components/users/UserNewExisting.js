@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {Link, Navigate, useNavigate} from 'react-router-dom';
 import "../stylesheets/Main.css";
+import NavBar from "../NavBar";
 
 
 
@@ -52,18 +53,27 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
     }
 
     return (
+
         <div className="HomePageContainer">
+
+        <>
+        <NavBar />
+
         <div className="UserNewExisting">
-        <form onSubmit={nextPath}>
+        <form className="login" onSubmit={nextPath}>
             <select name="user" onChange={handleExistingUserChange} defaultValue="select-user">
                 <option disabled value="select-user">Select user</option>
                 {userOptions}
             </select>
             <button type="submit">Login</button>
         </form>
-        <Link to={"new"}><button type="button">New User</button></Link>
+        <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"new"}><button type="button">New User</button></Link>
         </div>
+
         </div>
+
+        </>
+
     )
 
 
