@@ -5,7 +5,7 @@ const BakeryListItem = ({bakery}) => {
 
 
   return (
-    <li>
+    <li className="bakeriesNearContainer">
         <h2>{bakery.name}</h2>
       <h3>Location: {bakery.location}</h3>
       <h3>email: {bakery.email}</h3>

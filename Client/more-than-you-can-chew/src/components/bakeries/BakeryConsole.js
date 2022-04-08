@@ -1,6 +1,7 @@
 import React from 'react';
 import BakeryOrder from './BakeryOrder';
 import "../stylesheets/Main.css";
+import BakeryNavBar from './BakeryNavBar';
 
 
 const BakeryConsole = ({selectedBakery}) => {
@@ -10,7 +11,7 @@ const BakeryConsole = ({selectedBakery}) => {
 
   return (
       <>
-      <h1>{selectedBakery.name.replace(/"/g, '')}</h1>
+      <BakeryNavBar selectedBakery={selectedBakery}/>
       <h3>Bakery ID: {selectedBakery.id}</h3>
       <h3>Location: {selectedBakery.location.replace(/"/g, '')}</h3>
       <h3>email: {selectedBakery.email.replace(/"/g, '')}</h3>

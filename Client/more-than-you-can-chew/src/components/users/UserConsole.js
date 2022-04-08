@@ -1,17 +1,20 @@
 import React from 'react'
 import BakeriesNearYou from './BakeriesNearYou'
 import "../stylesheets/Main.css";
+import UserNavBar from './UserNavBar';
 
 function UserConsole({selectedUser, bakeries}) {
 
 
   if(selectedUser.name){
     return (
+      <>
+      <UserNavBar selectedUser={selectedUser}/>
       <div className='UserConsoleContainer'>
-        <h2>Hi {selectedUser.name.replace(/"/g, '')}</h2>
         <BakeriesNearYou bakeries={bakeries}/>
   
       </div>
+      </>
     )
   }else{
     return(

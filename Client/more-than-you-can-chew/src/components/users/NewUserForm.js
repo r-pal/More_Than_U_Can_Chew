@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import "../stylesheets/Main.css";
+import NavBar from '../NavBar';
 
 function NewUserForm({selectedUser, onCreate}) {
 
@@ -26,6 +27,7 @@ function NewUserForm({selectedUser, onCreate}) {
   }
   return (
     <>
+    <NavBar />
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder='User Name' name='name' onChange={handleChange} value={newUser.name}/>
                 <input type="text" placeholder='Location' name='location' onChange={handleChange} value={newUser.location}/>

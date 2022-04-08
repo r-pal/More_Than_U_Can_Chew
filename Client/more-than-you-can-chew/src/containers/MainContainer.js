@@ -153,7 +153,6 @@ const MainContainer = () => {
     return(
         <Router>
         <Fragment>
-        {/* <BakeryNavBar/> */}
         <Routes>
             <Route path="/" element={<HomePage/>}/>
 

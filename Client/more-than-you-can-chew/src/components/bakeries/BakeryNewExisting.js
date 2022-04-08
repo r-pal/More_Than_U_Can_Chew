@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../stylesheets/Main.css";
 import {Link, Navigate, useNavigate} from 'react-router-dom';
+import NavBar from "../NavBar";
 
 
 
@@ -52,6 +53,8 @@ const BakeryNewExisting = ({bakeries, setSelectedBakery, selectedBakery}) => {
     }
 
     return (
+        <>
+        <NavBar />
         <div className="BakeryNewExisting">
         <form onSubmit={nextPath}>
             <select name="bakery" onChange={handleExistingBakeryChange} defaultValue="select-bakery">
@@ -60,8 +63,9 @@ const BakeryNewExisting = ({bakeries, setSelectedBakery, selectedBakery}) => {
             </select>
             <button type="submit">Login</button>
         </form>
-        <Link to={"new"}><button type="button">New Baker</button></Link>
+        <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"new"}><button type="button">New Baker</button></Link>
         </div>
+        </>
     )
 
 
