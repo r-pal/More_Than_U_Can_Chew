@@ -124,7 +124,7 @@ const MainContainer = () => {
 
     const handleItemPost = (item) => {
         const request = new Request();
-        const url ="/api/bakeryitems"
+        const url ="/api/bakeryItems"
         request.post(url, item)
         .then(() => {window.location = "/bakeries"})
     }
@@ -180,7 +180,7 @@ const MainContainer = () => {
           <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
           <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery}/>}/>
 
-          <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} handleItemPost={handleItemPost}/>} />
+          <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost}/>} />
 
   
         </Routes>
