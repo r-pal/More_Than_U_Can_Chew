@@ -1,9 +1,14 @@
 import NavBar from '../NavBar';
 import React, {useState} from 'react'
 import "../stylesheets/Main.css";
+import Image from './Image';
 
 
-const BakeryItem = ({item}) => {
+const BakeryItem = ({item, images}) => {
+
+    const getImages = images.map((image, index) => {
+        return <Image image={image} key={index}/>
+    })
 
 return(
     <div className='BakeryItemsContainer'>
@@ -13,7 +18,7 @@ return(
             <li>Quantity available: {item.quantity}</li>
             <li>ImageId(bakeryitem):{item.imageId}</li>
 
-
+{getImages}
             <br></br>
         </ul>
     </div>

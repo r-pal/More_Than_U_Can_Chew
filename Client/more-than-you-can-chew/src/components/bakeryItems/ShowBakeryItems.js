@@ -7,12 +7,10 @@ import Image from './Image';
 const showBakeryItems = ({selectedBakery, images}) => {
 
     const findBakeryItemsOfBakery = selectedBakery.availableItems.map((item, index) => {
-        return <BakeryItem item={item} key={index}/>
+        return <BakeryItem item={item} key={index} images={images}/>
     })
 
-    const getImages = images.map((image, index) => {
-        return <Image image={image} key={index}/>
-    })
+
 
 
 return(
@@ -22,9 +20,6 @@ return(
         </h2>
         <ul >
             {findBakeryItemsOfBakery}
-        </ul>
-        <ul>
-            {getImages}
         </ul>
 
     </div>
