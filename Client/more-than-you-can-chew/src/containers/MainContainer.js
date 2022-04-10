@@ -49,6 +49,7 @@ const MainContainer = () => {
     const [bakeries, setBakeries] = useState([]);
     const [users, setUsers] = useState([]);
     const [orders, setOrders] = useState([]);
+    const [images, setImages] = useState([]);
     // const [bakeryItems, setItems] = useState([]);
     const [selectedBakery, setSelectedBakery] = useState(stateBakery ? stateBakery : null);
     const [selectedUser, setSelectedUser] = useState(stateUser ? stateUser : null);
@@ -59,6 +60,7 @@ const MainContainer = () => {
     useEffect(() => {
         fetchBakeries();
         fetchUsers();
+        fetchImages();
         // fetchItems();
         // fetchOrders();
 
@@ -110,6 +112,12 @@ const MainContainer = () => {
         fetch('http://localhost:8080/api/users')
         .then(response => response.json())
         .then(data => setUsers(data))
+    }
+
+    const fetchImages = () => {
+        fetch('http://localhost:8080/api/images')
+        .then(response => response.json())
+        .then(data => setImages(data))
     }
 
   //   const fetchItems = () => {
@@ -170,7 +178,7 @@ const MainContainer = () => {
       }
 
 
-
+      
 
     return(
         <Router>
@@ -186,7 +194,7 @@ const MainContainer = () => {
 
           <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
           <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
-          <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery}/>}/>
+          <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery} images={images}/>}/>
           <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} handleItemPost={handleItemPost}/>} />
 
   
