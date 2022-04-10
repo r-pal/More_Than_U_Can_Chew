@@ -11,7 +11,7 @@ import BakeryNavBar from '../components/bakeries/BakeryNavBar';
 import Request from '../helpers/Request';
 import EditUserForm from '../components/users/EditUserForm';
 import CreateBakeryItem from '../components/bakeryItems/CreateBakeryItem';
-
+import EditBakerForm from '../components/bakeries/EditBakerForm';
 
 
 
@@ -33,14 +33,17 @@ const MainContainer = () => {
     const stateBakeryName = localStorage.getItem("bakeryName").replace(/"/g, '')
     const stateBakeryEmail = localStorage.getItem("bakeryEmail").replace(/"/g, '')
     const stateBakeryLocation = localStorage.getItem("bakeryLocation").replace(/"/g, '')
-    const stateBakeryOrders = localStorage.getItem("bakeryOrders")
+    const stateBakeryOrders = JSON.parse(localStorage.getItem("bakeryOrders"))
+    const stateBakeryItems = JSON.parse(localStorage.getItem("bakeryItems"))
     const stateBakeryId = parseInt(localStorage.getItem("bakeryId"))
     const stateBakery = {
         "name": stateBakeryName,
         "email": stateBakeryEmail,
         "location": stateBakeryLocation,
         "orders": stateBakeryOrders,
-        "id": stateBakeryId
+        "id": stateBakeryId,
+        "availableItems": stateBakeryItems
+
     }
 
     // console.log("stateUserName", stateUserName);
@@ -73,7 +76,7 @@ const MainContainer = () => {
     // }
     // }, [users])
 
-    console.log(selectedUser)
+    console.log(selectedBakery)
     // console.log("user by ID" + findUserById(stateUserId))
 
     const findUserById = (id) =>{
@@ -177,6 +180,14 @@ const MainContainer = () => {
       })
     }
 
+    const handleBakeryUpdate = (bakery) => {
+        const request = new Request();
+        request.patch("/api/bakeries/" + bakery.id, bakery)
+        .then(() => {
+          window.location = "/bakeries/" + bakery.id
+      })
+    }
+
 
 
 
@@ -196,6 +207,7 @@ const MainContainer = () => {
           <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
           <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
           <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery}/>}/>
+          <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate}/>} />
 
 
           <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost}/>} />
