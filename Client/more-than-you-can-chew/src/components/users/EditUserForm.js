@@ -29,7 +29,15 @@ function EditUserForm({selectedUser, onCreate, onUpdate}) {
     const handleSubmit = (event) => {
         event.preventDefault();
         if(newUser.id){
-          onUpdate(newUser)
+          let newStateUser = {
+            "name": newUser.name,
+            "email": newUser.email,
+            "location": newUser.location
+          }
+          localStorage.setItem("userName", JSON.stringify(newStateUser.name));
+          localStorage.setItem("userEmail", JSON.stringify(newStateUser.email));
+          localStorage.setItem("userLocation", JSON.stringify(newStateUser.location));
+            onUpdate(newUser)
         }else{
         console.log("did handlesubmit else");
         // onCreate(newUser)
@@ -43,6 +51,8 @@ function EditUserForm({selectedUser, onCreate, onUpdate}) {
       setNewUser(copiedUser)
       console.log("selectuserID: " + selectedUser.id);
       console.log("newUserID: " + newUser.id);
+      console.log("selected user name" + selectedUser.name)
+      console.log("new user name" + newUser.name)
       // console.log(newUser.name);
 
   }
