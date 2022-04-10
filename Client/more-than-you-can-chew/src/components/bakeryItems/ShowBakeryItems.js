@@ -9,6 +9,8 @@ const showBakeryItems = ({selectedBakery}) => {
         return <BakeryItem item={item} key={index}/>
     })
 
+    console.log(findBakeryItemsOfBakery)
+
 
 return(
     <div className='ShowBakeryItemsContainer'>
@@ -18,7 +20,7 @@ return(
         <ul >
             {findBakeryItemsOfBakery}
         </ul>
-        hello
+
     </div>
 )}
 

@@ -9,14 +9,13 @@ const BakeryItem = ({item}) => {
 
 return(
     <div className='BakeryItemsContainer'>
-        <h2>
-            Item Details
-        </h2>
         <ul >
-            Name: {item.name}
-            Allergens: {item.allergens}
-            Quantity: {item.quantity}
+            <b>{item.name}</b>
+            <li>Allergens: {item.allergens}</li>
+            <li>Quantity available: {item.quantity}</li>
             {item.imageId}
+            {/* <li><img src={item.imageId}></img></li> */}
+            <br></br>
         </ul>
     </div>
 )
