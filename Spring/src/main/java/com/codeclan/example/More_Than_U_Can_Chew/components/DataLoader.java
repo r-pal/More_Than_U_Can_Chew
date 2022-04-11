@@ -85,7 +85,7 @@ public class DataLoader implements ApplicationRunner {
 
         BakeryItem croissant = new BakeryItem("Croissant", "gluten, lactose", 1L, pita, 0);
         bakeryItemRepository.save(croissant);
-        BakeryItem roll = new BakeryItem("Roll", "gluten", 123L, pita, 3);
+        BakeryItem roll = new BakeryItem("Roll", "gluten", 2L, pita, 3);
         bakeryItemRepository.save(roll);
         BakeryItem loaf = new BakeryItem("White Loaf", "gluten", 123L, pita, 0);
         bakeryItemRepository.save(loaf);
@@ -278,8 +278,14 @@ public class DataLoader implements ApplicationRunner {
         bakeryItemRepository.save(mvbgd);
 
 
+
         Image imageCroissant = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Croissant-Petr_Kratochvil.jpg/320px-Croissant-Petr_Kratochvil.jpg");
         imageRepository.save(imageCroissant);
+
+        Image imageRoll = new Image("https://i2-prod.glasgowlive.co.uk/incoming/article20880009.ece/ALTERNATES/s810/0_image2-4.png");
+        imageRepository.save(imageRoll);
+
+
 
 //        pita.clearAvailableItems();
 //        bakeryRepository.save(pita);
