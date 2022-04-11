@@ -2,12 +2,15 @@ import NavBar from '../NavBar';
 import React, {useState} from 'react'
 import "../stylesheets/Main.css";
 import BakeryItem from './BakeryItem';
+import Image from './Image';
 
-const showBakeryItems = ({selectedBakery}) => {
+const showBakeryItems = ({selectedBakery, images}) => {
 
     const findBakeryItemsOfBakery = selectedBakery.availableItems.map((item, index) => {
-        return <BakeryItem item={item} key={index}/>
+        return <BakeryItem item={item} key={index} images={images}/>
     })
+
+
 
 
 return(
@@ -18,6 +21,7 @@ return(
         <ul >
             {findBakeryItemsOfBakery}
         </ul>
+
     </div>
 )}
 
