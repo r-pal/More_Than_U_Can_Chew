@@ -1,5 +1,6 @@
 import React from 'react'
 import "../stylesheets/Main.css";
+import MapBox from '../maps/MapBox';
 
 const BakeryListItem = ({bakery}) => {
 
@@ -10,6 +11,9 @@ const BakeryListItem = ({bakery}) => {
       <h3>Location: {bakery.location}</h3>
       <h3>email: {bakery.email}</h3>
       <h3>Collection Time: {bakery.collectionTime}</h3>
+      <div className="App">
+      <MapBox /> 
+    </div>
     </li>
   )
 }
