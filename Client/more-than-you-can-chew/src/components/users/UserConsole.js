@@ -2,15 +2,20 @@ import React from 'react'
 import BakeriesNearYou from './BakeriesNearYou'
 import "../stylesheets/Main.css";
 import UserNavBar from './UserNavBar';
+import {Link, Navigate, useNavigate} from 'react-router-dom';
+import UserOrders from './UserOrders';
 
-function UserConsole({selectedUser, bakeries}) {
+
+function UserConsole({selectedUser, bakeries, handleDelete}) {
 
 
   if(selectedUser.name){
     return (
       <>
-      <UserNavBar selectedUser={selectedUser}/>
+      <UserNavBar selectedUser={selectedUser} handleDelete={handleDelete}/>
+      <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"edit"}><button type="button">Edit User</button></Link>
       <div className='UserConsoleContainer'>
+        <UserOrders selectedUser={selectedUser} bakeries={bakeries}/>
         <BakeriesNearYou bakeries={bakeries}/>
   
       </div>

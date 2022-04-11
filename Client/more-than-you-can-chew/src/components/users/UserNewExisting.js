@@ -21,16 +21,18 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
             "name": selectedUser.name,
             "email": selectedUser.email,
             "location": selectedUser.location,
-            "id": selectedUser.id
+            "id": selectedUser.id,
+            "orders": selectedUser.orders
         }
         localStorage.setItem("userName", JSON.stringify(newStateUser.name));
         localStorage.setItem("userEmail", JSON.stringify(newStateUser.email));
         localStorage.setItem("userLocation", JSON.stringify(newStateUser.location));
         localStorage.setItem("userId", JSON.stringify(newStateUser.id));
+        localStorage.setItem("userOrders", JSON.stringify(newStateUser.orders));
         let id = selectedUser.id
-        console.log(id);
+        // console.log(id);
         let path = "/users/" + parseInt(id)
-        console.log(navigate);
+        // console.log(navigate);
         navigate(path)
     }
 
@@ -55,7 +57,6 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
     return (
 
 
-
         <>
         <NavBar />
 
@@ -69,7 +70,6 @@ const UserNewExisting = ({users, setSelectedUser, selectedUser}) => {
         </form>
         <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"new"}><button type="button">New User</button></Link>
         </div>
-
 
 
         </>

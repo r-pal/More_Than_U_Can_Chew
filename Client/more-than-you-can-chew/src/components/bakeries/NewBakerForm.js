@@ -35,7 +35,7 @@ function NewBakerForm({selectedBakery, onCreateB}) {
                 <input type="text" placeholder='Bakery Name' name='name' onChange={handleChange} value={newBakery.name}/>
                 <input type="text" placeholder='Location' name='location' onChange={handleChange} value={newBakery.location}/>
                 <input type="text" placeholder='Email' name='email' onChange={handleChange} value={newBakery.email}/>
-                <input type="text" placeholder='Collection Time' name='collectionTime' onChange={handleChange} value={newBakery.collectionTime}/>
+                <input type="time" placeholder='Collection Time' name='collectionTime' onChange={handleChange} value={newBakery.collectionTime}/>
                 <button type="submit">Save New Bakery</button>
             
             </form>

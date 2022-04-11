@@ -9,17 +9,19 @@ import NewUserForm from '../components/users/NewUserForm';
 import UserConsole from '../components/users/UserConsole';
 import BakeryNavBar from '../components/bakeries/BakeryNavBar';
 import Request from '../helpers/Request';
+import EditUserForm from '../components/users/EditUserForm';
 import CreateBakeryItem from '../components/bakeryItems/CreateBakeryItem';
+import EditBakerForm from '../components/bakeries/EditBakerForm';
 
 
 
 
 const MainContainer = () => {
-    const stateUserName = localStorage.getItem("userName")
-    const stateUserEmail = localStorage.getItem("userEmail")
-    const stateUserLocation = localStorage.getItem("userLocation")
-    const stateUserOrders = localStorage.getItem("userOrders")
-    const stateUserId = localStorage.getItem("id")
+    const stateUserName = localStorage.getItem("userName").replace(/"/g, '')
+    const stateUserEmail = localStorage.getItem("userEmail").replace(/"/g, '')
+    const stateUserLocation = localStorage.getItem("userLocation").replace(/"/g, '')
+    const stateUserOrders = JSON.parse(localStorage.getItem("userOrders"))
+    const stateUserId = parseInt(localStorage.getItem("userId"))
     const stateUser = {
         "name": stateUserName,
         "email": stateUserEmail,
@@ -28,17 +30,20 @@ const MainContainer = () => {
         "id": stateUserId
     }
 
-    const stateBakeryName = localStorage.getItem("bakeryName")
-    const stateBakeryEmail = localStorage.getItem("bakeryEmail")
-    const stateBakeryLocation = localStorage.getItem("bakeryLocation")
-    const stateBakeryOrders = localStorage.getItem("bakeryOrders")
-    const stateBakeryId = localStorage.getItem("bakeryId")
+    const stateBakeryName = localStorage.getItem("bakeryName").replace(/"/g, '')
+    const stateBakeryEmail = localStorage.getItem("bakeryEmail").replace(/"/g, '')
+    const stateBakeryLocation = localStorage.getItem("bakeryLocation").replace(/"/g, '')
+    const stateBakeryOrders = JSON.parse(localStorage.getItem("bakeryOrders"))
+    const stateBakeryItems = JSON.parse(localStorage.getItem("bakeryItems"))
+    const stateBakeryId = parseInt(localStorage.getItem("bakeryId"))
     const stateBakery = {
         "name": stateBakeryName,
         "email": stateBakeryEmail,
         "location": stateBakeryLocation,
         "orders": stateBakeryOrders,
-        "id": stateBakeryId
+        "id": stateBakeryId,
+        "availableItems": stateBakeryItems
+
     }
 
     // console.log("stateUserName", stateUserName);
@@ -62,9 +67,27 @@ const MainContainer = () => {
         fetchUsers();
         fetchImages();
         // fetchItems();
-        // fetchOrders();
+        fetchOrders();
 
     }, [])
+
+    // useEffect(() => {
+    //     if(stateUserId != null){
+    //     setSelectedUser(findUserById(stateUserId));
+    //     // console.log("use effect " + selectedUser.name);
+    // }
+    // }, [users])
+
+    console.log(selectedBakery)
+    // console.log("user by ID" + findUserById(stateUserId))
+
+    const findUserById = (id) =>{
+        users.map((user) => {
+            if (user.id == id){
+                return user
+            }
+        })
+    }
 
     
 
@@ -75,31 +98,6 @@ const MainContainer = () => {
     
 
 
-    // const bakery1 = [{
-    //     "name": "Baker",
-    //     "id": 1,
-    //     "orders": "pastry"
-    //       },
-    //     {"name": "Baker2",
-    //     "id": 2,
-    //     "orders": "bread"}]
-
-    // const fetchBakeries = () => {
-    //     setBakeries(bakery1)
-    // }
-
-    // const fetchUsers = () => {
-    //     setUsers(User1)
-    // }
-
-    // const User1 = [{
-    //   "name": "Chris",
-    //   "id": 1,
-    //   "email": "pastry@gmail"
-    //     },
-    //   {"name": "Tam",
-    //   "id": 2,
-    //   "email": "bread@gmail"}]
 
 
     const fetchBakeries = () => {
@@ -126,11 +124,11 @@ const MainContainer = () => {
   //     .then(data => setItems(data))
   // }
 
-    // const fetchOrders = () => {
-    //     fetch('http://localhost:8080/api/orders')
-    //     .then(response => response.json())
-    //     .then(data => setOrders(data))
-    // }
+    const fetchOrders = () => {
+        fetch('http://localhost:8080/api/orders')
+        .then(response => response.json())
+        .then(data => setOrders(data))
+    }
 
     // const findBakeryById = (id) => {
     //     return bakeries.find((bakery) => {
@@ -140,14 +138,14 @@ const MainContainer = () => {
 
     const handleItemPost = (item) => {
         const request = new Request();
-        const url ="/api/bakeryitems"
+        const url ="/api/bakeryItems"
         request.post(url, item)
         .then(() => {window.location = "/bakeries"})
     }
 
 
     const handlePost = (user) => {
-        console.log(user);
+        // console.log(user);
         const request = new Request();
         const url = "/api/users";
         request.post(url, user)
@@ -166,16 +164,37 @@ const MainContainer = () => {
       .then(() => {window.location = "/bakeries"})
     }
 
+    const handleDeleteB = (id) => {
+        const request = new Request();
+        const url = "/api/bakeries/" + {id};
+        request.delete(url, id)
+        .then(() => {window.location = "/bakeries"})
+      }
+      const handleDeleteU = (id) => {
+        id = selectedUser.id
+        console.log("This is the one Tam " + id);
+        const request = new Request();
+        const url = "/api/users/" + id;
+        request.delete(url)
+        .then(() => {window.location = "/users"})
+      }
 
-
-   
     
       const handleUserUpdate = (user) => {
         const request = new Request();
         request.patch("/api/users/" + user.id, user)
-        // .then(() => {
-        //   window.location = "/pirates/" + pirate.id
-      }
+        .then(() => {
+          window.location = "/users/" + user.id
+      })
+    }
+
+    const handleBakeryUpdate = (bakery) => {
+        const request = new Request();
+        request.patch("/api/bakeries/" + bakery.id, bakery)
+        .then(() => {
+          window.location = "/bakeries/" + bakery.id
+      })
+    }
 
 
       
@@ -188,14 +207,23 @@ const MainContainer = () => {
 
           <Route path="/users" element={<UserContainer users={users} setSelectedUser={setSelectedUser} selectedUser={selectedUser} />} />
 
-          <Route path="/users/new" element={<NewUserForm selectedUser={selectedUser} onCreate={handlePost} />} />
+          <Route path="/users/new" element={<NewUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
+          <Route path="/users/:id/edit" element={<EditUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
 
-          <Route path="users/:id" element={<UserConsole selectedUser={selectedUser} bakeries={bakeries}/>}/>
+          <Route path="users/:id" element={<UserConsole selectedUser={selectedUser} bakeries={bakeries} handleDelete={handleDeleteU}/>}/>
 
           <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
           <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
+
           <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery} images={images}/>}/>
-          <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} handleItemPost={handleItemPost}/>} />
+
+         
+          <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate}/>} />
+
+
+          <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost}/>} />
+
+         
 
   
         </Routes>
@@ -206,5 +234,6 @@ const MainContainer = () => {
       )
     
 }
+
 
 export default MainContainer
