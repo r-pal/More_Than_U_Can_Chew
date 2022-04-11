@@ -1,9 +1,16 @@
 import React from 'react'
 
-function BakeryOrderListItem({order}) {
+function BakeryOrderListItem({order, users, items}) {
 
-  const bakeryOrderItemsOrdered = order.itemsOrdered.map((item, index) => {
-    return <li>{item.name}</li>
+  const bakeryOrderItemsOrdered = items.map((item, index) => {
+    if (item.orderId === order.id){
+    return <li>{item.name}</li>}
+  })
+
+  const customer = users.map((user, index) => {
+    if (user.id === order.userId){
+      return user.name
+    }
   })
 
   let collected = "";
@@ -16,7 +23,7 @@ function BakeryOrderListItem({order}) {
   return (
     <div>
       <p>Order id: {order.id}</p>
-      <p>Customer Name: {order.user.name}</p>
+      <p>Customer Name: {customer}</p>
       <p>Items:</p>
       <ul>
         {bakeryOrderItemsOrdered}

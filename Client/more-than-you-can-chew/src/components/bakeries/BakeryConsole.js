@@ -8,7 +8,7 @@ import ShowBakeryItems from '../bakeryItems/ShowBakeryItems';
 
 
 
-const BakeryConsole = ({selectedBakery, images}) => {
+const BakeryConsole = ({selectedBakery, images, orders, users, items}) => {
 
 
   let url = "/bakeryitems"
@@ -25,11 +25,11 @@ const BakeryConsole = ({selectedBakery, images}) => {
       <div className='orders-container'>
       <ul>
         <li>
-            <BakeryOrder selectedBakery={selectedBakery}/>
+            <BakeryOrder items={items} users={users} selectedBakery={selectedBakery} orders={orders}/>
         </li>
       </ul>
       </div>
-      <ShowBakeryItems selectedBakery={selectedBakery} images={images}/>
+      <ShowBakeryItems items={items} selectedBakery={selectedBakery} images={images}/>
     </>
   )
 }

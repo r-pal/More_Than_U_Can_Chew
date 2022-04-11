@@ -17,36 +17,36 @@ import EditBakerForm from '../components/bakeries/EditBakerForm';
 
 
 const MainContainer = () => {
-    const stateUserName = localStorage.getItem("userName").replace(/"/g, '')
-    const stateUserEmail = localStorage.getItem("userEmail").replace(/"/g, '')
-    const stateUserLocation = localStorage.getItem("userLocation").replace(/"/g, '')
-    const stateUserOrders = JSON.parse(localStorage.getItem("userOrders"))
-    const stateUserId = parseInt(localStorage.getItem("userId"))
-    const stateUser = {
-        "name": stateUserName,
-        "email": stateUserEmail,
-        "location": stateUserLocation,
-        "orders": stateUserOrders,
-        "id": stateUserId
-    }
+    // const stateUserName = localStorage.getItem("userName")
+    // const stateUserEmail = localStorage.getItem("userEmail")
+    // const stateUserLocation = localStorage.getItem("userLocation")
+    // const stateUserOrders = JSON.parse(localStorage.getItem("userOrders"))
+    // const stateUserId = parseInt(localStorage.getItem("userId"))
+    // const stateUser = {
+    //     "name": stateUserName,
+    //     "email": stateUserEmail,
+    //     "location": stateUserLocation,
+    //     "orders": stateUserOrders,
+    //     "id": stateUserId
+    // }
 
-    const stateBakeryName = localStorage.getItem("bakeryName").replace(/"/g, '')
-    const stateBakeryEmail = localStorage.getItem("bakeryEmail").replace(/"/g, '')
-    const stateBakeryLocation = localStorage.getItem("bakeryLocation").replace(/"/g, '')
-    const stateBakeryOrders = JSON.parse(localStorage.getItem("bakeryOrders"))
-    const stateBakeryItems = JSON.parse(localStorage.getItem("bakeryItems"))
-    const stateBakeryId = parseInt(localStorage.getItem("bakeryId"))
-    const stateBakeryCollectionTime = JSON.parse(localStorage.getItem("bakeryCollectionTime"))
-    const stateBakery = {
-        "name": stateBakeryName,
-        "email": stateBakeryEmail,
-        "location": stateBakeryLocation,
-        "orders": stateBakeryOrders,
-        "id": stateBakeryId,
-        "availableItems": stateBakeryItems,
-        "collectionTime": stateBakeryCollectionTime
+    // const stateBakeryName = localStorage.getItem("bakeryName")
+    // const stateBakeryEmail = localStorage.getItem("bakeryEmail")
+    // const stateBakeryLocation = localStorage.getItem("bakeryLocation")
+    // const stateBakeryOrders = JSON.parse(localStorage.getItem("bakeryOrders"))
+    // const stateBakeryItems = JSON.parse(localStorage.getItem("bakeryItems"))
+    // const stateBakeryId = parseInt(localStorage.getItem("bakeryId"))
+    // const stateBakeryCollectionTime = JSON.parse(localStorage.getItem("bakeryCollectionTime"))
+    // const stateBakery = {
+    //     "name": stateBakeryName,
+    //     "email": stateBakeryEmail,
+    //     "location": stateBakeryLocation,
+    //     "orders": stateBakeryOrders,
+    //     "id": stateBakeryId,
+    //     "availableItems": stateBakeryItems,
+    //     "collectionTime": stateBakeryCollectionTime
 
-    }
+    // }
 
     // console.log("stateUserName", stateUserName);
     // console.log("stateUserEmail", stateUserEmail);
@@ -57,9 +57,11 @@ const MainContainer = () => {
     const [users, setUsers] = useState([]);
     const [orders, setOrders] = useState([]);
     const [images, setImages] = useState([]);
-    // const [bakeryItems, setItems] = useState([]);
-    const [selectedBakery, setSelectedBakery] = useState(stateBakery ? stateBakery : null);
-    const [selectedUser, setSelectedUser] = useState(stateUser ? stateUser : null);
+    const [items, setItems] = useState([]);
+    // const [selectedBakery, setSelectedBakery] = useState(stateBakery ? stateBakery : null);
+    // const [selectedUser, setSelectedUser] = useState(stateUser ? stateUser : null);
+    const [selectedBakery, setSelectedBakery] = useState({});
+    const [selectedUser, setSelectedUser] = useState({});
 
 
     
@@ -68,7 +70,7 @@ const MainContainer = () => {
         fetchBakeries();
         fetchUsers();
         fetchImages();
-        // fetchItems();
+        fetchItems();
         fetchOrders();
 
     }, [])
@@ -120,11 +122,11 @@ const MainContainer = () => {
         .then(data => setImages(data))
     }
 
-  //   const fetchItems = () => {
-  //     fetch('http://localhost:8080/api/bakeryItems')
-  //     .then(response => response.json())
-  //     .then(data => setItems(data))
-  // }
+    const fetchItems = () => {
+      fetch('http://localhost:8080/api/bakeryItems')
+      .then(response => response.json())
+      .then(data => setItems(data))
+  }
 
     const fetchOrders = () => {
         fetch('http://localhost:8080/api/orders')
@@ -212,12 +214,12 @@ const MainContainer = () => {
           <Route path="/users/new" element={<NewUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
           <Route path="/users/:id/edit" element={<EditUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
 
-          <Route path="users/:id" element={<UserConsole selectedUser={selectedUser} bakeries={bakeries} handleDelete={handleDeleteU}/>}/>
+          <Route path="users/:id" element={<UserConsole items={items} orders={orders} selectedUser={selectedUser} bakeries={bakeries} handleDelete={handleDeleteU}/>}/>
 
           <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
           <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
 
-          <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery} images={images}/>}/>
+          <Route path="bakeries/:id" element={<BakeryConsole items={items} users={users} orders={orders} selectedBakery={selectedBakery} images={images}/>}/>
 
          
           <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate}/>} />

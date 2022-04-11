@@ -4,10 +4,14 @@ import "../stylesheets/Main.css";
 import BakeryItem from './BakeryItem';
 import Image from './Image';
 
-const showBakeryItems = ({selectedBakery, images}) => {
+const showBakeryItems = ({selectedBakery, images, items}) => {
 
-    const findBakeryItemsOfBakery = selectedBakery.availableItems.map((item, index) => {
-        return <BakeryItem item={item} key={index} images={images}/>
+    const findBakeryItemsOfBakery = items.map((item, index) => {
+        if (item.bakeryId === selectedBakery.id){
+        return <BakeryItem item={item} key={index} images={images}/>}
+        // else{
+        //     return "booo"
+        // }
     })
 
 
