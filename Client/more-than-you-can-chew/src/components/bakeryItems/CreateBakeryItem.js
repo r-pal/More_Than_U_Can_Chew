@@ -1,6 +1,7 @@
 import NavBar from '../NavBar';
 import React, {useState} from 'react'
 import "../stylesheets/Main.css";
+import BakeryNavBar from '../bakeries/BakeryNavBar';
 
 const CreateBakeryItem = ({selectedBakery, onCreateItem}) => {
 
@@ -8,7 +9,7 @@ const CreateBakeryItem = ({selectedBakery, onCreateItem}) => {
         name: "",
         allergens: "",
         imageId: 0,
-        bakery: selectedBakery.id,
+        bakeryId: selectedBakery.id,
         quantity: 0,
 
       }, [])
@@ -36,11 +37,11 @@ const CreateBakeryItem = ({selectedBakery, onCreateItem}) => {
 
     return (
         <>
-        <p>placeholder for git push</p>
+        <BakeryNavBar selectedBakery={selectedBakery}/>
                 <form onSubmit={handleItemPost}> 
                     <input type="text" placeholder='Name' name='name' onChange={handleChange} value={newItem.name}/>
                     <input type="text" placeholder='Allergens' name='allergens' onChange={handleChange} value={newItem.allergens}/>
-                    <input type="text" placeholder='Image' name='imageId' onChange={handleChange} value={newItem.imageId}/>
+                    <input type="number" placeholder='Image' name='imageId' onChange={handleChange} value={newItem.imageId}/>
                     <input type="number" placeholder='Quantity' name='quantity' onChange={handleChange} value={newItem.quantity}/>
                     
                     

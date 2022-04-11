@@ -25,25 +25,26 @@ public class BakeryItem {
     @Column(name="quantity")
     private Integer quantity;
 
-    @ManyToOne
-    @JoinColumn(name="bakery_id", nullable = false)
-    @JsonIgnoreProperties({"availableItems", "menuItems"})
-    private Bakery bakery;
+    @Column(name="bakery_id")
+//    @ManyToOne
+//    @JoinColumn(name="bakery_id", nullable = false)
+//    @JsonIgnoreProperties({"availableItems", "menuItems"})
+    private Long bakeryId;
 
     @Column(name="image_id")
     private Long imageId;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    @JsonIgnoreProperties({"itemsOrdered"})
-    private Order order;
+//    @ManyToOne
+    @Column(name = "order_id")
+//    @JsonIgnoreProperties({"itemsOrdered"})
+    private Long orderId;
 
-    public BakeryItem(String name, String allergens, Long imageId, Bakery bakery, Integer quantity) {
+    public BakeryItem(String name, String allergens, Long imageId, Long bakeryId, Integer quantity) {
         this.name = name;
         this.allergens = allergens;
         this.imageId = imageId;
-        this.bakery = bakery;
-        this.order = null;
+        this.bakeryId = bakeryId;
+        this.orderId = null;
         this.quantity = quantity;
     }
 
@@ -82,21 +83,29 @@ public class BakeryItem {
         this.imageId = imageId;
     }
 
-    public Bakery getBakery() {
-        return bakery;
+    public Long getBakeryId() {
+        return bakeryId;
     }
 
-    public void setBakery(Bakery bakery) {
-        this.bakery = bakery;
+    public void setBakeryId(Long bakeryId) {
+        this.bakeryId = bakeryId;
     }
 
-    public Order getOrder() {
-        return order;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
+
+//    public Order getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(Order order) {
+//        this.order = order;
+//    }
 
     public Integer getQuantity() {
         return quantity;

@@ -2,10 +2,12 @@ import React from 'react'
 import "../stylesheets/Main.css";
 import BakeryOrderListItem from './BakeryOrderListItem';
 
-const BakeryOrder = ({selectedBakery}) => {
+const BakeryOrder = ({selectedBakery, orders, users, items}) => {
 
-  const bakeryOrderListitems = selectedBakery.orders.map((order, index) => {
-    return <BakeryOrderListItem order={order} key={index} />
+  const bakeryOrderListitems = orders.map((order, index) => {
+    if(order.bakeryId === selectedBakery.id){
+    return <BakeryOrderListItem items={items} users={users} order={order} key={index} />
+    }
   })
   
 

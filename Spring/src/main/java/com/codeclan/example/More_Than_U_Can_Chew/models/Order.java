@@ -17,29 +17,33 @@ public class Order {
     @Column(name="id")
     private Long id;
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({"order", "bakery"})
+//    @Column(name="items_ordered")
+
+//    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+//    @JsonIgnoreProperties({"order", "bakery"})
 //    @JsonIgnoreProperties({"bakery"})
-    List<BakeryItem> itemsOrdered;
+//    private List<Long> itemsOrdered;
 
-    @ManyToOne
-    @JoinColumn(name="bakery_id", nullable = false)
-    @JsonIgnoreProperties({"orders", "menuItems", "availableItems"})
-    private Bakery bakery;
+    @Column(name="bakery_id")
+//    @ManyToOne
+//    @JoinColumn(name="bakery_id", nullable = false)
+//    @JsonIgnoreProperties({"orders", "menuItems", "availableItems"})
+    private Long bakeryId;
 
-    @ManyToOne
-    @JoinColumn(name="user_id", nullable = false)
-    @JsonIgnoreProperties({"orders"})
-    private User user;
+    @Column(name="user_id")
+//    @ManyToOne
+//    @JoinColumn(name="user_id", nullable = false)
+//    @JsonIgnoreProperties({"orders"})
+    private Long userId;
 
     @Column(name="collected_status")
     private boolean collectedStatus;
 
-    public Order(Bakery bakery, User user, boolean collectedStatus) {
-        this.bakery = bakery;
-        this.user = user;
+    public Order(Long bakeryId, Long userId, boolean collectedStatus) {
+        this.bakeryId = bakeryId;
+        this.userId = userId;
         this.collectedStatus = collectedStatus;
-        this.itemsOrdered = new ArrayList<>();
+//        this.itemsOrdered = new ArrayList<>();
     }
 
     public Order() {
@@ -53,32 +57,41 @@ public class Order {
         this.id = id;
     }
 
-    public List<BakeryItem> getItemsOrdered() {
-        return itemsOrdered;
+//    public List<Long> getItemsOrdered() {
+//        return itemsOrdered;
+//    }
+//
+//    public void setItemsOrdered(List<Long> itemsOrdered) {
+//        this.itemsOrdered = itemsOrdered;
+//    }
+//
+//    public void addABakeryItemToOrder(Long bakeryItem){
+//        this.itemsOrdered.add(bakeryItem);
+//    }
+
+//    public Bakery getBakery() {
+//        return bakery;
+//    }
+//
+//    public void setBakery(Bakery bakery) {
+//        this.bakery = bakery;
+//    }
+
+
+    public Long getBakeryId() {
+        return bakeryId;
     }
 
-    public void setItemsOrdered(List<BakeryItem> itemsOrdered) {
-        this.itemsOrdered = itemsOrdered;
+    public void setBakeryId(Long bakeryId) {
+        this.bakeryId = bakeryId;
     }
 
-    public void addABakeryItemToOrder(BakeryItem bakeryItem){
-        this.itemsOrdered.add(bakeryItem);
+    public Long getUserId() {
+        return userId;
     }
 
-    public Bakery getBakery() {
-        return bakery;
-    }
-
-    public void setBakery(Bakery bakery) {
-        this.bakery = bakery;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public boolean isCollectedStatus() {
@@ -88,4 +101,6 @@ public class Order {
     public void setCollectedStatus(boolean collectedStatus) {
         this.collectedStatus = collectedStatus;
     }
+
+
 }

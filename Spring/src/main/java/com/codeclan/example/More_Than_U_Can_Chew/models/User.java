@@ -27,15 +27,15 @@ public class User {
     @Column(name="email")
     private String email;
 
-    @OneToMany(mappedBy = "user", fetch= FetchType.LAZY)
-    @JsonIgnoreProperties({"user", "bakery"})
-    private List<Order> orders;
+//    @OneToMany(mappedBy = "user", fetch= FetchType.LAZY)
+//    @JsonIgnoreProperties({"user", "bakery"})
+//    private List<Order> orders;
 
     public User(String name, String location, String email) {
         this.name = name;
         this.location = location;
         this.email = email;
-        this.orders = new ArrayList<>();
+//        this.orders = new ArrayList<>();
     }
 
     public User() {
@@ -73,11 +73,11 @@ public class User {
         this.email = email;
     }
 
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
+//    public List<Order> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(List<Order> orders) {
+//        this.orders = orders;
+//    }
 }

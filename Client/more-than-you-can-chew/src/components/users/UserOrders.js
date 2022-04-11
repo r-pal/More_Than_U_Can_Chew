@@ -1,10 +1,12 @@
 import React from 'react'
 import UserOrderListItem from './UserOrderListItem'
 
-function UserOrders({selectedUser, bakeries}) {
+function UserOrders({selectedUser, bakeries, orders, items}) {
 
-    const userOrderListitems = selectedUser.orders.map((order, index) => {
-        return <UserOrderListItem order={order} key={index} bakeries={bakeries}/>
+    const userOrderListitems = orders.map((order, index) => {
+      if (order.userId === selectedUser.id){
+        return <UserOrderListItem items={items} order={order} key={index} bakeries={bakeries}/>
+      }
       })
 
   return (
