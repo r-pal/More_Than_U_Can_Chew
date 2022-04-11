@@ -14,7 +14,8 @@ import CreateBakeryItem from '../components/bakeryItems/CreateBakeryItem';
 import EditBakerForm from '../components/bakeries/EditBakerForm';
 import UserOrders from '../components/users/UserOrders';
 import UserBakeryDetails from '../components/users/UserBakeryDetails';
-
+import BakeryOrder from '../components/bakeries/BakeryOrder';
+import ShowBakeryItems from '../components/bakeryItems/ShowBakeryItems';
 
 
 
@@ -217,12 +218,12 @@ const MainContainer = () => {
           <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
 
           <Route path="bakeries/:id" element={<BakeryConsole items={items} users={users} orders={orders} selectedBakery={selectedBakery} images={images}/>}/>
-
-         
+          <Route path="bakeries/:id/orders" element={<BakeryOrder items={items} users={users} selectedBakery={selectedBakery} orders={orders}/>}/>
+         <Route path="bakeries/:id/items" element={<ShowBakeryItems items={items} selectedBakery={selectedBakery} images={images}/>}/>
           <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate}/>} />
 
 
-          <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost}/>} />
+          <Route path="/bakeries/:id/create_item" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost}/>} />
 
          
 

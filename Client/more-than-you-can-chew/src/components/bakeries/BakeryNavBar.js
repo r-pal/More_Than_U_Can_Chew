@@ -7,7 +7,7 @@ function BakeryNavBar({selectedBakery}) {
   return (
     <header>
  <Link className="navBarLink" style={{textDecoration:"none"}} to={"/"}><h3>{'>'}U_Can_Chew</h3></Link>
-<h2>{selectedBakery.name.replace(/"/g, '')}</h2>
+ <Link className="navBarLink" style={{textDecoration:"none"}} to={"/bakeries/:id"}><h2>{selectedBakery.name.replace(/"/g, '')}</h2></Link>
 <nav>
             
 
