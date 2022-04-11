@@ -11,17 +11,17 @@ import BakeryNavBar from '../components/bakeries/BakeryNavBar';
 import Request from '../helpers/Request';
 import EditUserForm from '../components/users/EditUserForm';
 import CreateBakeryItem from '../components/bakeryItems/CreateBakeryItem';
-
+import EditBakerForm from '../components/bakeries/EditBakerForm';
 
 
 
 
 const MainContainer = () => {
-    const stateUserName = localStorage.getItem("userName")
-    const stateUserEmail = localStorage.getItem("userEmail")
-    const stateUserLocation = localStorage.getItem("userLocation")
-    const stateUserOrders = localStorage.getItem("userOrders")
-    const stateUserId = localStorage.getItem("userId")
+    const stateUserName = localStorage.getItem("userName").replace(/"/g, '')
+    const stateUserEmail = localStorage.getItem("userEmail").replace(/"/g, '')
+    const stateUserLocation = localStorage.getItem("userLocation").replace(/"/g, '')
+    const stateUserOrders = JSON.parse(localStorage.getItem("userOrders"))
+    const stateUserId = parseInt(localStorage.getItem("userId"))
     const stateUser = {
         "name": stateUserName,
         "email": stateUserEmail,
@@ -30,17 +30,20 @@ const MainContainer = () => {
         "id": stateUserId
     }
 
-    const stateBakeryName = localStorage.getItem("bakeryName")
-    const stateBakeryEmail = localStorage.getItem("bakeryEmail")
-    const stateBakeryLocation = localStorage.getItem("bakeryLocation")
-    const stateBakeryOrders = localStorage.getItem("bakeryOrders")
-    const stateBakeryId = localStorage.getItem("bakeryId")
+    const stateBakeryName = localStorage.getItem("bakeryName").replace(/"/g, '')
+    const stateBakeryEmail = localStorage.getItem("bakeryEmail").replace(/"/g, '')
+    const stateBakeryLocation = localStorage.getItem("bakeryLocation").replace(/"/g, '')
+    const stateBakeryOrders = JSON.parse(localStorage.getItem("bakeryOrders"))
+    const stateBakeryItems = JSON.parse(localStorage.getItem("bakeryItems"))
+    const stateBakeryId = parseInt(localStorage.getItem("bakeryId"))
     const stateBakery = {
         "name": stateBakeryName,
         "email": stateBakeryEmail,
         "location": stateBakeryLocation,
         "orders": stateBakeryOrders,
-        "id": stateBakeryId
+        "id": stateBakeryId,
+        "availableItems": stateBakeryItems
+
     }
 
     // console.log("stateUserName", stateUserName);
@@ -62,9 +65,27 @@ const MainContainer = () => {
         fetchBakeries();
         fetchUsers();
         // fetchItems();
-        // fetchOrders();
+        fetchOrders();
 
     }, [])
+
+    // useEffect(() => {
+    //     if(stateUserId != null){
+    //     setSelectedUser(findUserById(stateUserId));
+    //     // console.log("use effect " + selectedUser.name);
+    // }
+    // }, [users])
+
+    console.log(selectedBakery)
+    // console.log("user by ID" + findUserById(stateUserId))
+
+    const findUserById = (id) =>{
+        users.map((user) => {
+            if (user.id == id){
+                return user
+            }
+        })
+    }
 
     
 
@@ -75,31 +96,6 @@ const MainContainer = () => {
     
 
 
-    // const bakery1 = [{
-    //     "name": "Baker",
-    //     "id": 1,
-    //     "orders": "pastry"
-    //       },
-    //     {"name": "Baker2",
-    //     "id": 2,
-    //     "orders": "bread"}]
-
-    // const fetchBakeries = () => {
-    //     setBakeries(bakery1)
-    // }
-
-    // const fetchUsers = () => {
-    //     setUsers(User1)
-    // }
-
-    // const User1 = [{
-    //   "name": "Chris",
-    //   "id": 1,
-    //   "email": "pastry@gmail"
-    //     },
-    //   {"name": "Tam",
-    //   "id": 2,
-    //   "email": "bread@gmail"}]
 
 
     const fetchBakeries = () => {
@@ -120,11 +116,11 @@ const MainContainer = () => {
   //     .then(data => setItems(data))
   // }
 
-    // const fetchOrders = () => {
-    //     fetch('http://localhost:8080/api/orders')
-    //     .then(response => response.json())
-    //     .then(data => setOrders(data))
-    // }
+    const fetchOrders = () => {
+        fetch('http://localhost:8080/api/orders')
+        .then(response => response.json())
+        .then(data => setOrders(data))
+    }
 
     // const findBakeryById = (id) => {
     //     return bakeries.find((bakery) => {
@@ -184,6 +180,14 @@ const MainContainer = () => {
       })
     }
 
+    const handleBakeryUpdate = (bakery) => {
+        const request = new Request();
+        request.patch("/api/bakeries/" + bakery.id, bakery)
+        .then(() => {
+          window.location = "/bakeries/" + bakery.id
+      })
+    }
+
 
 
 
@@ -203,6 +207,7 @@ const MainContainer = () => {
           <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
           <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
           <Route path="bakeries/:id" element={<BakeryConsole selectedBakery={selectedBakery}/>}/>
+          <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate}/>} />
 
 
           <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost}/>} />

@@ -16,7 +16,7 @@ function BakeryNavBar({selectedBakery}) {
                 <span>Menu</span>
                 <div className="dropdown-content">
                 <p>View Orders</p>
-                <p>Edit Profile</p>
+                <p><a href="/bakeries/:id/edit">Edit Profile</a></p>
                 <p><a href="/">Log Out</a></p>
                 </div>
                 </div>

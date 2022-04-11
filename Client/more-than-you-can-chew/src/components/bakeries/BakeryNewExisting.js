@@ -22,12 +22,16 @@ const BakeryNewExisting = ({bakeries, setSelectedBakery, selectedBakery}) => {
             "name": selectedBakery.name,
             "email": selectedBakery.email,
             "location": selectedBakery.location,
-            "id": selectedBakery.id
+            "id": selectedBakery.id,
+            "orders": selectedBakery.orders,
+            "availableItems": selectedBakery.availableItems
         }
         localStorage.setItem("bakeryName", JSON.stringify(newStateBakery.name));
         localStorage.setItem("bakeryEmail", JSON.stringify(newStateBakery.email));
         localStorage.setItem("bakeryLocation", JSON.stringify(newStateBakery.location));
         localStorage.setItem("bakeryId", JSON.stringify(newStateBakery.id));
+        localStorage.setItem("bakeryOrders", JSON.stringify(newStateBakery.orders));
+        localStorage.setItem("bakeryItems", JSON.stringify(newStateBakery.availableItems));
         let id = selectedBakery.id
         console.log(id);
         let path = "/bakeries/" + parseInt(id)
@@ -38,6 +42,7 @@ const BakeryNewExisting = ({bakeries, setSelectedBakery, selectedBakery}) => {
     const handleExistingBakeryChange = (event) => {
         let newSelectedBakery = bakeries[event.target.value];
         setSelectedBakery(newSelectedBakery)
+        console.log("selected bakery" + selectedBakery.name);
     }
 
     const handleBakeryUpdate = () => {

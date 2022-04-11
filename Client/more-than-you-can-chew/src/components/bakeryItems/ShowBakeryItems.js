@@ -18,7 +18,6 @@ return(
         <ul >
             {findBakeryItemsOfBakery}
         </ul>
-        hello
     </div>
 )}
 
