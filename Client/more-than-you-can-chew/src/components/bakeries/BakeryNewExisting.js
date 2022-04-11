@@ -24,7 +24,8 @@ const BakeryNewExisting = ({bakeries, setSelectedBakery, selectedBakery}) => {
             "location": selectedBakery.location,
             "id": selectedBakery.id,
             "orders": selectedBakery.orders,
-            "availableItems": selectedBakery.availableItems
+            "availableItems": selectedBakery.availableItems,
+            "collectionTime": selectedBakery.collectionTime
         }
         localStorage.setItem("bakeryName", JSON.stringify(newStateBakery.name));
         localStorage.setItem("bakeryEmail", JSON.stringify(newStateBakery.email));
@@ -32,6 +33,8 @@ const BakeryNewExisting = ({bakeries, setSelectedBakery, selectedBakery}) => {
         localStorage.setItem("bakeryId", JSON.stringify(newStateBakery.id));
         localStorage.setItem("bakeryOrders", JSON.stringify(newStateBakery.orders));
         localStorage.setItem("bakeryItems", JSON.stringify(newStateBakery.availableItems));
+        localStorage.setItem("bakeryCollectionTime", JSON.stringify(newStateBakery.collectionTime));
+
         let id = selectedBakery.id
         console.log(id);
         let path = "/bakeries/" + parseInt(id)

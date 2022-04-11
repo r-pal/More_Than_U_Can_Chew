@@ -36,13 +36,15 @@ const MainContainer = () => {
     const stateBakeryOrders = JSON.parse(localStorage.getItem("bakeryOrders"))
     const stateBakeryItems = JSON.parse(localStorage.getItem("bakeryItems"))
     const stateBakeryId = parseInt(localStorage.getItem("bakeryId"))
+    const stateBakeryCollectionTime = JSON.parse(localStorage.getItem("bakeryCollectionTime"))
     const stateBakery = {
         "name": stateBakeryName,
         "email": stateBakeryEmail,
         "location": stateBakeryLocation,
         "orders": stateBakeryOrders,
         "id": stateBakeryId,
-        "availableItems": stateBakeryItems
+        "availableItems": stateBakeryItems,
+        "collectionTime": stateBakeryCollectionTime
 
     }
 
