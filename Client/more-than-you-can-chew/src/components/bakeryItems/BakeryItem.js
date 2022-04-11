@@ -3,10 +3,12 @@ import React, {useState} from 'react'
 import "../stylesheets/Main.css";
 import Image from './Image';
 import { unstable_renderSubtreeIntoContainer } from 'react-dom';
+import { Link } from 'react-router-dom';
 
 
 
-const BakeryItem = ({item, images}) => {
+
+const BakeryItem = ({item, images, selectedItem, onUpdate, setSelectedItem}) => {
 
     const getImageUrl = images.map((image, index) => {
         console.log("Image" + image.id)
@@ -17,6 +19,10 @@ const BakeryItem = ({item, images}) => {
     })
 
     let imageString = getImageUrl.join('')
+
+    const handleClick = () => {
+        setSelectedItem(item)
+    }
 
 
 return(
@@ -29,6 +35,7 @@ return(
             <br></br>{getImageUrl}
             {/* <br></br>{imageString} */}
             <img src={imageString} />
+            <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"items/:id/edit"}><button className='ButtonEdit' type="button" onClick={handleClick}>Edit {selectedItem.name}</button></Link>
         </ul>
     </div>
 )

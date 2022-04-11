@@ -85,21 +85,21 @@ public class DataLoader implements ApplicationRunner {
 
         BakeryItem croissant = new BakeryItem("Croissant", "gluten, lactose", 1L, 1L, 0);
         bakeryItemRepository.save(croissant);
-        BakeryItem roll = new BakeryItem("Roll", "gluten", 2L, 1L, 3);
+        BakeryItem roll = new BakeryItem("Roll", "gluten", 2L, 3L, 3);
         bakeryItemRepository.save(roll);
-        BakeryItem loaf = new BakeryItem("White Loaf", "gluten", 123L, 1L, 0);
+        BakeryItem loaf = new BakeryItem("White Loaf", "gluten", 123L, 2L, 0);
         bakeryItemRepository.save(loaf);
-        BakeryItem chocCake  = new BakeryItem("A slice of Chocolate Cake", "gluten", 123L, 1L, 0);
+        BakeryItem chocCake  = new BakeryItem("A slice of Chocolate Cake", "gluten", 3L, 1L, 0);
         bakeryItemRepository.save(chocCake);
         BakeryItem pain = new BakeryItem("Pain aux chocolate", "gluten", 123L, 1L, 0);
         bakeryItemRepository.save(pain);
-        BakeryItem sour = new BakeryItem("Sourdough loaf", "gluten", 123L, 1L, 0);
+        BakeryItem sour = new BakeryItem("Sourdough loaf", "gluten", 123L, 2L, 0);
         bakeryItemRepository.save(sour);
-        BakeryItem whole = new BakeryItem("Wholemeal loaf", "gluten", 123L, 1L, 0);
+        BakeryItem whole = new BakeryItem("Wholemeal loaf", "gluten", 123L, 3L, 0);
         bakeryItemRepository.save(whole);
         BakeryItem cinn = new BakeryItem("Cinnamon Brioche", "gluten", 123L, 1L, 0);
         bakeryItemRepository.save(cinn);
-        BakeryItem cinn2 = new BakeryItem("Cinnamon Swirl", "gluten", 123L, 1L, 0);
+        BakeryItem cinn2 = new BakeryItem("Cinnamon Swirl", "gluten", 123L, 2L, 0);
         bakeryItemRepository.save(cinn2);
 //
 //

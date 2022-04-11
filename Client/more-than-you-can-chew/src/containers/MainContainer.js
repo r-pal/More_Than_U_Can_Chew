@@ -12,6 +12,7 @@ import Request from '../helpers/Request';
 import EditUserForm from '../components/users/EditUserForm';
 import CreateBakeryItem from '../components/bakeryItems/CreateBakeryItem';
 import EditBakerForm from '../components/bakeries/EditBakerForm';
+import EditBakeryItem from '../components/bakeryItems/EditBakeryItem';
 
 
 
@@ -62,6 +63,7 @@ const MainContainer = () => {
     // const [selectedUser, setSelectedUser] = useState(stateUser ? stateUser : null);
     const [selectedBakery, setSelectedBakery] = useState({});
     const [selectedUser, setSelectedUser] = useState({});
+    const [selectedItem, setSelectedItem] = useState({});
 
 
     
@@ -200,7 +202,15 @@ const MainContainer = () => {
       })
     }
 
+    const handleItemUpdate = (item) => {
+        const request = new Request();
+        request.patch("/api/bakeryItems/" + item.id, item)
+        .then(() => {
+          window.location = "/bakeries/"
+      })
+    }
 
+    
       
 
     return(
@@ -219,14 +229,14 @@ const MainContainer = () => {
           <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
           <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
 
-          <Route path="bakeries/:id" element={<BakeryConsole items={items} users={users} orders={orders} selectedBakery={selectedBakery} images={images}/>}/>
+          <Route path="bakeries/:id" element={<BakeryConsole items={items} users={users} orders={orders} selectedBakery={selectedBakery} images={images} selectedItem={selectedItem} onUpdate={handleItemUpdate} setSelectedItem={setSelectedItem}/>}/>
 
          
           <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate}/>} />
 
 
           <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost}/>} />
-
+          <Route path="bakeries/:id/items/:id/edit" element={<EditBakeryItem selectedItem={selectedItem} onUpdateItem={handleItemUpdate} selectedBakery={selectedBakery}/>}/>
          
 
   
