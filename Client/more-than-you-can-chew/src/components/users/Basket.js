@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import UserNavBar from './UserNavBar'
 import { Link } from 'react-router-dom'
 
-function Basket({basket, setBasket, items, selectedUser, handleDelete, selectedBakery, handlePostOrder}) {
+function Basket({basket, setBasket, items, selectedUser, handleDelete, selectedBakery, handlePostOrder, selectedOrder, onUpdateItem}) {
 
 
     const basketItem = basket.map((basketItem, index) => {
@@ -13,27 +13,48 @@ function Basket({basket, setBasket, items, selectedUser, handleDelete, selectedB
         })
     })
 
-    const [newOrder, setNewOrder] = useState({
-        bakeryId: selectedBakery.id,
-        userId: selectedUser.id,
-        collectedStatus: false
-    }, [])
+    console.log(basket)
 
-    const handleOrderPost = (event) => {
-        event.preventDefault();
-        handlePostOrder(newOrder)
-    }
+    const handleOrderSubmit = () => { basket.map((basketItem, index) => {
+        return items.map((item, index) => {
+            if (item.id === basketItem){
+                setNewItem(item)
+                onUpdateItem(newItem)
+            }
+        })
+    })
+}
 
+    // const addObjectId()
 
+    const [newItem, setNewItem] = useState({
+        orderId: selectedOrder.id})
+
+    // useEffect(() => {
+    //     if(selectedItem){
+    //       let copiedItem = {...selectedItem}
+    //       setNewItem(copiedItem)
+    //     }
+    //   }, [selectedItem])
+
+  
+
+//   const handleOrderSubmit = (event) => {
+//     event.preventDefault();
+
+//     onUpdateItem(newItem)
+//   }
 
 
   return (
     <div>
         <UserNavBar selectedUser={selectedUser} handleDelete={handleDelete}/>
         <div>Items in basket: {basket}</div>
+        <p>{selectedOrder.id}</p>
         <ul>{basketItem}</ul>
+    
 
-        <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"basket"}><button className='ButtonUser' type="button" onClick={handleOrderPost}>Order</button></Link>
+        <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"basket"}><button className='ButtonUser' type="button" onClick={handleOrderSubmit}>Order</button></Link>
 
     <ul>
 
