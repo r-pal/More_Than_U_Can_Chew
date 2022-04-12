@@ -7,7 +7,7 @@ const MapOnly = ({BakeryLat, BakeryLong, UserLat, UserLong, bakery, user}) => {
     console.log(BakeryLat);
 
 return(
-<MapContainer center={[BakeryLat, BakeryLong]} zoom={17} scrollWheelZoom={true}>
+<MapContainer center={[UserLat, UserLong]} zoom={17} scrollWheelZoom={true}>
 <TileLayer
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
