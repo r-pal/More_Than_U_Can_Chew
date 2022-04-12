@@ -21,7 +21,7 @@ const BakeryListItem = ({bakery, selectedUser, setSelectedBakery, images}) => {
       <h3>Collection Time: {bakery.collectionTime}</h3>
       </li></Link>
       <div className="App">
-      <MapBox /> 
+      <MapBox bakery={bakery}/> 
     </div>
     
     </>
