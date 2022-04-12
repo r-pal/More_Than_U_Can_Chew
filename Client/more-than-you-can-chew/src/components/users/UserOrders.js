@@ -12,7 +12,7 @@ function UserOrders({selectedUser, bakeries, orders, items, handleDelete}) {
 
   return (
     <>
-    <UserNavBar selectedUser={selectedUser} handleDelete={handleDelete}/>
+    <UserNavBar selectedUser={selectedUser}/>
     <div className="User-order">
         <h2>Orders</h2>
         <ul>

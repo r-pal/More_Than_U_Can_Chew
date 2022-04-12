@@ -2,13 +2,11 @@ import React from 'react'
 import "../stylesheets/Main.css";
 import {Link} from 'react-router-dom';
 
-function UserNavBar({selectedUser, handleDelete}) {
+function UserNavBar({selectedUser}) {
 
 let id = selectedUser.id
 
-const handleDelete2 = (id) => {
-  handleDelete(id);
-}
+
 
 
 
@@ -28,7 +26,6 @@ const handleDelete2 = (id) => {
                 <p><a className="navBarLink" href="/users/:id/orders">View Orders</a></p>
                 <p><a className="navBarLink" href="/users/:id/edit">Edit Profile</a></p>
                 <p><a className="navBarLink" href="/">Log Out</a></p>
-                <p onClick={handleDelete2}>Delete User</p>
                 </div>
                 </div>
             

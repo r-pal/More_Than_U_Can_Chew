@@ -165,7 +165,7 @@ const MainContainer = () => {
 
     const handleDeleteB = (id) => {
         const request = new Request();
-        const url = "/api/bakeries/" + {id};
+        const url = "/api/bakeries/" + id;
         request.delete(url, id)
         .then(() => {window.location = "/bakeries"})
       }
@@ -220,7 +220,7 @@ const MainContainer = () => {
           <Route path="bakeries/:id" element={<BakeryConsole items={items} users={users} orders={orders} selectedBakery={selectedBakery} images={images}/>}/>
           <Route path="bakeries/:id/orders" element={<BakeryOrder items={items} users={users} selectedBakery={selectedBakery} orders={orders}/>}/>
          <Route path="bakeries/:id/items" element={<ShowBakeryItems items={items} selectedBakery={selectedBakery} images={images}/>}/>
-          <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate}/>} />
+          <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate} handleDeleteB={handleDeleteB}/>} />
 
 
           <Route path="/bakeries/:id/create_item" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost}/>} />

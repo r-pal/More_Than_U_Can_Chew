@@ -44,6 +44,10 @@ function EditUserForm({selectedUser, onCreate, onUpdate, handleDelete}) {
         // onCreate(newUser)
     }}
 
+    const handleClick = () => {
+      handleDelete(selectedUser.id)
+    }
+
 
     const handleChange = (event) => {
       let propertyName = event.target.name
@@ -69,6 +73,9 @@ function EditUserForm({selectedUser, onCreate, onUpdate, handleDelete}) {
                 <button type="submit">{buttonText}</button>
             
             </form>
+
+            <div style={{textDecoration:"none"}} className="ButtonContainer"><button className='ButtonBaker' onClick={handleClick}type="button">Delete Profile</button></div>
+
         </>
   )
 }
