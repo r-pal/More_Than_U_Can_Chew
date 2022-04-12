@@ -86,7 +86,7 @@ const MainContainer = () => {
     // }
     // }, [users])
 
-    console.log(selectedBakery)
+    // console.log(selectedBakery)
     // console.log("user by ID" + findUserById(stateUserId))
 
     const findUserById = (id) =>{

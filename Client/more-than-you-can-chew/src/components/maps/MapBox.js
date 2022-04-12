@@ -1,42 +1,55 @@
 import React, {useState, useEffect} from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import "../../App.css"
+import MapOnly from './MapOnly'
 
 const MapBox = (bakery, user) => {
     // console.log({bakery});
   
-    const [Lat, setLat] = useState([]);
-    const [Long, setLong] = useState([]);
-    const [LatLong, setLatLong] = useState([]);
-  
-  
-    const getLatLong = function(bakery){
+    const [BakeryLat, setBakeryLat] = useState(null);
+    const [BakeryLong, setBakeryLong] = useState(null);
+    const [UserLat, setUserLat] = useState(null);
+    const [UserLong, setUserLong] = useState(null);
+    // const [BakeryLatLong, setBakeryLatLong] = useState(0);
+    // const [UserLatLong, setUserLatLong] = useState(0);
+
+
+    useEffect(() => {
+      getBakeryLatLong();
+      getUserLatLong();
+    }, [])
+
+    const getBakeryLatLong = () => {
       fetch('https://api.postcodes.io/postcodes/G23AT')
-      // .then(console.log(bakery.bakery.location))
       .then(res => res.json())
-      .then(data => setLatLong(data.result))
-      .then(console.log(LatLong))
-      .then(setLat(LatLong.latitude))
-      .then(setLong(LatLong.longitude))
+      .then(data => {
+        // setLatLong(data)
+        setBakeryLat(data.result.latitude)
+        setBakeryLong(data.result.longitude)
+        console.log(data.result.latitude);
+        console.log(data.result.longitude);
+        // console.log(LatLong);
+      })
   }
+
+
+  const getUserLatLong = () => {
+    fetch('https://api.postcodes.io/postcodes/G428RE')
+    .then(res => res.json())
+    .then(data => {
+      // setLatLong(data)
+      setUserLat(data.result.latitude)
+      setUserLong(data.result.longitude)
+      // console.log(data);
+      // console.log(LatLong);
+    })
+}
+
   
-  useEffect(() => {
-    getLatLong();
-  }, [])
 
-
-return(
-  <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
-    <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    <Marker position={[51.505, -0.09]}>
-        <Popup>
-        A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-    </Marker>
-  </MapContainer>
+return(<>
+  {BakeryLat && BakeryLong && UserLat && UserLong && <MapOnly BakeryLat={BakeryLat} BakeryLong={BakeryLong} UserLat={UserLat} UserLong={UserLong}/>}
+</>
 )
 }
 
