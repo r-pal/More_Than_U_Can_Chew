@@ -13,7 +13,7 @@ const MapBox = ({bakery, selectedUser}) => {
     // const [BakeryLatLong, setBakeryLatLong] = useState(0);
     // const [UserLatLong, setUserLatLong] = useState(0);
 
-    console.log(bakery)
+    // console.log(bakery)
 
     useEffect(() => {
       getBakeryLatLong();
@@ -23,7 +23,7 @@ const MapBox = ({bakery, selectedUser}) => {
     let bakeryPostcode = bakery.location
     let userPostcode = selectedUser.location
 
-    console.log("user pc check" + userPostcode);
+    // console.log("user pc check" + userPostcode);
 
     const getBakeryLatLong = () => {
       fetch('https://api.postcodes.io/postcodes/' + bakeryPostcode)
@@ -32,8 +32,8 @@ const MapBox = ({bakery, selectedUser}) => {
         // setLatLong(data)
         setBakeryLat(data.result.latitude)
         setBakeryLong(data.result.longitude)
-        console.log(data.result.latitude);
-        console.log(data.result.longitude);
+        // console.log(data.result.latitude);
+        // console.log(data.result.longitude);
         // console.log(LatLong);
       })
   }

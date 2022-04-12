@@ -1,10 +1,8 @@
 import React, {useState}from 'react'
 
-function MenuItem({item, images, selectedOrder, basket, setBasket, selectedBakery, selectedUser, handlePostOrder, orders}) {
+function MenuItem({item, images, selectedOrder, basket, setBasket, selectedBakery, selectedUser, handlePostOrder, orders, setSelectedItem}) {
 
     const getImageUrl = images.map((image, index) => {
-        console.log("Image" + image.id)
-        console.log("Item" + item.imageId)
         if (image.id === item.imageId){
             return image.imageUrl
         }
@@ -19,6 +17,7 @@ function MenuItem({item, images, selectedOrder, basket, setBasket, selectedBaker
         let copyBasket = [...basket]
         copyBasket.push(item.id)
         setBasket(copyBasket)
+        setSelectedItem(item)
         handlePostOrder(newOrder, selectedUser.id)
         console.log(orders)}
             

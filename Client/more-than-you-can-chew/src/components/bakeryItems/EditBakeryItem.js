@@ -44,10 +44,6 @@ const EditBakeryItem = ({selectedItem, onUpdateItem, selectedBakery, images}) =>
                     <input type="text" placeholder='Allergens' name='allergens' onChange={handleChange} value={newItem.allergens}/>
                     <input type="number" placeholder='Image' name='imageId' onChange={handleChange} value={newItem.imageId}/>
                     <input type="number" placeholder='Quantity' name='quantity' onChange={handleChange} value={newItem.quantity}/>
-                    
-                    
-    
-                
                     <button type="submit">Edit Item</button>
                 
                 </form>  
