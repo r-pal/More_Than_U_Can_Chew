@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import "../stylesheets/Main.css";
 import BakeryNavBar from '../bakeries/BakeryNavBar';
 
-const CreateBakeryItem = ({selectedBakery, onCreateItem}) => {
+const CreateBakeryItem = ({selectedBakery, onCreateItem, images}) => {
 
     const [newItem, setNewItem] = useState({
         name: "",
@@ -33,6 +33,11 @@ const CreateBakeryItem = ({selectedBakery, onCreateItem}) => {
       console.log(newItem.name);
 
   }
+
+  // const imageOptions = images.map((image, index) => {
+  //   return <option key={index} value={index}><img src={imageString} height="100" width="100"/></option>
+
+// })
 
 
     return (

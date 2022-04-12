@@ -235,7 +235,7 @@ const MainContainer = () => {
           <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate}/>} />
 
 
-          <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost}/>} />
+          <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost} images={images}/>} />
           <Route path="bakeries/:id/items/:id/edit" element={<EditBakeryItem selectedItem={selectedItem} onUpdateItem={handleItemUpdate} selectedBakery={selectedBakery}/>}/>
          
 
