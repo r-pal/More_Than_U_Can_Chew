@@ -1,6 +1,8 @@
 import React from 'react'
 import "../stylesheets/Main.css";
 import {Link} from 'react-router-dom';
+import MapBox from '../maps/MapBox';
+
 
 const BakeryListItem = ({bakery, selectedUser, setSelectedBakery, images}) => {
 
@@ -15,7 +17,12 @@ const BakeryListItem = ({bakery, selectedUser, setSelectedBakery, images}) => {
       <h3>Location: {bakery.location}</h3>
       <h3>email: {bakery.email}</h3>
       <h3>Collection Time: {bakery.collectionTime}</h3>
+
+      <div className="App">
+      <MapBox /> 
+    </div>
     </li></Link>
+
   )
 }
 

@@ -10,13 +10,13 @@ const BakeriesNearYou = ({bakeries, selectedUser, setSelectedBakery, images}) =>
     })
 
   return (
-    <div className='BakeriesNearYouContainer'>
+    <div className='HomePageContainer'>
         <h2>
             Bakeries Near You
         </h2>
-        <ul >
+        
             {bakeryListitems}
-        </ul>
+        
 
     </div>
   )
