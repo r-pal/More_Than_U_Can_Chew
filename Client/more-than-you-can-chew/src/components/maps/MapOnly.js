@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import "../../App.css"
 
+
+
 const MapOnly = ({BakeryLat, BakeryLong, UserLat, UserLong, bakery, user}) => {
 
-    console.log(BakeryLat);
 
     
 

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import "../stylesheets/Main.css";
 import BakeryNavBar from '../bakeries/BakeryNavBar';
 
-const EditBakeryItem = ({selectedItem, onUpdateItem, selectedBakery}) => {
+const EditBakeryItem = ({selectedItem, onUpdateItem, selectedBakery, images}) => {
 
     const [newItem, setNewItem] = useState({
         name: "",
