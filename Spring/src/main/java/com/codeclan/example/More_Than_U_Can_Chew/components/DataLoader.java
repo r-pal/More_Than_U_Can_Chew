@@ -33,15 +33,15 @@ public class DataLoader implements ApplicationRunner {
     }
 
     public void run(ApplicationArguments args) {
-        Bakery pita = new Bakery("Pain in the Ass","GEO1", "hello@painintheass.com", LocalTime.parse("18:00:00"));
+        Bakery pita = new Bakery("Pain in the Ass","G23AT", "hello@painintheass.com", LocalTime.parse("18:00:00"));
         bakeryRepository.save(pita);
-        Bakery bakeThat = new Bakery("Bake That","GEO2", "gary@bakethat.com", LocalTime.parse("17:30:00"));
+        Bakery bakeThat = new Bakery("Bake That","G312PS", "gary@bakethat.com", LocalTime.parse("17:30:00"));
         bakeryRepository.save(bakeThat);
-        Bakery cakeMyDay = new Bakery("Cake My Day!","GEO3", "harry@cakemyday.com", LocalTime.parse("18:30:00"));
+        Bakery cakeMyDay = new Bakery("Cake My Day!","G23AT", "harry@cakemyday.com", LocalTime.parse("18:30:00"));
         bakeryRepository.save(cakeMyDay);
-        Bakery poc = new Bakery("Piece Of Cake","GEO4", "homer@pieceofcake.com", LocalTime.parse("16:00:00"));
+        Bakery poc = new Bakery("Piece Of Cake","G428RE", "homer@pieceofcake.com", LocalTime.parse("16:00:00"));
         bakeryRepository.save(poc);
-        Bakery bb = new Bakery("Breaking Bread","GEO5", "babs@bornandbread.com", LocalTime.parse("17:45:00"));
+        Bakery bb = new Bakery("Breaking Bread","G814ER", "babs@bornandbread.com", LocalTime.parse("17:45:00"));
         bakeryRepository.save(bb);
         Bakery wkyd = new Bakery("We Knead Your Dough","GEO6", "richie@kneadyourdough.com", LocalTime.parse("18:30:00"));
         bakeryRepository.save(wkyd);
