@@ -25,7 +25,9 @@ return(
             <img src={imageString} height="100" width="100" alt="Bakery Item"/>
             <li>Allergens: {item.allergens}</li>
             <li>Quantity available: {item.quantity}</li>
+
             <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"items/:id/edit"}><button className='ButtonEdit' type="button" onClick={handleClick}>Edit {selectedItem.name}</button></Link>
+
         </ul>
     </div>
 )

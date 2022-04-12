@@ -3,7 +3,7 @@ import "../stylesheets/Main.css";
 import NavBar from '../NavBar';
 import BakeryNavBar from './BakeryNavBar';
 
-function EditBakerForm({selectedBakery, onUpdate}) {
+function EditBakerForm({selectedBakery, onUpdate, handleDeleteB}) {
 
   const [newBakery, setNewBakery] = useState({
     name: "",
@@ -47,6 +47,10 @@ function EditBakerForm({selectedBakery, onUpdate}) {
       console.log(newBakery.name);
   }
 
+  const handleClick = () => {
+    handleDeleteB(selectedBakery.id)
+  }
+
 
   return (
     <>
@@ -61,6 +65,11 @@ function EditBakerForm({selectedBakery, onUpdate}) {
                 <button type="submit">Edit {selectedBakery.name}</button>
             
             </form>
+
+            <div style={{textDecoration:"none"}} className="ButtonContainer">
+            <button onClick={handleClick}type="button">Delete Profile</button>
+            </div>
+
         </>
   )
 }

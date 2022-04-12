@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react'
 import "../stylesheets/Main.css";
 import NavBar from '../NavBar';
 import {Link, Navigate, useNavigate} from 'react-router-dom';
+import UserNavBar from './UserNavBar';
 
 
-function EditUserForm({selectedUser, onCreate, onUpdate}) {
+function EditUserForm({selectedUser, onCreate, onUpdate, handleDelete}) {
 
   const [newUser, setNewUser] = useState({
     name: "",
@@ -43,6 +44,10 @@ function EditUserForm({selectedUser, onCreate, onUpdate}) {
         // onCreate(newUser)
     }}
 
+    const handleClick = () => {
+      handleDelete(selectedUser.id)
+    }
+
 
     const handleChange = (event) => {
       let propertyName = event.target.name
@@ -58,7 +63,7 @@ function EditUserForm({selectedUser, onCreate, onUpdate}) {
   }
   return (
     <>
-    <NavBar />
+    <UserNavBar selectedUser={selectedUser} handleDelete={handleDelete}/>
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder='User Name' name='name' onChange={handleChange} value={newUser.name}/>
                 <input type="text" placeholder='Location' name='location' onChange={handleChange} value={newUser.location}/>
@@ -68,6 +73,9 @@ function EditUserForm({selectedUser, onCreate, onUpdate}) {
                 <button type="submit">{buttonText}</button>
             
             </form>
+
+            <div style={{textDecoration:"none"}} className="ButtonContainer"><button className='ButtonBaker' onClick={handleClick}type="button">Delete Profile</button></div>
+
         </>
   )
 }

@@ -19,7 +19,7 @@ const CreateBakeryItem = ({selectedBakery, onCreateItem, images}) => {
     const handleItemPost = (event) => {
         event.preventDefault();
         console.log(newItem.name);
-        onCreateItem(newItem)
+        onCreateItem(newItem, selectedBakery.id)
     }
 
     

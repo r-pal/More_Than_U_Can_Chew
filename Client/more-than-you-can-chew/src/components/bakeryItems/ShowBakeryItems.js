@@ -1,6 +1,8 @@
 import React from 'react'
 import "../stylesheets/Main.css";
 import BakeryItem from './BakeryItem';
+import BakeryNavBar from '../bakeries/BakeryNavBar';
+
 
 const showBakeryItems = ({selectedBakery, images, items, selectedItem, onUpdate, setSelectedItem}) => {
 
@@ -13,6 +15,8 @@ const showBakeryItems = ({selectedBakery, images, items, selectedItem, onUpdate,
 
 
 return(
+    <>
+    <BakeryNavBar selectedBakery={selectedBakery}/>
     <div className='ShowBakeryItemsContainer'>
         <h2>
             Items Available
@@ -22,6 +26,7 @@ return(
         </ul>
 
     </div>
+    </>
 )}
 
 

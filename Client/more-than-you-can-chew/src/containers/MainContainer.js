@@ -12,42 +12,43 @@ import Request from '../helpers/Request';
 import EditUserForm from '../components/users/EditUserForm';
 import CreateBakeryItem from '../components/bakeryItems/CreateBakeryItem';
 import EditBakerForm from '../components/bakeries/EditBakerForm';
+
 import EditBakeryItem from '../components/bakeryItems/EditBakeryItem';
+
+
+import UserOrders from '../components/users/UserOrders';
+import UserBakeryDetails from '../components/users/UserBakeryDetails';
+import BakeryOrder from '../components/bakeries/BakeryOrder';
+import ShowBakeryItems from '../components/bakeryItems/ShowBakeryItems';
 
 
 
 
 const MainContainer = () => {
-    // const stateUserName = localStorage.getItem("userName")
-    // const stateUserEmail = localStorage.getItem("userEmail")
-    // const stateUserLocation = localStorage.getItem("userLocation")
-    // const stateUserOrders = JSON.parse(localStorage.getItem("userOrders"))
-    // const stateUserId = parseInt(localStorage.getItem("userId"))
-    // const stateUser = {
-    //     "name": stateUserName,
-    //     "email": stateUserEmail,
-    //     "location": stateUserLocation,
-    //     "orders": stateUserOrders,
-    //     "id": stateUserId
-    // }
+    const stateUserName = localStorage.getItem("userName").replace(/"/g, '')
+    const stateUserEmail = localStorage.getItem("userEmail").replace(/"/g, '')
+    const stateUserLocation = localStorage.getItem("userLocation").replace(/"/g, '')
+    const stateUserId = parseInt(localStorage.getItem("userId"))
+    const stateUser = {
+        "name": stateUserName,
+        "email": stateUserEmail,
+        "location": stateUserLocation,
+        "id": stateUserId
+    }
 
-    // const stateBakeryName = localStorage.getItem("bakeryName")
-    // const stateBakeryEmail = localStorage.getItem("bakeryEmail")
-    // const stateBakeryLocation = localStorage.getItem("bakeryLocation")
-    // const stateBakeryOrders = JSON.parse(localStorage.getItem("bakeryOrders"))
-    // const stateBakeryItems = JSON.parse(localStorage.getItem("bakeryItems"))
-    // const stateBakeryId = parseInt(localStorage.getItem("bakeryId"))
-    // const stateBakeryCollectionTime = JSON.parse(localStorage.getItem("bakeryCollectionTime"))
-    // const stateBakery = {
-    //     "name": stateBakeryName,
-    //     "email": stateBakeryEmail,
-    //     "location": stateBakeryLocation,
-    //     "orders": stateBakeryOrders,
-    //     "id": stateBakeryId,
-    //     "availableItems": stateBakeryItems,
-    //     "collectionTime": stateBakeryCollectionTime
+    const stateBakeryName = localStorage.getItem("bakeryName").replace(/"/g, '')
+    const stateBakeryEmail = localStorage.getItem("bakeryEmail").replace(/"/g, '')
+    const stateBakeryLocation = localStorage.getItem("bakeryLocation").replace(/"/g, '')
+    const stateBakeryId = parseInt(localStorage.getItem("bakeryId"))
+    const stateBakeryCollectionTime = JSON.parse(localStorage.getItem("bakeryCollectionTime"))
+    const stateBakery = {
+        "name": stateBakeryName,
+        "email": stateBakeryEmail,
+        "location": stateBakeryLocation,
+        "id": stateBakeryId,
+        "collectionTime": stateBakeryCollectionTime
 
-    // }
+    }
 
     // console.log("stateUserName", stateUserName);
     // console.log("stateUserEmail", stateUserEmail);
@@ -59,11 +60,12 @@ const MainContainer = () => {
     const [orders, setOrders] = useState([]);
     const [images, setImages] = useState([]);
     const [items, setItems] = useState([]);
-    // const [selectedBakery, setSelectedBakery] = useState(stateBakery ? stateBakery : null);
-    // const [selectedUser, setSelectedUser] = useState(stateUser ? stateUser : null);
-    const [selectedBakery, setSelectedBakery] = useState({});
-    const [selectedUser, setSelectedUser] = useState({});
+
     const [selectedItem, setSelectedItem] = useState({});
+
+    const [selectedBakery, setSelectedBakery] = useState(stateBakery ? stateBakery : null);
+    const [selectedUser, setSelectedUser] = useState(stateUser ? stateUser : null);
+
 
 
     
@@ -142,11 +144,11 @@ const MainContainer = () => {
     //     })
     // }
 
-    const handleItemPost = (item) => {
+    const handleItemPost = (item, id) => {
         const request = new Request();
         const url ="/api/bakeryItems"
         request.post(url, item)
-        .then(() => {window.location = "/bakeries"})
+        .then(() => {window.location = "/bakeries/" + id})
     }
 
 
@@ -172,7 +174,7 @@ const MainContainer = () => {
 
     const handleDeleteB = (id) => {
         const request = new Request();
-        const url = "/api/bakeries/" + {id};
+        const url = "/api/bakeries/" + id;
         request.delete(url, id)
         .then(() => {window.location = "/bakeries"})
       }
@@ -220,23 +222,31 @@ const MainContainer = () => {
             <Route path="/" element={<HomePage/>}/>
 
           <Route path="/users" element={<UserContainer users={users} setSelectedUser={setSelectedUser} selectedUser={selectedUser} />} />
-
+          <Route path="/users/:id/orders" element={<UserOrders items={items} selectedUser={selectedUser} bakeries={bakeries} orders={orders} handleDelete={handleDeleteU}/>}/>
           <Route path="/users/new" element={<NewUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
-          <Route path="/users/:id/edit" element={<EditUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
+          <Route path="/users/:id/edit" element={<EditUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate} handleDelete={handleDeleteU}/>} />
 
-          <Route path="users/:id" element={<UserConsole items={items} orders={orders} selectedUser={selectedUser} bakeries={bakeries} handleDelete={handleDeleteU}/>}/>
+          <Route path="users/:id" element={<UserConsole items={items} orders={orders} selectedUser={selectedUser} bakeries={bakeries} handleDelete={handleDeleteU} setSelectedBakery={setSelectedBakery}/>}/>
+          <Route path="users/:id/bakery" element={<UserBakeryDetails items={items} orders={orders} selectedUser={selectedUser} bakeries={bakeries} handleDelete={handleDeleteU} selectedBakery={selectedBakery} images={images}/>}/>
+
+
 
           <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
           <Route path="/bakeries/new" element={<NewBakerForm selectedBakery={selectedBakery} onCreateB={handlePostB} />}/>
 
+
           <Route path="bakeries/:id" element={<BakeryConsole items={items} users={users} orders={orders} selectedBakery={selectedBakery} images={images} selectedItem={selectedItem} onUpdate={handleItemUpdate} setSelectedItem={setSelectedItem}/>}/>
 
-         
-          <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate}/>} />
-
-
-          <Route path="bakeryitems" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost} images={images}/>} />
           <Route path="bakeries/:id/items/:id/edit" element={<EditBakeryItem selectedItem={selectedItem} onUpdateItem={handleItemUpdate} selectedBakery={selectedBakery}/>}/>
+
+          <Route path="bakeries/:id/orders" element={<BakeryOrder items={items} users={users} selectedBakery={selectedBakery} orders={orders}/>}/>
+         <Route path="bakeries/:id/items" element={<ShowBakeryItems items={items} selectedBakery={selectedBakery} images={images}/>}/>
+          <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate} handleDeleteB={handleDeleteB}/>} />
+
+
+          <Route path="/bakeries/:id/create_item" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost} images={images}/>} />
+
+
          
 
   

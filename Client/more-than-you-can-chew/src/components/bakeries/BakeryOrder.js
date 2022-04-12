@@ -1,6 +1,7 @@
 import React from 'react'
 import "../stylesheets/Main.css";
 import BakeryOrderListItem from './BakeryOrderListItem';
+import BakeryNavBar from './BakeryNavBar';
 
 const BakeryOrder = ({selectedBakery, orders, users, items}) => {
 
@@ -12,6 +13,8 @@ const BakeryOrder = ({selectedBakery, orders, users, items}) => {
   
 
   return (
+    <>
+    <BakeryNavBar selectedBakery={selectedBakery}/>
     <div className='Bakery-Order'>
       <h2>Orders</h2>
       <ul>
@@ -20,6 +23,7 @@ const BakeryOrder = ({selectedBakery, orders, users, items}) => {
        
        
     </div>
+    </>
   )
 }
 

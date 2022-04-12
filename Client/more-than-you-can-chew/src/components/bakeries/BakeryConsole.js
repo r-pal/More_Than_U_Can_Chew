@@ -11,25 +11,32 @@ import ShowBakeryItems from '../bakeryItems/ShowBakeryItems';
 const BakeryConsole = ({selectedBakery, images, orders, users, items, selectedItem, onUpdate, setSelectedItem}) => {
 
 
-  let url = "/bakeryitems"
 
   return (
       <>
       <BakeryNavBar selectedBakery={selectedBakery}/>
-      <h3>Bakery ID: {selectedBakery.id}</h3>
+      {/* <h3>Bakery ID: {selectedBakery.id}</h3>
       <h3>Location: {selectedBakery.location.replace(/"/g, '')}</h3>
-      <h3>email: {selectedBakery.email.replace(/"/g, '')}</h3>
+      <h3>email: {selectedBakery.email.replace(/"/g, '')}</h3> */}
+       <div className='ViewOrdersButton'>
+      <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"orders"}><button className='ButtonItem' type="button">View Orders</button></Link>
+      </div>
+      <div className='ViewItemsButton'>
+      <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"items"}><button className='ButtonItem' type="button">View Menu Items</button></Link>
+      </div>
       <div className='CreateNewItemButton'>
-      <Link style={{textDecoration:"none"}} className="ButtonContainer" to={url}><button className='ButtonItem' type="button">Create Bakery Item</button></Link>
+      <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"create_item"}><button className='ButtonItem' type="button">Create Bakery Item</button></Link>
       </div>
       <div className='orders-container'>
-      <ul>
+      {/* <ul>
         <li>
             <BakeryOrder items={items} users={users} selectedBakery={selectedBakery} orders={orders}/>
         </li>
-      </ul>
+      </ul> */}
       </div>
-      <ShowBakeryItems items={items} selectedBakery={selectedBakery} images={images} selectedItem={selectedItem} onUpdate={onUpdate} setSelectedItem={setSelectedItem}/>
+
+      {/* <ShowBakeryItems items={items} selectedBakery={selectedBakery} images={images}/> */}
+
     </>
   )
 }

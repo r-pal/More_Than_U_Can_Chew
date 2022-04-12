@@ -6,17 +6,15 @@ import {Link, Navigate, useNavigate} from 'react-router-dom';
 import UserOrders from './UserOrders';
 
 
-function UserConsole({selectedUser, bakeries, handleDelete, orders, items}) {
+function UserConsole({selectedUser, bakeries, handleDelete, setSelectedBakery, orders, items, images}) {
 
 
   if(selectedUser.name){
     return (
       <>
       <UserNavBar selectedUser={selectedUser} handleDelete={handleDelete}/>
-      <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"edit"}><button type="button">Edit User</button></Link>
       <div className='UserConsoleContainer'>
-        <UserOrders items={items} selectedUser={selectedUser} bakeries={bakeries} orders={orders}/>
-        <BakeriesNearYou bakeries={bakeries}/>
+        <BakeriesNearYou bakeries={bakeries} selectedUser={selectedUser} setSelectedBakery={setSelectedBakery} images={images}/>
   
       </div>
       </>
