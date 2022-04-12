@@ -54,7 +54,7 @@ function Basket({basket, setBasket, items, selectedUser, handleDelete, selectedB
         <ul>{basketItem}</ul>
     
 
-        <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"basket"}><button className='ButtonUser' type="button" onClick={handleOrderSubmit}>Order</button></Link>
+        <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"/users/:id"}><button className='ButtonUser' type="button" onClick={handleOrderSubmit}>Order</button></Link>
 
     <ul>
 
