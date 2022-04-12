@@ -14,7 +14,7 @@ function UserConsole({selectedUser, bakeries, handleDelete, setSelectedBakery, o
       <>
       <UserNavBar selectedUser={selectedUser} handleDelete={handleDelete}/>
       <div className='UserConsoleContainer'>
-        <BakeriesNearYou bakeries={bakeries} selectedUser={selectedUser} setSelectedBakery={setSelectedBakery} images={images}/>
+        <BakeriesNearYou bakeries={bakeries} selectedUser={selectedUser} setSelectedBakery={setSelectedBakery} images={images} />
   
       </div>
       </>

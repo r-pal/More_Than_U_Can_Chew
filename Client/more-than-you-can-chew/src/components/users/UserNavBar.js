@@ -4,12 +4,6 @@ import {Link} from 'react-router-dom';
 
 function UserNavBar({selectedUser}) {
 
-let id = selectedUser.id
-
-
-
-
-
 
   return (
     <header>

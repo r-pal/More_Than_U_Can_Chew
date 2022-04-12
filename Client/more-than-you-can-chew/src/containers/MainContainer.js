@@ -20,6 +20,7 @@ import UserOrders from '../components/users/UserOrders';
 import UserBakeryDetails from '../components/users/UserBakeryDetails';
 import BakeryOrder from '../components/bakeries/BakeryOrder';
 import ShowBakeryItems from '../components/bakeryItems/ShowBakeryItems';
+import Basket from '../components/users/Basket';
 
 
 
@@ -60,6 +61,8 @@ const MainContainer = () => {
     const [orders, setOrders] = useState([]);
     const [images, setImages] = useState([]);
     const [items, setItems] = useState([]);
+    const [selectedOrder, setSelectedOrder] = useState({})
+    const [basket, setBasket] = useState([])
 
     const [selectedItem, setSelectedItem] = useState({});
 
@@ -160,6 +163,14 @@ const MainContainer = () => {
         .then(() => {window.location = "/users"})
       }
 
+      const handlePostOrder = (order) => {
+        // console.log(user);
+        const request = new Request();
+        const url = "/api/orders";
+        request.post(url, order)
+        .then(() => {window.location = "/users/:id"})
+      }
+
 
     
 
@@ -221,14 +232,14 @@ const MainContainer = () => {
         <Routes>
             <Route path="/" element={<HomePage/>}/>
 
-          <Route path="/users" element={<UserContainer users={users} setSelectedUser={setSelectedUser} selectedUser={selectedUser} />} />
+          <Route path="/users" element={<UserContainer users={users} setSelectedUser={setSelectedUser} selectedUser={selectedUser}/>} />
           <Route path="/users/:id/orders" element={<UserOrders items={items} selectedUser={selectedUser} bakeries={bakeries} orders={orders} handleDelete={handleDeleteU}/>}/>
           <Route path="/users/new" element={<NewUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate}/>} />
           <Route path="/users/:id/edit" element={<EditUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate} handleDelete={handleDeleteU}/>} />
 
           <Route path="users/:id" element={<UserConsole items={items} orders={orders} selectedUser={selectedUser} bakeries={bakeries} handleDelete={handleDeleteU} setSelectedBakery={setSelectedBakery}/>}/>
-          <Route path="users/:id/bakery" element={<UserBakeryDetails items={items} orders={orders} selectedUser={selectedUser} bakeries={bakeries} handleDelete={handleDeleteU} selectedBakery={selectedBakery} images={images}/>}/>
-
+          <Route path="users/:id/bakery" element={<UserBakeryDetails items={items} orders={orders} selectedUser={selectedUser} bakeries={bakeries} handleDelete={handleDeleteU} selectedBakery={selectedBakery} images={images} selectedOrder={selectedOrder} setSelectedOrder={setSelectedOrder} handlePostOrder={handlePostOrder} basket={basket} setBasket={setBasket} setSelectedBakery={setSelectedBakery}/>}/>
+          <Route path="users/:id/bakery/basket" element={<Basket basket={basket} setBasket={setBasket} items={items} handlePostOrder={handlePostOrder} selectedUser={selectedUser} handleDelete={handleDeleteU} selectedBakery={selectedBakery}/>}/>
 
 
           <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
