@@ -26,7 +26,7 @@ return(
             <li>Allergens: {item.allergens}</li>
             <li>Quantity available: {item.quantity}</li>
 
-            <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"items/:id/edit"}><button className='ButtonEdit' type="button" onClick={handleClick}>Edit {selectedItem.name}</button></Link>
+            <Link style={{textDecoration:"none"}} className="ButtonContainer" to={":id/edit"}><button className='ButtonEdit' type="button" onClick={handleClick}>Edit {item.name}</button></Link>
 
         </ul>
     </div>

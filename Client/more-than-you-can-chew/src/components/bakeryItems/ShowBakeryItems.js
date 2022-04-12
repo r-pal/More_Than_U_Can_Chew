@@ -4,7 +4,7 @@ import BakeryItem from './BakeryItem';
 import BakeryNavBar from '../bakeries/BakeryNavBar';
 
 
-const showBakeryItems = ({selectedBakery, images, items, selectedItem, onUpdate, setSelectedItem}) => {
+const ShowBakeryItems = ({selectedBakery, images, items, selectedItem, onUpdate, setSelectedItem}) => {
 
     const findBakeryItemsOfBakery = items.map((item, index) => {
         if (item.bakeryId === selectedBakery.id){
@@ -30,4 +30,4 @@ return(
 )}
 
 
-export default showBakeryItems;
+export default ShowBakeryItems;
