@@ -45,17 +45,11 @@ public class OrderController {
         return new ResponseEntity<>(orderRepository.findByUserId(id), HttpStatus.OK);
     }
 
-//    @PostMapping(value = "/orders")
-//    public ResponseEntity<Order> postOrder(@RequestBody Order order){
-//        BakeryItem bakeryItem = bakeryItemRepository.findById(order.getItemsOrdered().get(0).getId()).get();
-//        User orderUser = userRepository.findById(order.getUser().getId()).get();
-//        Bakery bakery = bakeryRepository.findById(order.getBakery().getId()).get();
-//        Order newOrder = new Order(bakery, orderUser, false);
-//        orderRepository.save(newOrder);
-//        bakeryItem.setOrder(newOrder);
-//        bakeryItemRepository.save(bakeryItem);
-//        return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
-//    }
+    @PostMapping(value = "/orders")
+    public ResponseEntity<Order> postOrder(@RequestBody Order order){
+        orderRepository.save(order);
+        return new ResponseEntity<>(order, HttpStatus.CREATED);
+    }
 
     @PatchMapping(value="/orders/{id}")
     public ResponseEntity<Order> updateOrder(@RequestBody Order order){

@@ -8,7 +8,7 @@ import ShowBakeryItems from '../bakeryItems/ShowBakeryItems';
 
 
 
-const BakeryConsole = ({selectedBakery, images, orders, users, items}) => {
+const BakeryConsole = ({selectedBakery, images, orders, users, items, selectedItem, onUpdate, setSelectedItem}) => {
 
 
 
@@ -34,7 +34,9 @@ const BakeryConsole = ({selectedBakery, images, orders, users, items}) => {
         </li>
       </ul> */}
       </div>
+
       {/* <ShowBakeryItems items={items} selectedBakery={selectedBakery} images={images}/> */}
+
     </>
   )
 }

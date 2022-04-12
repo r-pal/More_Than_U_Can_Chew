@@ -1,49 +1,45 @@
-import NavBar from '../NavBar';
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import "../stylesheets/Main.css";
 import BakeryNavBar from '../bakeries/BakeryNavBar';
 
-const CreateBakeryItem = ({selectedBakery, onCreateItem, images}) => {
+const EditBakeryItem = ({selectedItem, onUpdateItem, selectedBakery}) => {
 
     const [newItem, setNewItem] = useState({
         name: "",
         allergens: "",
         imageId: 0,
-        bakeryId: selectedBakery.id,
+        bakeryId: 0,
         quantity: 0,
 
-      }, [])
+      })
 
-      console.log(newItem)
-
-    const handleItemPost = (event) => {
-        event.preventDefault();
-        console.log(newItem.name);
-        onCreateItem(newItem, selectedBakery.id)
-    }
-
-    
-
+      useEffect(() => {
+        if(selectedItem){
+          let copiedItem = {...selectedItem}
+          setNewItem(copiedItem)
+        }
+      }, [selectedItem])
 
     const handleChange = (event) => {
+        event.preventDefault();
       let propertyName = event.target.name
       let copiedItem = {...newItem};
       copiedItem[propertyName] = event.target.value;
-      setNewItem(copiedItem)
-      console.log(newItem.name);
+      setNewItem(copiedItem);
 
   }
 
-  // const imageOptions = images.map((image, index) => {
-  //   return <option key={index} value={index}><img src={imageString} height="100" width="100"/></option>
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-// })
+    onUpdateItem(newItem)
+  }
 
 
     return (
         <>
         <BakeryNavBar selectedBakery={selectedBakery}/>
-                <form onSubmit={handleItemPost}> 
+                <form onSubmit={handleSubmit}> 
                     <input type="text" placeholder='Name' name='name' onChange={handleChange} value={newItem.name}/>
                     <input type="text" placeholder='Allergens' name='allergens' onChange={handleChange} value={newItem.allergens}/>
                     <input type="number" placeholder='Image' name='imageId' onChange={handleChange} value={newItem.imageId}/>
@@ -52,7 +48,7 @@ const CreateBakeryItem = ({selectedBakery, onCreateItem, images}) => {
                     
     
                 
-                    <button type="submit">Save Item</button>
+                    <button type="submit">Edit Item</button>
                 
                 </form>  
             </>
@@ -61,4 +57,4 @@ const CreateBakeryItem = ({selectedBakery, onCreateItem, images}) => {
 
     }
 
-export default CreateBakeryItem;
+export default EditBakeryItem;
