@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import "../stylesheets/Main.css";
 import BakeryItem from './BakeryItem';
 import Image from './Image';
+import BakeryNavBar from '../bakeries/BakeryNavBar';
 
 const showBakeryItems = ({selectedBakery, images, items}) => {
 
@@ -18,6 +19,8 @@ const showBakeryItems = ({selectedBakery, images, items}) => {
 
 
 return(
+    <>
+    <BakeryNavBar selectedBakery={selectedBakery}/>
     <div className='ShowBakeryItemsContainer'>
         <h2>
             Items Available
@@ -27,6 +30,7 @@ return(
         </ul>
 
     </div>
+    </>
 )}
 
 

@@ -26,8 +26,7 @@ return(
             <li>Allergens: {item.allergens}</li>
             <li>Quantity available: {item.quantity}</li>
             <li>ImageId(bakeryitem):{item.imageId}</li>
-            <br></br>{getImageUrl}
-            {/* <br></br>{imageString} */}
+            <br></br>
             <img src={imageString} />
         </ul>
     </div>
