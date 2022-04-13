@@ -25,7 +25,7 @@ body {
 }
 
 header {
-  background-color:black;
+  background-color:lightskyblue;
   min-height: 20vh;
   display: flex;
   justify-content: center;
