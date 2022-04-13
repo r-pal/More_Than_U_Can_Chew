@@ -49,7 +49,7 @@ const EditBakeryItem = ({selectedItem, onUpdateItem, selectedBakery, images}) =>
                         <option disabled selected value="select-image">Select image</option>
                         {imageOptions}
                     </select>
-                    <input type="number" placeholder='Quantity' name='quantity' onChange={handleChange} value={newItem.quantity}/>
+                    {/* <input type="number" placeholder='Quantity' name='quantity' onChange={handleChange} value={newItem.quantity}/> */}
                     
                     
     

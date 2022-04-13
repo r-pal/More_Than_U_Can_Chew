@@ -17,11 +17,10 @@ const ShowBakeryItems = ({selectedBakery, images, items, selectedItem, onUpdate,
 return(
     <>
     <BakeryNavBar selectedBakery={selectedBakery}/>
-    <div className='ShowBakeryItemsContainer'>
-        <h2>
+    <div className='UserBakeryDetails'>
+        <h1 className="CenteredText">
             Items Available
-            {/* <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div> */}
-        </h2>
+        </h1>
         <ul >
             {findBakeryItemsOfBakery}
         </ul>

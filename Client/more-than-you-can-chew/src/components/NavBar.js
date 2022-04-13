@@ -10,7 +10,7 @@ function NavBar() {
  <Link className="navBarLink" 
  style={{textDecoration:"none"}} 
  to={"/"}><img src={img} height="100" width="100"/></Link>
-<h2></h2>
+<h2>{'>'}U_Can_Chew</h2>
 <nav>
             
 

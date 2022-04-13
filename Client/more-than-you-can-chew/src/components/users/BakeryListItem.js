@@ -2,6 +2,7 @@ import React from 'react'
 import "../stylesheets/Main.css";
 import {Link} from 'react-router-dom';
 import MapBox from '../maps/MapBox';
+import "../stylesheets/Main.css";
 
 
 const BakeryListItem = ({bakery, selectedUser, setSelectedBakery, images}) => {

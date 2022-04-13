@@ -37,12 +37,12 @@ function UserBakeryDetails({selectedUser, selectedBakery, bakeries,
       <>
         <UserNavBar selectedUser={selectedUser} handleDelete={handleDelete}/>
         <div className="UserBakeryDetails">
-            <h1>{selectedBakery.name}</h1>
-            <button className='ButtonUser' type="button" onClick={emptyBasket}>Empty Basket</button>
+            <h1 className="CenteredText">{selectedBakery.name}</h1>
+            {/* <button className='ButtonUser' type="button" onClick={emptyBasket}>Empty Basket</button> */}
 
-            <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"basket"}><button className='ButtonUser' type="button" onClick={handlePutOrderInState}>Basket</button></Link>
+            <Link style={{textDecoration:"none"}} className="BasketButtonContainer" to={"basket"}><button className='ButtonUser' type="button" onClick={handlePutOrderInState}>Basket</button></Link>
             {/* <Basket basket={basket} setBasket={setBasket} items={items}/> */}
-            <h1>Menu</h1>
+            <h1 className="CenteredText">Menu</h1>
 
             <ul>
                 {menuItem}

@@ -26,7 +26,7 @@ function UserOrders({selectedUser, bakeries, orders, items, handleDelete}) {
             {userOrderListitems}
         </ul>
 
-        <h2>Previous Orders</h2>
+        <hr></hr><h2>Previous Orders</h2>
         <ul>
             {userOrderListitemsPrevious}
         </ul>

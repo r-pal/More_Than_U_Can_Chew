@@ -88,11 +88,11 @@ function MenuItem({item, images, selectedOrder, basket, setBasket, selectedBaker
 
 
   return (
-    <div>
+    <div className='list-margin'>
         <li>
-          <div className='list-margin'>
+          <div className="minus3margin">
             <h3>{item.name}</h3>
-            <h4>Allergens: {item.allergens}</h4>
+            <p>Allergens: {item.allergens}</p>
             </div>
             <img src={imageString} width="100" height="100"/>
             <br></br>

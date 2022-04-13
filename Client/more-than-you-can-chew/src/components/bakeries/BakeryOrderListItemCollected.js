@@ -6,8 +6,8 @@ function BakeryOrderListItemCollected({order, users, items, handleOrderUpdate}) 
 
   const bakeryOrderItemsOrdered = items.map((item, index) => {
     if (item.orderId === order.id){
-    return <li>{item.name}</li>}
-  })
+      return item.name
+      }})
 
   const customer = users.map((user, index) => {
     if (user.id === order.userId){
@@ -35,10 +35,8 @@ function BakeryOrderListItemCollected({order, users, items, handleOrderUpdate}) 
     <div>
       <p>Order id: {order.id}</p>
       <p>Customer Name: {customer}</p>
-      <p>Items:</p>
-      <ul>
-        {bakeryOrderItemsOrdered}
-      </ul>
+      <p>Items: {bakeryOrderItemsOrdered}</p>
+
       {collected}
       
       </div>

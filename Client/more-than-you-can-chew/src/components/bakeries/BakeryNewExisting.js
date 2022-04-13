@@ -67,7 +67,7 @@ const BakeryNewExisting = ({bakeries, setSelectedBakery, selectedBakery}) => {
             </select>
             <button type="submit">Login</button>
         </form>
-        <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"new"}><button type="button">New Baker</button></Link>
+        <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"new"}><button type="button">New Bakery</button></Link>
         </div>
         </>
     )

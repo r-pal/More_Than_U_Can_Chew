@@ -18,17 +18,18 @@ const BakeryItem = ({item, images, selectedItem, setSelectedItem}) => {
 
 
 return(
-    <div className='BakeryItemsContainer'>
-        <ul >
-            <b>{item.name}</b>
-            <br></br>
+    <div className='list-margin'>
+        <li>
+            <div className="minus3margin">
+            <h3>{item.name}</h3>
+            <p>Allergens: {item.allergens}</p>
+            </div>
             <img src={imageString} height="100" width="100" alt="Bakery Item"/>
-            <li>Allergens: {item.allergens}</li>
-            <li>Quantity available: {item.quantity}</li>
+            {/* <li>Quantity available: {item.quantity}</li> */}
+            <br></br>
+            <Link style={{textDecoration:"none"}} to={":id/edit"}><button type="button" onClick={handleClick}>Edit {item.name}</button></Link>
 
-            <Link style={{textDecoration:"none"}} className="ButtonContainer" to={":id/edit"}><button className='ButtonEdit' type="button" onClick={handleClick}>Edit {item.name}</button></Link>
-
-        </ul>
+        </li>
     </div>
 )
 }

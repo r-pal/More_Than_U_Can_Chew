@@ -27,7 +27,22 @@ p {
     align-items: center;
     justify-content: center;
     background-color: pink
+}
 
+.BasketButtonContainer{
+  display: inline-flex;
+  width: 100%;
+  height: 15vh;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: pink
+}
+
+
+
+.BasketButton{
+  height: 15vh;
 }
 
 body {
@@ -35,10 +50,14 @@ body {
 }
 
 header {
-  background-color: #FDE74C;
-  height: 10vh;
+  background-color:khaki;
+  height: 20vh;
   justify-content: center;
   align-items: center;
+}
+
+.smallMargin{
+  padding-left: 3vw;
 }
 
 
@@ -84,7 +103,11 @@ form button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
 
+.basketItemFontSize{
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .bakeriesNearYouContainer {
@@ -173,6 +196,19 @@ button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
+
+.CenteredButton{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 6%;
+  /* align-items: center;
+  position: relative; */
+}
+
+.CenteredText{
+  display: flex;
+  justify-content: center;
 }
 
 button:active {

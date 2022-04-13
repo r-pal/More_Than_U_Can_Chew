@@ -13,9 +13,9 @@ const BakeriesNearYou = ({bakeries, selectedUser, setSelectedBakery, images}) =>
 
   return (
     <div className='HomePageContainer'>
-        <h2>
+        <h1>
             Bakeries Near You
-        </h2>
+        </h1>
         
             {bakeryListitems}
         

@@ -15,7 +15,7 @@ const HomePage = () => {
         <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"/users"}><button className='ButtonUser' type="button">User</button></Link>
         </div>
         <div>
-        <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"bakeries"}><button className='ButtonBaker' type="button">Baker</button></Link>
+        <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"bakeries"}><button className='ButtonBaker' type="button">Bakery</button></Link>
 </div>
 </div>
 </>

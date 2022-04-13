@@ -34,7 +34,7 @@ const BakeryOrder = ({selectedBakery, orders, users, items, handleOrderUpdate}) 
         {bakeryOrderListitemsAwaiting}
       </ul>
 
-      <h2>Previous Orders</h2>
+      <hr></hr><h2>Previous Orders</h2>
       <ul>
         {bakeryOrderListitemsCollected}
       </ul>

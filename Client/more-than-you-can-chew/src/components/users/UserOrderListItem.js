@@ -30,10 +30,7 @@ function UserOrderListItem({order, bakeries, items}) {
     <div>
       <p>Order id: {order.id}</p>
       <p>Bakery: {orderBakery}</p>
-      <p>Items:</p>
-      <ul>
-        {userOrderItemsOrdered}
-      </ul>
+      <p>Items: {userOrderItemsOrdered}</p>
       <h4>{collected}</h4>
     </div>
   )

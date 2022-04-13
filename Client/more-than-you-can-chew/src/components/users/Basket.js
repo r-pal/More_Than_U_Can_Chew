@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import UserNavBar from './UserNavBar'
 import { Link } from 'react-router-dom'
 import NumericInput from 'react-numeric-input';
+import "../stylesheets/Main.css";
+
 
 function Basket({basket, setBasket, items, selectedUser, handleDelete, selectedBakery, handlePostOrder, selectedOrder, onUpdateItem, selectedItem, onCreateItem}) {
 
@@ -9,7 +11,7 @@ function Basket({basket, setBasket, items, selectedUser, handleDelete, selectedB
     const basketItem = basket.map((basketItem, index) => {
         return items.map((item, index) => {
             if (item.id === basketItem){
-                return item.name
+                return <li className="basketItemFontSize">{item.name}</li>
             }
         })
     })
@@ -94,33 +96,24 @@ function Basket({basket, setBasket, items, selectedUser, handleDelete, selectedB
 
 //     onUpdateItem(newItem)
 //   }
+const emptyBasket = () => {
+  setBasket([])
+}
 
 
   return (
     <div>
         <UserNavBar selectedUser={selectedUser} handleDelete={handleDelete}/>
-        <div>Items in basket: {basket}</div>
-        <p>{selectedOrder.id}</p>
+        <div className="smallMargin">Items in basket: {basket.length}</div>
+        {/* <p>{selectedOrder.id}</p> */}
         <ul>{basketItem}</ul>
 
-        {/* <form onSubmit={handleOrderSubmit}>
-        
-                    <input type="text" placeholder='Name' name='name' onChange={handleChange} value={newItem.name}/>
-                    <input type="number" placeholder='Quantity' name='quantity' onChange={handleChange} value={newItem.quantity}/>
-                    <button type="submit">Place Order</button>
-                
-                </form>  */}
-
-                <button className='ButtonUser' type="button" onClick={handleOrderSubmit}>Order</button>
-    
+                <div className="CenteredButton"><button className='ButtonUser' type="button" onClick={handleOrderSubmit}>Place Order</button><br/></div>
+                {/* <div className="CenteredButton"><button onclick={history.back()} className='ButtonUser' type="button">Back To Bakery</button><br/></div> */}
+                <div className="CenteredButton"><button className='ButtonUser' type="button" onClick={emptyBasket}>Empty Basket</button></div>
 
         {/* <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"/users/:id"}><button className='ButtonUser' type="button" onClick={handleOrderSubmit}>Order</button></Link> */}
 
-    <ul>
-
-        
-        
-    </ul>
     </div>
   )
 }

@@ -104,26 +104,26 @@ public class DataLoader implements ApplicationRunner {
         bakeryItemRepository.save(cinn2);
 
 
-        BakeryItem bagel = new BakeryItem("Plain Bagel", "gluten", 10L, 4L, 0);
-        bakeryItemRepository.save(bagel);
-        BakeryItem bagel2 = new BakeryItem("Cinnamon Bagel", "gluten", 11L, 5L, 0);
-        bakeryItemRepository.save(bagel2);
-        BakeryItem bagel3 = new BakeryItem("Everything Bagel", "gluten", 12L, 6L, 0);
-        bakeryItemRepository.save(bagel3);
-        BakeryItem bagel4 = new BakeryItem("Poppyseed Bagel", "gluten", 13L, 7L, 0);
-        bakeryItemRepository.save(bagel4);
-        BakeryItem bs = new BakeryItem("Billionaire's Shortbread", "gluten", 14L, 8L, 0);
-        bakeryItemRepository.save(bs);
-        BakeryItem dcb = new BakeryItem("Dark Chocolate Brownie", "gluten", 15L, 9L, 0);
-        bakeryItemRepository.save(dcb);
-        BakeryItem empire = new BakeryItem("Empire Biscuit", "gluten", 16L, 10L, 0);
-        bakeryItemRepository.save(empire);
-        BakeryItem bakew = new BakeryItem("Bakewell Slice", "gluten", 17L, 11L, 0);
-        bakeryItemRepository.save(bakew);
-        BakeryItem fruits = new BakeryItem("Fruit Scone", "gluten", 18L, 12L, 0);
-        bakeryItemRepository.save(fruits);
-        BakeryItem plains = new BakeryItem("Plain Scone", "gluten", 19L, 13L, 0);
-        bakeryItemRepository.save(plains);
+//        BakeryItem bagel = new BakeryItem("Plain Bagel", "gluten", 10L, 4L, 0);
+//        bakeryItemRepository.save(bagel);
+//        BakeryItem bagel2 = new BakeryItem("Cinnamon Bagel", "gluten", 11L, 5L, 0);
+//        bakeryItemRepository.save(bagel2);
+//        BakeryItem bagel3 = new BakeryItem("Everything Bagel", "gluten", 12L, 6L, 0);
+//        bakeryItemRepository.save(bagel3);
+//        BakeryItem bagel4 = new BakeryItem("Poppyseed Bagel", "gluten", 13L, 7L, 0);
+//        bakeryItemRepository.save(bagel4);
+//        BakeryItem bs = new BakeryItem("Billionaire's Shortbread", "gluten", 14L, 8L, 0);
+//        bakeryItemRepository.save(bs);
+//        BakeryItem dcb = new BakeryItem("Dark Chocolate Brownie", "gluten", 15L, 9L, 0);
+//        bakeryItemRepository.save(dcb);
+//        BakeryItem empire = new BakeryItem("Empire Biscuit", "gluten", 16L, 10L, 0);
+//        bakeryItemRepository.save(empire);
+//        BakeryItem bakew = new BakeryItem("Bakewell Slice", "gluten", 17L, 11L, 0);
+//        bakeryItemRepository.save(bakew);
+//        BakeryItem fruits = new BakeryItem("Fruit Scone", "gluten", 18L, 12L, 0);
+//        bakeryItemRepository.save(fruits);
+//        BakeryItem plains = new BakeryItem("Plain Scone", "gluten", 19L, 13L, 0);
+//        bakeryItemRepository.save(plains);
 //
 //
 //        BakeryItem lemcran = new BakeryItem("Lemon & Cranberry Cake", "gluten", 123L, cakeMyDay, 0);
@@ -280,28 +280,31 @@ public class DataLoader implements ApplicationRunner {
 
 
 
-        Image imageCroissant = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Croissant-Petr_Kratochvil.jpg/320px-Croissant-Petr_Kratochvil.jpg");
+        Image imageCroissant = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Croissant-Petr_Kratochvil.jpg/320px-Croissant-Petr_Kratochvil.jpg", "Croissant");
         imageRepository.save(imageCroissant);
 
-        Image imageRoll = new Image("https://i2-prod.glasgowlive.co.uk/incoming/article20880009.ece/ALTERNATES/s810/0_image2-4.png");
+        Image imageRoll = new Image("https://i2-prod.glasgowlive.co.uk/incoming/article20880009.ece/ALTERNATES/s810/0_image2-4.png", "Roll");
         imageRepository.save(imageRoll);
 
-        Image imageWhiteLoaf = new Image("https://assets.sainsburys-groceries.co.uk/gol/6504660/1/640x640.jpg");
+        Image imageWhiteLoaf = new Image("https://assets.sainsburys-groceries.co.uk/gol/6504660/1/640x640.jpg", "White Loaf");
         imageRepository.save(imageWhiteLoaf);
 
-        Image imageChocolateCake = new Image("https://www.cookingclassy.com/wp-content/uploads/2019/10/chocolate-cake-3.jpg");
+        Image imageChocolateCake = new Image("https://www.cookingclassy.com/wp-content/uploads/2019/10/chocolate-cake-3.jpg", "Chocolate Cake");
         imageRepository.save(imageChocolateCake);
 
-        Image imagePainAuxChoc = new Image("https://www.bridor.com/medias/sys_master/images/images/hcb/h25/8898062188574/Pain-au-Chocolat-Savoureux-SourceHD-1200Wx1200H.png");
+        Image imagePainAuxChoc = new Image("https://www.bridor.com/medias/sys_master/images/images/hcb/h25/8898062188574/Pain-au-Chocolat-Savoureux-SourceHD-1200Wx1200H.png", "Pain aux Chocolat");
         imageRepository.save(imagePainAuxChoc);
 
-        Image imageSourdoughLoaf = new Image("https://assets.sainsburys-groceries.co.uk/gol/7972999/1/640x640.jpg");
+        Image imageSourdoughLoaf = new Image("https://assets.sainsburys-groceries.co.uk/gol/7972999/1/640x640.jpg", "Sourdough Loaf");
         imageRepository.save(imageSourdoughLoaf);
 
-        Image imageCinnamonBrioche = new Image("https://bakingwithbutter.com/wp-content/uploads/2021/03/brioche-cinnamon-rolls.jpg");
+        Image imageWholemealLoaf = new Image("https://www.deliaonline.com/sites/default/files/quick_media/cs-quick-wholemeal-loaf.jpg", "Wholemeal Loaf");
+        imageRepository.save(imageWholemealLoaf);
+
+        Image imageCinnamonBrioche = new Image("https://bakingwithbutter.com/wp-content/uploads/2021/03/brioche-cinnamon-rolls.jpg", "Cinnamon Brioche");
         imageRepository.save(imageCinnamonBrioche);
 
-        Image imageCinnamonSwirl = new Image("https://assets.sainsburys-groceries.co.uk/gol/6543752/1/640x640.jpg");
+        Image imageCinnamonSwirl = new Image("https://assets.sainsburys-groceries.co.uk/gol/6543752/1/640x640.jpg", "Cinnamon Swirl");
         imageRepository.save(imageCinnamonSwirl);
 
 
