@@ -7,10 +7,18 @@
 }
 
 h2, h1, h3, p {
-  padding-left: 2vw;
+  padding-left: 3vw;
+}
+
+h2 {
+  padding-right: 3vw;
 }
 p {
-  line-height:5%;
+  line-height: 0.8vh;
+}
+
+.listp {
+  padding-left: 0;
 }
 
 .ButtonContainer{
@@ -30,8 +38,7 @@ body {
 
 header {
   background-color: #FDE74C;
-  min-height: 20vh;
-  display: flex;
+  height: 10vh;
   justify-content: center;
   align-items: center;
 }
@@ -94,7 +101,9 @@ form button {
   padding-top: 50px;
 }
 
-
+/* .BakeriesNewExisting {
+  max-width: 100vw;
+} */
 
 .bakeriesNearContainer {
   border: 1px solid #ccc;

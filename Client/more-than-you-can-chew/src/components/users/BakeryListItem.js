@@ -14,6 +14,7 @@ const BakeryListItem = ({bakery, selectedUser, setSelectedBakery, images}) => {
   return (
     <>
     <Link selectedUser={selectedUser} onClick={handleClick} className="navBarLink" style={{textDecoration:"none"}} to={"bakery"}>
+      
       <li>
         <h2>{bakery.name}</h2>
       <p>Location: {bakery.location}</p>
