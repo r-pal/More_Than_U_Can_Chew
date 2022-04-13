@@ -35,6 +35,9 @@ const EditBakeryItem = ({selectedItem, onUpdateItem, selectedBakery, images}) =>
     onUpdateItem(newItem)
   }
 
+  const imageOptions = images.map((image, index) => {
+    return <option key={index} value={index}>{image.title}</option>})
+
 
     return (
         <>
@@ -42,7 +45,10 @@ const EditBakeryItem = ({selectedItem, onUpdateItem, selectedBakery, images}) =>
                 <form onSubmit={handleSubmit}> 
                     <input type="text" placeholder='Name' name='name' onChange={handleChange} value={newItem.name}/>
                     <input type="text" placeholder='Allergens' name='allergens' onChange={handleChange} value={newItem.allergens}/>
-                    <input type="number" placeholder='Image' name='imageId' onChange={handleChange} value={newItem.imageId}/>
+                    <select name="imageId" onChange={handleChange}>
+                        <option disabled value="select-image">Select image</option>
+                        {imageOptions}
+                    </select>
                     <input type="number" placeholder='Quantity' name='quantity' onChange={handleChange} value={newItem.quantity}/>
                     
                     

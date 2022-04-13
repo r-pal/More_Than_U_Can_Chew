@@ -44,17 +44,12 @@ const CreateBakeryItem = ({selectedBakery, onCreateItem, images}) => {
                 <form onSubmit={handleItemPost}> 
                     <input type="text" placeholder='Name' name='name' onChange={handleChange} value={newItem.name}/>
                     <input type="text" placeholder='Allergens' name='allergens' onChange={handleChange} value={newItem.allergens}/>
-                    {/* <input type="number" placeholder='Image' name='imageId' onChange={handleChange} value={newItem.imageId}/> */}
                     <select name="imageId" onChange={handleChange}>
                         <option disabled value="select-image">Select image</option>
                         {imageOptions}
                     </select>
                     <input type="number" placeholder='Quantity' name='quantity' onChange={handleChange} value={newItem.quantity}/>
-                
-    
                     <button type="submit">Save Item</button>
-
-                
                 </form>  
             </>
       ) 
