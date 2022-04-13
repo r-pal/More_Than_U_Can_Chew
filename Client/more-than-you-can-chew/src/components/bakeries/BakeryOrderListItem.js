@@ -1,8 +1,9 @@
+
 import React, { useEffect, useState } from 'react'
 import "../stylesheets/Main.css";
 
 
-function BakeryOrderListItem({order, users, items, handleOrderUpdate}) {
+function BakeryOrderListItem({order, users, items}) {
 
   const bakeryOrderItemsOrdered = items.map((item, index) => {
     if (item.orderId === order.id){
@@ -14,6 +15,7 @@ function BakeryOrderListItem({order, users, items, handleOrderUpdate}) {
       return user.name
     }
   })
+
 
   let orderCollectedButton = "";
   let collected = "";
@@ -42,6 +44,7 @@ function BakeryOrderListItem({order, users, items, handleOrderUpdate}) {
       collectedStatus: true
   })
 
+
   return (
     <div>
       <p>Order id: {order.id}</p>
@@ -50,9 +53,11 @@ function BakeryOrderListItem({order, users, items, handleOrderUpdate}) {
       <ul>
         {bakeryOrderItemsOrdered}
       </ul>
+
       {collected}
       
       <button type="button" onClick={handleClick}>{orderCollectedButton}</button>
+
       </div>
   )
 }

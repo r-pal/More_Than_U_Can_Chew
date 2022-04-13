@@ -4,13 +4,14 @@ import BakeryOrderListItem from './BakeryOrderListItem';
 import BakeryNavBar from './BakeryNavBar';
 import BakeryOrderListItemCollected from './BakeryOrderListItemCollected';
 
-const BakeryOrder = ({selectedBakery, orders, users, items, handleOrderUpdate}) => {
+const BakeryOrder = ({selectedBakery, orders, users, items}) => {
 
 
 
   const bakeryOrderListitemsAwaiting = orders.map((order, index) => {
     if(order.bakeryId === selectedBakery.id && order.collectedStatus != true){
     return <BakeryOrderListItem items={items} users={users} order={order} key={index} handleOrderUpdate={handleOrderUpdate}/>
+
     }
 
 
