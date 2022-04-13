@@ -1,6 +1,6 @@
-import React, {useState}from 'react'
+import React, {useState, useEffect}from 'react'
 
-function MenuItem({item, images, selectedOrder, basket, setBasket, selectedBakery, selectedUser, handlePostOrder, orders, setSelectedItem}) {
+function MenuItem({item, images, selectedOrder, basket, setBasket, selectedBakery, selectedUser, handlePostOrder, orders, setSelectedItem, selectedItem, onUpdateItem}) {
 
     const getImageUrl = images.map((image, index) => {
         if (image.id === item.imageId){
@@ -28,6 +28,52 @@ function MenuItem({item, images, selectedOrder, basket, setBasket, selectedBaker
         
     
     }
+
+    const reduceItemQuantity = () => {
+        onUpdateItem(newItem)
+
+    }
+
+    const [newItem, setNewItem] = useState({
+        name: "",
+        allergens: "",
+        imageId: 0,
+        bakeryId: 0,
+        quantity: 0,
+
+      })
+
+      useEffect(() => {
+        if(selectedItem){
+          let copiedItem = {
+            name: selectedItem.name,
+            allergens: selectedItem.allergens,
+              imageId: selectedItem.imageId,
+              bakeryId: selectedItem.bakeryId,
+              quantity: selectedItem.quantity - 1,
+          }
+          setNewItem(copiedItem)
+        }
+      }, [selectedItem])
+
+      useEffect(() => {
+          onUpdateItem(newItem)
+      }, [newItem])
+
+//     const handleChange = (event) => {
+//         event.preventDefault();
+//       let propertyName = event.target.name
+//       let copiedItem = {...newItem};
+//       copiedItem[propertyName] = event.target.value;
+//       setNewItem(copiedItem);
+
+//   }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    onUpdateItem(newItem)
+  }
 
    
 

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-function BakeryOrderListItem({order, users, items}) {
+function BakeryOrderListItem({order, users, items, handleOrderUpdate}) {
 
   const bakeryOrderItemsOrdered = items.map((item, index) => {
     if (item.orderId === order.id){
@@ -13,12 +13,41 @@ function BakeryOrderListItem({order, users, items}) {
     }
   })
 
+  // let orderCollectedButton = "";
   let collected = "";
   if(order.collectedStatus){
-    collected = "Collected"
+    collected = <h3>Collected</h3>
   }else{
-    collected = "Awaiting Collection"
+    collected = <h4>Awaiting Collection</h4>
+    // orderCollectedButton = <button type="button" onClick={handleClick}>Order Collected</button>
   }
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    console.log("collected button clicked");
+    console.log("new order " + newOrder.collectedStatus);
+
+    handleOrderUpdate(newOrder)
+
+  }
+
+  const [newOrder, setNewOrder] = useState({
+    bakeryId: order.bakeryId,
+      userId: order.userId,
+      id: order.id,
+      collectedStatus: true
+  })
+
+  // useEffect(() => {
+  //   let copiedItem = {
+  //     bakeryId: order.bakeryId,
+  //     userId: order.userId,
+  //     id: order.id,
+  //     collectedStatus: true
+  //   }
+  //   setNewOrder(copiedItem)
+  // }, [])
+
 
   return (
     <div>
@@ -28,7 +57,9 @@ function BakeryOrderListItem({order, users, items}) {
       <ul>
         {bakeryOrderItemsOrdered}
       </ul>
-      <h4>{collected}</h4>
+      {collected}
+      {/* {orderCollectedButton} */}
+      <button type="button" onClick={handleClick}>Order Collected</button>
       </div>
   )
 }
