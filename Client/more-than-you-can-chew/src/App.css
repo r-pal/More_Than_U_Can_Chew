@@ -9,8 +9,16 @@
     height: 55vw;
   }
 
-  /* width:95vw;
-  height: 40vh; */
+
+li {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
 
 .App-logo {
   height: 40vmin;
