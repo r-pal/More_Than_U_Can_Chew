@@ -6,8 +6,11 @@
     
 }
 
-h2, h1, h3 {
+h2, h1, h3, p {
   padding-left: 2vw;
+}
+p {
+  line-height:5%;
 }
 
 .ButtonContainer{

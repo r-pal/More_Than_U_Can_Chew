@@ -16,9 +16,9 @@ const BakeryListItem = ({bakery, selectedUser, setSelectedBakery, images}) => {
     <Link selectedUser={selectedUser} onClick={handleClick} className="navBarLink" style={{textDecoration:"none"}} to={"bakery"}>
       <li>
         <h2>{bakery.name}</h2>
-      <span>Location: {bakery.location}</span><br/>
-      <span>email: {bakery.email}</span><br/>
-      <span>Collection Time: {bakery.collectionTime}</span>
+      <p>Location: {bakery.location}</p>
+      <p>email: {bakery.email}</p>
+      <p>Collection Time: {bakery.collectionTime}</p>
       </li></Link>
       <div className="App">
       <MapBox bakery={bakery} selectedUser={selectedUser}/> 
