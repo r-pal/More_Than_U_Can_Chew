@@ -14,7 +14,6 @@ const MapBox = ({bakery, selectedUser}) => {
     // const [UserLatLong, setUserLatLong] = useState(0);
     const [Distance, setDistance] = useState(null);
 
-
     // console.log(bakery)
 
     useEffect(() => {
@@ -38,6 +37,7 @@ const MapBox = ({bakery, selectedUser}) => {
         setBakeryLong(data.result.longitude)
         // console.log(data.result.latitude);
         // console.log(data.result.longitude);
+
       })
   }
 
