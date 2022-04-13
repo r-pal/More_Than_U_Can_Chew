@@ -31,7 +31,7 @@ public class DataLoader implements ApplicationRunner {
 
     public DataLoader() {
     }
-    historyinthebaking, cakemyday, acceptcookies, pita, breakingbread, bakethat, wekneadyourdough, pathofyeast, pieceofcake
+
     public void run(ApplicationArguments args) {
         Bakery hitb = new Bakery("History In The Baking","GEO8", "james@historicbakers.com", LocalTime.parse("17:45:00"));
         bakeryRepository.save(hitb);
