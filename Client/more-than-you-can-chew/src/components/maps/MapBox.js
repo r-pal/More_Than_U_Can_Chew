@@ -75,8 +75,8 @@ const MapBox = ({bakery, selectedUser}) => {
       d = -d
     }
     setDistance(d);
-    console.log(bakery.name + " Distance = " + Distance);
-    console.log(bakery.name + " d = " + d);
+    // console.log(bakery.name + " Distance = " + Distance);
+    // console.log(bakery.name + " d = " + d);
   }
 
 
