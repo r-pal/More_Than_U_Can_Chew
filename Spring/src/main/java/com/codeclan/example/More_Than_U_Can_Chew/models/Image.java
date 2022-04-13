@@ -16,8 +16,12 @@ public class Image {
     @Column(name="image_url")
     private String imageUrl;
 
-    public Image(String imageUrl) {
+    @Column(name="title")
+    private String title;
+
+    public Image(String imageUrl, String title) {
         this.imageUrl = imageUrl;
+        this.title = title;
     }
 
     public Image() {
@@ -37,5 +41,13 @@ public class Image {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

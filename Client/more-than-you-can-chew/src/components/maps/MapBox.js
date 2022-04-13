@@ -54,11 +54,7 @@ const MapBox = ({bakery, selectedUser}) => {
   
 
 return(<>
-<<<<<<< HEAD
-  {BakeryLat && BakeryLong && UserLat && UserLong && <MapOnly bakery={bakery} BakeryLat={BakeryLat} BakeryLong={BakeryLong} UserLat={UserLat} UserLong={UserLong}/>}
-=======
   {BakeryLat && BakeryLong && UserLat && UserLong && <MapOnly BakeryLat={BakeryLat} BakeryLong={BakeryLong} UserLat={UserLat} UserLong={UserLong} />}
->>>>>>> 093d843b4003c31154a40adcf3d3a4315b92946e
 </>
 )
 }
