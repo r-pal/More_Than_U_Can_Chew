@@ -48,6 +48,7 @@ function MenuItem({item, images, selectedOrder, basket, setBasket, selectedBaker
             <h4>{item.name}</h4>
             <p>Allergens: {item.allergens}</p>
             <img src={imageString} width="100" height="100"/>
+            <br></br>
             <button onClick={addToOrder}>Add to basket</button>
         </li>
     </div>
