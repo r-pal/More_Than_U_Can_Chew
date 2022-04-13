@@ -4,10 +4,13 @@
 
 
 .leaflet-container{
-    width:95vw;
-    height: 40vh;
+    align-items:stretch;
+    width: 100vw;
+    height: 55vw;
   }
 
+  /* width:95vw;
+  height: 40vh; */
 
 .App-logo {
   height: 40vmin;
