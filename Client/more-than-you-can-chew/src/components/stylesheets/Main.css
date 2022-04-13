@@ -1,16 +1,10 @@
-.PageContainer{
+.HomePageContainer{
     background-color: aquamarine;
     height:100vh;
     width:100vw;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
     
-    
-}
-
-h2, h1, h3, p {
-  padding-left: 2vw;
-}
-p {
-  line-height:5%;
 }
 
 .ButtonContainer{
@@ -20,7 +14,9 @@ p {
     position: relative;
     align-items: center;
     justify-content: center;
-    background-color: pink
+    background-color: pink;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
 
 }
 
@@ -29,11 +25,14 @@ body {
 }
 
 header {
-  background-color: #FDE74C;
+  background-color:lightskyblue;
   min-height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: whitesmoke;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
 }
 
 

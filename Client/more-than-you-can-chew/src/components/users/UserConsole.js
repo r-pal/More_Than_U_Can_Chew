@@ -13,10 +13,10 @@ function UserConsole({selectedUser, bakeries, handleDelete, setSelectedBakery, o
     return (
       <>
       <UserNavBar selectedUser={selectedUser} handleDelete={handleDelete}/>
-      {/* <div className='UserConsoleContainer'> */}
+      <div className='UserConsoleContainer'>
         <BakeriesNearYou bakeries={bakeries} selectedUser={selectedUser} setSelectedBakery={setSelectedBakery} images={images} />
   
-      {/* </div> */}
+      </div>
       </>
     )
   }else{
