@@ -32,53 +32,54 @@ public class DataLoader implements ApplicationRunner {
     public DataLoader() {
     }
 
+
     public void run(ApplicationArguments args) {
+        Bakery hitb = new Bakery("History In The Baking","G25QD", "james@historicbakers.com", LocalTime.parse("17:45:00"));
+        bakeryRepository.save(hitb);
+        Bakery cakeMyDay = new Bakery("Cake My Day!","G22EH", "harry@cakemyday.com", LocalTime.parse("18:30:00"));
+        bakeryRepository.save(cakeMyDay);
+        Bakery aac = new Bakery("Accept All Cookies","G24NJ", "choc@chipcookies.com", LocalTime.parse("17:00:00"));
+        bakeryRepository.save(aac);
         Bakery pita = new Bakery("Pain in the Ass","G23AT", "hello@painintheass.com", LocalTime.parse("18:00:00"));
         bakeryRepository.save(pita);
-        Bakery bakeThat = new Bakery("Bake That","G312PS", "gary@bakethat.com", LocalTime.parse("17:30:00"));
-        bakeryRepository.save(bakeThat);
-        Bakery cakeMyDay = new Bakery("Cake My Day!","G23AT", "harry@cakemyday.com", LocalTime.parse("18:30:00"));
-        bakeryRepository.save(cakeMyDay);
-        Bakery poc = new Bakery("Piece Of Cake","G428RE", "homer@pieceofcake.com", LocalTime.parse("16:00:00"));
-        bakeryRepository.save(poc);
-        Bakery bb = new Bakery("Breaking Bread","G814ER", "babs@bornandbread.com", LocalTime.parse("17:45:00"));
+        Bakery bb = new Bakery("Breaking Bread","G12JZ", "babs@bornandbread.com", LocalTime.parse("17:45:00"));
         bakeryRepository.save(bb);
-        Bakery wkyd = new Bakery("We Knead Your Dough","GEO6", "richie@kneadyourdough.com", LocalTime.parse("18:30:00"));
+        Bakery bakeThat = new Bakery("Bake That","G28HZ", "gary@bakethat.com", LocalTime.parse("17:30:00"));
+        bakeryRepository.save(bakeThat);
+        Bakery wkyd = new Bakery("We Knead Your Dough","G13HA", "richie@kneadyourdough.com", LocalTime.parse("18:30:00"));
         bakeryRepository.save(wkyd);
-        Bakery poyr = new Bakery("The Path Of Yeast Resistance","GEO7", "bill@yeastresistance.com", LocalTime.parse("18:10:00"));
+        Bakery poyr = new Bakery("The Path Of Yeast Resistance","G14AW", "bill@yeastresistance.com", LocalTime.parse("18:10:00"));
         bakeryRepository.save(poyr);
-        Bakery hitb = new Bakery("History In The Baking","GEO8", "james@historicbakers.com", LocalTime.parse("17:45:00"));
-        bakeryRepository.save(hitb);
-        Bakery aac = new Bakery("Accept All Cookies","GEO9", "choc@chipcookies.com", LocalTime.parse("17:00:00"));
-        bakeryRepository.save(aac);
+        Bakery poc = new Bakery("Piece Of Cake","G11JG", "homer@pieceofcake.com", LocalTime.parse("16:00:00"));
+        bakeryRepository.save(poc);
 
 
 
-        User terry = new User("Terry Rex", "GEO1", "T@rex.com");
+        User terry = new User("Terry Rex", "G24QY", "T@rex.com");
         userRepository.save(terry);
-        User jambo = new User("Jambo the Elephant", "GEO2", "G@rex.com");
+        User jambo = new User("Jambo the Elephant", "G24QY", "G@rex.com");
         userRepository.save(jambo);
-        User arnie = new User("Arnie Pye", "GEO3", "arnie@pyeinthesky.com");
+        User arnie = new User("Arnie Pye", "G24QY", "arnie@pyeinthesky.com");
         userRepository.save(arnie);
-        User patty = new User("Patty Cake", "GEO4", "paddycake@gmail.com");
+        User patty = new User("Patty Cake", "G24QY", "paddycake@gmail.com");
         userRepository.save(patty);
-        User tori = new User("Tori Sponge", "GEO5", "tsponge@aol.com");
+        User tori = new User("Tori Sponge", "G24QY", "tsponge@aol.com");
         userRepository.save(tori);
-        User cara = new User("Cara Melle", "GEO6", "caramelle@hotmail.co.uk");
+        User cara = new User("Cara Melle", "G24QY", "caramelle@hotmail.co.uk");
         userRepository.save(cara);
-        User geoff = new User("Geoff Bredd", "GEO7", "geoffb@rocketmail.com");
+        User geoff = new User("Geoff Bredd", "G24QY", "geoffb@rocketmail.com");
         userRepository.save(geoff);
-        User sarah = new User("Sarah Do", "GEO8", "sarahdo@yahoo.com");
+        User sarah = new User("Sarah Do", "G24QY", "sarahdo@yahoo.com");
         userRepository.save(sarah);
-        User blondie = new User("Blondie", "GEO9", "tophits@yahoo.com");
+        User blondie = new User("Blondie", "G24QY", "tophits@yahoo.com");
         userRepository.save(blondie);
-        User mads = new User("Madeleine Busby", "GE1O", "madeleine@gmail.com");
+        User mads = new User("Madeleine Busby", "G24QY", "madeleine@gmail.com");
         userRepository.save(mads);
-        User cc = new User("Cookie Crumboule", "GE11", "sweetlikechocolate@aol.com");
+        User cc = new User("Cookie Crumboule", "G24QY", "sweetlikechocolate@aol.com");
         userRepository.save(cc);
-        User anna = new User("Anna S Foster", "GE12", "foster@me.com");
+        User anna = new User("Anna S Foster", "G24QY", "foster@me.com");
         userRepository.save(anna);
-        User jule = new User("Jule Logg", "GE13", "julelogg@hotmail.com");
+        User jule = new User("Jule Logg", "G24QY", "julelogg@hotmail.com");
         userRepository.save(jule);
 
 

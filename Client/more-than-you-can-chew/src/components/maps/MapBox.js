@@ -12,6 +12,7 @@ const MapBox = ({bakery, selectedUser}) => {
     const [UserLong, setUserLong] = useState(null);
     // const [BakeryLatLong, setBakeryLatLong] = useState(0);
     // const [UserLatLong, setUserLatLong] = useState(0);
+    const [Distance, setDistance] = useState(null);
 
     // console.log(bakery)
 
@@ -19,6 +20,8 @@ const MapBox = ({bakery, selectedUser}) => {
       getBakeryLatLong();
       getUserLatLong();
     }, [])
+
+    
 
     let bakeryPostcode = bakery.location
     let userPostcode = selectedUser.location
@@ -34,7 +37,7 @@ const MapBox = ({bakery, selectedUser}) => {
         setBakeryLong(data.result.longitude)
         // console.log(data.result.latitude);
         // console.log(data.result.longitude);
-        // console.log(LatLong);
+
       })
   }
 
@@ -49,12 +52,38 @@ const MapBox = ({bakery, selectedUser}) => {
       // console.log(data);
       // console.log(LatLong);
     })
-}
+  }
+
+  useEffect(() => {
+    getDistance();
+  }, [UserLat && UserLong && BakeryLat && BakeryLong])
+
+  const getDistance = () => {
+    const R = 6371; // metres
+    const φ1 = UserLat * Math.PI/180; // φ, λ in radians
+    const φ2 = BakeryLat * Math.PI/180;
+    const Δφ = (BakeryLat-UserLat) * Math.PI/180;
+    const Δλ = (BakeryLong-UserLong) * Math.PI/180;
+
+    const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+          Math.cos(φ1) * Math.cos(φ2) *
+          Math.sin(Δλ/2) * Math.sin(Δλ/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+ 
+    const d = R * c; // in metres
+    if(d<0){
+      d = -d
+    }
+    setDistance(d);
+    // console.log(bakery.name + " Distance = " + Distance);
+    // console.log(bakery.name + " d = " + d);
+  }
+
 
   
 
 return(<>
-  {BakeryLat && BakeryLong && UserLat && UserLong && <MapOnly BakeryLat={BakeryLat} BakeryLong={BakeryLong} UserLat={UserLat} UserLong={UserLong} />}
+  {BakeryLat && BakeryLong && UserLat && UserLong && <MapOnly bakery={bakery} BakeryLat={BakeryLat} BakeryLong={BakeryLong} UserLat={UserLat} UserLong={UserLong}/>}
 </>
 )
 }

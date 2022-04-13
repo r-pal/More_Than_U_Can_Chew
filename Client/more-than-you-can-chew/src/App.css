@@ -4,9 +4,20 @@
 
 
 .leaflet-container{
-    width:95vw;
-    height: 40vh;
+    align-items:stretch;
+    width: 100vw;
+    height: 55vw;
   }
+
+
+li {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+ul {
+  list-style-type: none;
+}
 
 
 .App-logo {

@@ -13,7 +13,7 @@ const BakeryConsole = ({selectedBakery, images, orders, users, items, selectedIt
 
 
   return (
-      <>
+    <>
       <BakeryNavBar selectedBakery={selectedBakery}/>
       {/* <h3>Bakery ID: {selectedBakery.id}</h3>
       <h3>Location: {selectedBakery.location.replace(/"/g, '')}</h3>
