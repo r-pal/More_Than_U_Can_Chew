@@ -284,11 +284,11 @@ const MainContainer = () => {
 
           <Route path="bakeries/:id" element={<BakeryConsole items={items} users={users} orders={orders} selectedBakery={selectedBakery} images={images} selectedItem={selectedItem} onUpdate={handleItemUpdate} setSelectedItem={setSelectedItem}/>}/>
 
-          <Route path="bakeries/:id/items/:id/edit" element={<EditBakeryItem selectedItem={selectedItem} onUpdateItem={handleItemUpdate} selectedBakery={selectedBakery} setSelectedItem={setSelectedItem}/>}/>
+          <Route path="bakeries/:id/items/:id/edit" element={<EditBakeryItem selectedItem={selectedItem} onUpdateItem={handleItemUpdate} selectedBakery={selectedBakery} setSelectedItem={setSelectedItem} images={images}/>}/>
 
           <Route path="bakeries/:id/orders" element={<BakeryOrder handleOrderUpdate={handleOrderUpdate} items={items} users={users} selectedBakery={selectedBakery} orders={orders} />}/>
          <Route path="bakeries/:id/items" element={<ShowBakeryItems items={items} selectedBakery={selectedBakery} images={images} setSelectedItem={setSelectedItem}/>}/>
-          <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate} handleDeleteB={handleDeleteB} setSelectedItem={setSelectedItem}/>} />
+          <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate} handleDeleteB={handleDeleteB} setSelectedItem={setSelectedItem} images={images}/>} />
 
 
           <Route path="/bakeries/:id/create_item" element={<CreateBakeryItem setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery} onCreateItem={handleItemPost} images={images}/>} />
