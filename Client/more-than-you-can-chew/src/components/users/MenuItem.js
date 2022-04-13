@@ -1,8 +1,10 @@
-import React, {useState, useEffect}from 'react'
+import React, {useState}from 'react'
 
-function MenuItem({item, images, selectedOrder, basket, setBasket, selectedBakery, selectedUser, handlePostOrder, orders, setSelectedItem, selectedItem, onUpdateItem}) {
+function MenuItem({item, images, selectedOrder, basket, setBasket, selectedBakery, selectedUser, handlePostOrder, orders}) {
 
     const getImageUrl = images.map((image, index) => {
+        // console.log("Image" + image.id)
+        // console.log("Item" + item.imageId)
         if (image.id === item.imageId){
             return image.imageUrl
         }
@@ -17,7 +19,6 @@ function MenuItem({item, images, selectedOrder, basket, setBasket, selectedBaker
         let copyBasket = [...basket]
         copyBasket.push(item.id)
         setBasket(copyBasket)
-        setSelectedItem(item)
         handlePostOrder(newOrder, selectedUser.id)
         console.log(orders)}
             
@@ -28,52 +29,6 @@ function MenuItem({item, images, selectedOrder, basket, setBasket, selectedBaker
         
     
     }
-
-    const reduceItemQuantity = () => {
-        onUpdateItem(newItem)
-
-    }
-
-    const [newItem, setNewItem] = useState({
-        name: "",
-        allergens: "",
-        imageId: 0,
-        bakeryId: 0,
-        quantity: 0,
-
-      })
-
-      useEffect(() => {
-        if(selectedItem){
-          let copiedItem = {
-            name: selectedItem.name,
-            allergens: selectedItem.allergens,
-              imageId: selectedItem.imageId,
-              bakeryId: selectedItem.bakeryId,
-              quantity: selectedItem.quantity - 1,
-          }
-          setNewItem(copiedItem)
-        }
-      }, [selectedItem])
-
-      useEffect(() => {
-          onUpdateItem(newItem)
-      }, [newItem])
-
-//     const handleChange = (event) => {
-//         event.preventDefault();
-//       let propertyName = event.target.name
-//       let copiedItem = {...newItem};
-//       copiedItem[propertyName] = event.target.value;
-//       setNewItem(copiedItem);
-
-//   }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    onUpdateItem(newItem)
-  }
 
    
 

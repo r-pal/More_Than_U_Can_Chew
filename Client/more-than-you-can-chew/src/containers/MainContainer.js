@@ -25,6 +25,7 @@ import Basket from '../components/users/Basket';
 
 
 
+
 const MainContainer = () => {
     const stateUserName = localStorage.getItem("userName").replace(/"/g, '')
     const stateUserEmail = localStorage.getItem("userEmail").replace(/"/g, '')
@@ -82,10 +83,6 @@ const MainContainer = () => {
 
     }, [])
 
-    useEffect(() => {
-      console.log("selected order: " + selectedOrder);
-    }, [selectedOrder])
-
 
 
     // useEffect(() => {
@@ -106,9 +103,7 @@ const MainContainer = () => {
         })
     }
 
-    const mapOrders = orders.map((order, index) => {
-      return order
-    })
+    
 
     // useEffect(() => {
         
@@ -147,7 +142,6 @@ const MainContainer = () => {
         fetch('http://localhost:8080/api/orders')
         .then(response => response.json())
         .then(data => setOrders(data))
-        .then(setSelectedOrder(mapOrders[mapOrders.length - 1]))
     }
 
     // const findBakeryById = (id) => {
@@ -162,13 +156,6 @@ const MainContainer = () => {
         request.post(url, item)
         .then(() => {window.location = "/bakeries/" + id})
     }
-
-    const handleItemPostOrder = (item) => {
-      const request = new Request();
-      const url ="/api/bakeryItems"
-      request.post(url, item)
-      .then(() => {window.location = "/users/:id/orders"})
-  }
 
 
     const handlePost = (user) => {
@@ -187,15 +174,6 @@ const MainContainer = () => {
         .then(fetchOrders())
         // .then(() => {window.location = "/users/" + id + "/bakery"})
         // console.log("orders: " + orders)
-      }
-
-      const handleOrderUpdate = (order) => {
-        const request = new Request();
-        request.patch("/api/orders/" + order.id, order)
-        // .then(fetchOrders())
-        .then(() => {window.location = "/bakeries/1/orders"})
-        
-
       }
 
 
@@ -253,9 +231,6 @@ const MainContainer = () => {
     const handleItemUpdateOnOrder = (item) => {
       const request = new Request();
       request.patch("/api/bakeryItems/" + item.id, item)
-    //   .then(() => {
-    //     window.location = "/users/:id/orders"
-    // })
 
   }
 
@@ -274,8 +249,8 @@ const MainContainer = () => {
           <Route path="/users/:id/edit" element={<EditUserForm selectedUser={selectedUser} onCreate={handlePost} onUpdate={handleUserUpdate} handleDelete={handleDeleteU}/>} />
 
           <Route path="users/:id" element={<UserConsole items={items} orders={orders} selectedUser={selectedUser} bakeries={bakeries} handleDelete={handleDeleteU} setSelectedBakery={setSelectedBakery}/>}/>
-          <Route path="users/:id/bakery" element={<UserBakeryDetails onUpdateItem={handleItemUpdateOnOrder} selectedItem={selectedItem} setOrders={setOrders} fetchOrders={fetchOrders} items={items} orders={orders} selectedUser={selectedUser} bakeries={bakeries} handleDelete={handleDeleteU} selectedBakery={selectedBakery} images={images} selectedOrder={selectedOrder} setSelectedOrder={setSelectedOrder} handlePostOrder={handlePostOrder} basket={basket} setBasket={setBasket} setSelectedBakery={setSelectedBakery} setSelectedItem={setSelectedItem}/>}/>
-          <Route path="users/:id/bakery/basket" element={<Basket basket={basket} setBasket={setBasket} items={items} handlePostOrder={handlePostOrder} selectedUser={selectedUser} handleDelete={handleDeleteU} selectedBakery={selectedBakery} onUpdateItem={handleItemUpdateOnOrder} onCreateItem={handleItemPostOrder} selectedOrder={selectedOrder} selectedItem={selectedItem}/>}/>
+          <Route path="users/:id/bakery" element={<UserBakeryDetails setOrders={setOrders} fetchOrders={fetchOrders} items={items} orders={orders} selectedUser={selectedUser} bakeries={bakeries} handleDelete={handleDeleteU} selectedBakery={selectedBakery} images={images} selectedOrder={selectedOrder} setSelectedOrder={setSelectedOrder} handlePostOrder={handlePostOrder} basket={basket} setBasket={setBasket} setSelectedBakery={setSelectedBakery}/>}/>
+          <Route path="users/:id/bakery/basket" element={<Basket basket={basket} setBasket={setBasket} items={items} handlePostOrder={handlePostOrder} selectedUser={selectedUser} handleDelete={handleDeleteU} selectedBakery={selectedBakery} onUpdateItem={handleItemUpdateOnOrder} selectedOrder={selectedOrder}/>}/>
 
 
           <Route path="/bakeries" element={<BakeryContainer bakeries={bakeries} setSelectedBakery={setSelectedBakery} selectedBakery={selectedBakery}/>}/>
@@ -284,9 +259,9 @@ const MainContainer = () => {
 
           <Route path="bakeries/:id" element={<BakeryConsole items={items} users={users} orders={orders} selectedBakery={selectedBakery} images={images} selectedItem={selectedItem} onUpdate={handleItemUpdate} setSelectedItem={setSelectedItem}/>}/>
 
-          <Route path="bakeries/:id/items/:id/edit" element={<EditBakeryItem selectedItem={selectedItem} onUpdateItem={handleItemUpdate} selectedBakery={selectedBakery} setSelectedItem={setSelectedItem}/>}/>
+          <Route path="bakeries/:id/items/:id/edit" element={<EditBakeryItem selectedItem={selectedItem} onUpdateItem={handleItemUpdate} selectedBakery={selectedBakery} setSelectedItem={setSelectedItem} images={images}/>}/>
 
-          <Route path="bakeries/:id/orders" element={<BakeryOrder handleOrderUpdate={handleOrderUpdate} items={items} users={users} selectedBakery={selectedBakery} orders={orders} />}/>
+          <Route path="bakeries/:id/orders" element={<BakeryOrder items={items} users={users} selectedBakery={selectedBakery} orders={orders}/>}/>
          <Route path="bakeries/:id/items" element={<ShowBakeryItems items={items} selectedBakery={selectedBakery} images={images} setSelectedItem={setSelectedItem}/>}/>
           <Route path="/bakeries/:id/edit" element={<EditBakerForm selectedBakery={selectedBakery} onUpdate={handleBakeryUpdate} handleDeleteB={handleDeleteB} setSelectedItem={setSelectedItem}/>} />
 

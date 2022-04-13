@@ -2,7 +2,7 @@ import React from 'react'
 import "../stylesheets/Main.css";
 
 
-function UserOrderListItem({order, bakeries, items}) {
+function UserOrderListItemPrevious({order, bakeries, items}) {
 
     const orderBakery = bakeries.map((bakery, index) => {
       if(bakery.id === order.bakeryId){
@@ -39,4 +39,4 @@ function UserOrderListItem({order, bakeries, items}) {
   )
 }
 
-export default UserOrderListItem
+export default UserOrderListItemPrevious
