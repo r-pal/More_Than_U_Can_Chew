@@ -3,7 +3,7 @@ import UserNavBar from './UserNavBar'
 import { Link } from 'react-router-dom'
 import NumericInput from 'react-numeric-input';
 
-function Basket({basket, setBasket, items, selectedUser, handleDelete, selectedBakery, handlePostOrder, selectedOrder, onUpdateItem, selectedItem}) {
+function Basket({basket, setBasket, items, selectedUser, handleDelete, selectedBakery, handlePostOrder, selectedOrder, onUpdateItem, selectedItem, onCreateItem}) {
 
 
     const basketItem = basket.map((basketItem, index) => {
@@ -32,12 +32,12 @@ function Basket({basket, setBasket, items, selectedUser, handleDelete, selectedB
                 imageId: selectedItem.imageId,
                 bakeryId: selectedItem.bakeryId,
                 quantity: selectedItem.quantity,
-                orderId: selectedOrder.id
+                orderId: selectedOrder.id + 1
 
           }
           setNewItem(copiedItem)
         }
-      }, [selectedItem])
+      }, [])
 
       console.log("new item: " + newItem);
       console.log("new item name " + newItem.name);
@@ -46,19 +46,21 @@ function Basket({basket, setBasket, items, selectedUser, handleDelete, selectedB
 
       console.log("id: " + selectedOrder.id)
 
-    const handleChange = (event) => {
-        event.preventDefault();
-      let propertyName = event.target.name
-      let copiedItem = {...newItem};
-      copiedItem[propertyName] = event.target.value;
-      setNewItem(copiedItem);
+//     const handleChange = (event) => {
+//         event.preventDefault();
+//       let propertyName = event.target.name
+//       let copiedItem = {...newItem};
+//       copiedItem[propertyName] = event.target.value;
+//       setNewItem(copiedItem);
 
-  }
+//   }
 
   const handleOrderSubmit = (event) => {
     event.preventDefault();
 
-    onUpdateItem(newItem)
+    onCreateItem(newItem)
+
+    // onUpdateItem(newItem)
   }
 
 //     console.log(basket)
@@ -101,16 +103,18 @@ function Basket({basket, setBasket, items, selectedUser, handleDelete, selectedB
         <p>{selectedOrder.id}</p>
         <ul>{basketItem}</ul>
 
-        <form onSubmit={handleOrderSubmit}>
+        {/* <form onSubmit={handleOrderSubmit}>
         
                     <input type="text" placeholder='Name' name='name' onChange={handleChange} value={newItem.name}/>
                     <input type="number" placeholder='Quantity' name='quantity' onChange={handleChange} value={newItem.quantity}/>
                     <button type="submit">Place Order</button>
                 
-                </form> 
+                </form>  */}
+
+                <button className='ButtonUser' type="button" onClick={handleOrderSubmit}>Order</button>
     
 
-        <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"/users/:id"}><button className='ButtonUser' type="button" onClick={handleOrderSubmit}>Order</button></Link>
+        {/* <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"/users/:id"}><button className='ButtonUser' type="button" onClick={handleOrderSubmit}>Order</button></Link> */}
 
     <ul>
 
