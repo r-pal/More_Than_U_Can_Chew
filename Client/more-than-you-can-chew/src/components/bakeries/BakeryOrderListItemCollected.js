@@ -1,9 +1,8 @@
-
 import React, { useEffect, useState } from 'react'
 import "../stylesheets/Main.css";
 
 
-function BakeryOrderListItem({order, users, items}) {
+function BakeryOrderListItemCollected({order, users, items, handleOrderUpdate}) {
 
   const bakeryOrderItemsOrdered = items.map((item, index) => {
     if (item.orderId === order.id){
@@ -16,26 +15,14 @@ function BakeryOrderListItem({order, users, items}) {
     }
   })
 
-
-  let orderCollectedButton = "";
   let collected = "";
   if(order.collectedStatus){
     collected = <h3>Collected</h3>
-    orderCollectedButton = "Collected"
 
   }else{
     collected = <h4>Awaiting Collection</h4>
-    orderCollectedButton = "Confirm Collection"
   }
 
-  const handleClick = (event) => {
-    event.preventDefault();
-    console.log("collected button clicked");
-    console.log("new order " + newOrder.collectedStatus);
-
-    handleOrderUpdate(newOrder)
-
-  }
 
   const [newOrder, setNewOrder] = useState({
     bakeryId: order.bakeryId,
@@ -43,7 +30,6 @@ function BakeryOrderListItem({order, users, items}) {
       id: order.id,
       collectedStatus: true
   })
-
 
   return (
     <div>
@@ -53,13 +39,10 @@ function BakeryOrderListItem({order, users, items}) {
       <ul>
         {bakeryOrderItemsOrdered}
       </ul>
-
       {collected}
       
-      <button type="button" onClick={handleClick}>{orderCollectedButton}</button>
-
       </div>
   )
 }
 
-export default BakeryOrderListItem;
+export default BakeryOrderListItemCollected;
