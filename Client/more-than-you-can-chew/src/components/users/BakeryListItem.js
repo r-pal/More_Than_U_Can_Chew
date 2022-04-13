@@ -16,8 +16,8 @@ const BakeryListItem = ({bakery, selectedUser, setSelectedBakery, images}) => {
     <Link selectedUser={selectedUser} onClick={handleClick} className="navBarLink" style={{textDecoration:"none"}} to={"bakery"}>
       <li>
         <h2>{bakery.name}</h2>
-      <span>Location: {bakery.location}</span>
-      <span>email: {bakery.email}</span>
+      <span>Location: {bakery.location}</span><br/>
+      <span>email: {bakery.email}</span><br/>
       <span>Collection Time: {bakery.collectionTime}</span>
       </li></Link>
       <div className="App">
