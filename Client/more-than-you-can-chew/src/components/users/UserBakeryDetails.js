@@ -7,7 +7,7 @@ import { logDOM } from '@testing-library/react'
 
 function UserBakeryDetails({selectedUser, selectedBakery, bakeries, 
     handleDelete, orders, items, images, selectedOrder, setSelectedOrder, 
-    handlePostOrder, basket, setBasket, setSelectedBakery, fetchOrders, setOrders, setSelectedItem, onUpdateItem}) {
+    handlePostOrder, basket, setBasket, setSelectedBakery, fetchOrders, setOrders}) {
 
     
 
@@ -15,7 +15,7 @@ function UserBakeryDetails({selectedUser, selectedBakery, bakeries,
         if (item.bakeryId === selectedBakery.id){
             return <MenuItem item={item} key={index} images={images} basket={basket} 
             setBasket={setBasket} selectedUser={selectedUser} handlePostOrder={handlePostOrder} 
-            selectedBakery={selectedBakery} orders={orders} setSelectedItem={setSelectedItem} onUpdateItem={onUpdateItem}/>
+            selectedBakery={selectedBakery} orders={orders}/>
         }
     })
 
@@ -25,7 +25,7 @@ function UserBakeryDetails({selectedUser, selectedBakery, bakeries,
 
     }
 
-    console.log("selected Order" + selectedOrder);
+    console.log("selected Order" + selectedOrder.id);
 
 
     const emptyBasket = () => {
