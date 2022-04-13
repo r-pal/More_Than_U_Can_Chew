@@ -42,7 +42,7 @@ function UserBakeryDetails({selectedUser, selectedBakery, bakeries,
 
             <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"basket"}><button className='ButtonUser' type="button" onClick={handlePutOrderInState}>Basket</button></Link>
             {/* <Basket basket={basket} setBasket={setBasket} items={items}/> */}
-            <h2>Menu</h2>
+            <h1>Menu</h1>
 
             <ul>
                 {menuItem}

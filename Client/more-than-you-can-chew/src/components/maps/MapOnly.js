@@ -38,7 +38,7 @@ return(
 
     <div className='Distance-Map-Card'>
         <h3>{dist}km away</h3>
-<MapContainer center={[UserLat, UserLong]} zoom={14} scrollWheelZoom={true}>
+<MapContainer center={[UserLat, UserLong]} zoom={14} scrollWheelZoom={false}>
 <TileLayer
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
