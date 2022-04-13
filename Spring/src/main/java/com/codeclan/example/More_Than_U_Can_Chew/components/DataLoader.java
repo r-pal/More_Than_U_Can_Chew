@@ -32,54 +32,53 @@ public class DataLoader implements ApplicationRunner {
     public DataLoader() {
     }
 
-
     public void run(ApplicationArguments args) {
-        Bakery hitb = new Bakery("History In The Baking","G25QD", "james@historicbakers.com", LocalTime.parse("17:45:00"));
-        bakeryRepository.save(hitb);
-        Bakery cakeMyDay = new Bakery("Cake My Day!","G22EH", "harry@cakemyday.com", LocalTime.parse("18:30:00"));
-        bakeryRepository.save(cakeMyDay);
-        Bakery aac = new Bakery("Accept All Cookies","G24NJ", "choc@chipcookies.com", LocalTime.parse("17:00:00"));
-        bakeryRepository.save(aac);
         Bakery pita = new Bakery("Pain in the Ass","G23AT", "hello@painintheass.com", LocalTime.parse("18:00:00"));
         bakeryRepository.save(pita);
-        Bakery bb = new Bakery("Breaking Bread","G12JZ", "babs@bornandbread.com", LocalTime.parse("17:45:00"));
-        bakeryRepository.save(bb);
-        Bakery bakeThat = new Bakery("Bake That","G28HZ", "gary@bakethat.com", LocalTime.parse("17:30:00"));
+        Bakery bakeThat = new Bakery("Bake That","G312PS", "gary@bakethat.com", LocalTime.parse("17:30:00"));
         bakeryRepository.save(bakeThat);
-        Bakery wkyd = new Bakery("We Knead Your Dough","G13HA", "richie@kneadyourdough.com", LocalTime.parse("18:30:00"));
-        bakeryRepository.save(wkyd);
-        Bakery poyr = new Bakery("The Path Of Yeast Resistance","G14AW", "bill@yeastresistance.com", LocalTime.parse("18:10:00"));
-        bakeryRepository.save(poyr);
-        Bakery poc = new Bakery("Piece Of Cake","G11JG", "homer@pieceofcake.com", LocalTime.parse("16:00:00"));
+        Bakery cakeMyDay = new Bakery("Cake My Day!","G23AT", "harry@cakemyday.com", LocalTime.parse("18:30:00"));
+        bakeryRepository.save(cakeMyDay);
+        Bakery poc = new Bakery("Piece Of Cake","G428RE", "homer@pieceofcake.com", LocalTime.parse("16:00:00"));
         bakeryRepository.save(poc);
+        Bakery bb = new Bakery("Breaking Bread","G814ER", "babs@bornandbread.com", LocalTime.parse("17:45:00"));
+        bakeryRepository.save(bb);
+        Bakery wkyd = new Bakery("We Knead Your Dough","GEO6", "richie@kneadyourdough.com", LocalTime.parse("18:30:00"));
+        bakeryRepository.save(wkyd);
+        Bakery poyr = new Bakery("The Path Of Yeast Resistance","GEO7", "bill@yeastresistance.com", LocalTime.parse("18:10:00"));
+        bakeryRepository.save(poyr);
+        Bakery hitb = new Bakery("History In The Baking","GEO8", "james@historicbakers.com", LocalTime.parse("17:45:00"));
+        bakeryRepository.save(hitb);
+        Bakery aac = new Bakery("Accept All Cookies","GEO9", "choc@chipcookies.com", LocalTime.parse("17:00:00"));
+        bakeryRepository.save(aac);
 
 
 
-        User terry = new User("Terry Rex", "G24QY", "T@rex.com");
+        User terry = new User("Terry Rex", "G428RE", "T@rex.com");
         userRepository.save(terry);
-        User jambo = new User("Jambo the Elephant", "G24QY", "G@rex.com");
+        User jambo = new User("Jambo the Elephant", "GEO2", "G@rex.com");
         userRepository.save(jambo);
-        User arnie = new User("Arnie Pye", "G24QY", "arnie@pyeinthesky.com");
+        User arnie = new User("Arnie Pye", "GEO3", "arnie@pyeinthesky.com");
         userRepository.save(arnie);
-        User patty = new User("Patty Cake", "G24QY", "paddycake@gmail.com");
+        User patty = new User("Patty Cake", "GEO4", "paddycake@gmail.com");
         userRepository.save(patty);
-        User tori = new User("Tori Sponge", "G24QY", "tsponge@aol.com");
+        User tori = new User("Tori Sponge", "GEO5", "tsponge@aol.com");
         userRepository.save(tori);
-        User cara = new User("Cara Melle", "G24QY", "caramelle@hotmail.co.uk");
+        User cara = new User("Cara Melle", "GEO6", "caramelle@hotmail.co.uk");
         userRepository.save(cara);
-        User geoff = new User("Geoff Bredd", "G24QY", "geoffb@rocketmail.com");
+        User geoff = new User("Geoff Bredd", "GEO7", "geoffb@rocketmail.com");
         userRepository.save(geoff);
-        User sarah = new User("Sarah Do", "G24QY", "sarahdo@yahoo.com");
+        User sarah = new User("Sarah Do", "GEO8", "sarahdo@yahoo.com");
         userRepository.save(sarah);
-        User blondie = new User("Blondie", "G24QY", "tophits@yahoo.com");
+        User blondie = new User("Blondie", "GEO9", "tophits@yahoo.com");
         userRepository.save(blondie);
-        User mads = new User("Madeleine Busby", "G24QY", "madeleine@gmail.com");
+        User mads = new User("Madeleine Busby", "GE1O", "madeleine@gmail.com");
         userRepository.save(mads);
-        User cc = new User("Cookie Crumboule", "G24QY", "sweetlikechocolate@aol.com");
+        User cc = new User("Cookie Crumboule", "GE11", "sweetlikechocolate@aol.com");
         userRepository.save(cc);
-        User anna = new User("Anna S Foster", "G24QY", "foster@me.com");
+        User anna = new User("Anna S Foster", "GE12", "foster@me.com");
         userRepository.save(anna);
-        User jule = new User("Jule Logg", "G24QY", "julelogg@hotmail.com");
+        User jule = new User("Jule Logg", "GE13", "julelogg@hotmail.com");
         userRepository.save(jule);
 
 
@@ -103,6 +102,33 @@ public class DataLoader implements ApplicationRunner {
         BakeryItem cinn2 = new BakeryItem("Cinnamon Swirl", "gluten", 9L, 2L, 0);
         bakeryItemRepository.save(cinn2);
 
+        //1
+        Image imageCroissant = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Croissant-Petr_Kratochvil.jpg/320px-Croissant-Petr_Kratochvil.jpg", "Croissant");
+        imageRepository.save(imageCroissant);
+        //2
+        Image imageRoll = new Image("https://www.melskitchencafe.com/wp-content/uploads/french-bread-roll1.jpg", "Roll");
+        imageRepository.save(imageRoll);
+        //3
+        Image imageWhiteLoaf = new Image("https://assets.sainsburys-groceries.co.uk/gol/6504660/1/640x640.jpg", "White Loaf");
+        imageRepository.save(imageWhiteLoaf);
+        //4
+        Image imageChocolateCake = new Image("https://www.cookingclassy.com/wp-content/uploads/2019/10/chocolate-cake-3.jpg", "Chocolate Cake");
+        imageRepository.save(imageChocolateCake);
+        //5
+        Image imagePainAuxChoc = new Image("https://www.bridor.com/medias/sys_master/images/images/hcb/h25/8898062188574/Pain-au-Chocolat-Savoureux-SourceHD-1200Wx1200H.png", "Pain Aux Chocolat");
+        imageRepository.save(imagePainAuxChoc);
+        //6
+        Image imageSourdoughLoaf = new Image("https://assets.sainsburys-groceries.co.uk/gol/7972999/1/640x640.jpg", "Sourdough Loaf");
+        imageRepository.save(imageSourdoughLoaf);
+        //7
+        Image imageWholemealLoaf = new Image("https://domesticgothess.com/wp-content/uploads/2021/05/vegan-wholemeal-sandwich-bread.jpg", "Wholemeal Loaf");
+        imageRepository.save(imageWholemealLoaf);
+        //8
+        Image imageCinnamonBrioche = new Image("https://bakingwithbutter.com/wp-content/uploads/2021/03/brioche-cinnamon-rolls.jpg", "Cinnamon Brioche");
+        imageRepository.save(imageCinnamonBrioche);
+        //9
+        Image imageCinnamonSwirl = new Image("https://assets.sainsburys-groceries.co.uk/gol/6543752/1/640x640.jpg", "Cinnamon Swirl");
+        imageRepository.save(imageCinnamonSwirl);
 
         BakeryItem bagel = new BakeryItem("Plain Bagel", "gluten", 10L, 4L, 0);
         bakeryItemRepository.save(bagel);
@@ -112,9 +138,9 @@ public class DataLoader implements ApplicationRunner {
         bakeryItemRepository.save(bagel3);
         BakeryItem bagel4 = new BakeryItem("Poppyseed Bagel", "gluten", 13L, 7L, 0);
         bakeryItemRepository.save(bagel4);
-        BakeryItem bs = new BakeryItem("Billionaire's Shortbread", "gluten", 14L, 8L, 0);
+        BakeryItem bs = new BakeryItem("Shortbread", "gluten", 14L, 8L, 0);
         bakeryItemRepository.save(bs);
-        BakeryItem dcb = new BakeryItem("Dark Chocolate Brownie", "gluten", 15L, 9L, 0);
+        BakeryItem dcb = new BakeryItem("Choc Brownie", "gluten", 15L, 9L, 0);
         bakeryItemRepository.save(dcb);
         BakeryItem empire = new BakeryItem("Empire Biscuit", "gluten", 16L, 10L, 0);
         bakeryItemRepository.save(empire);
@@ -124,6 +150,39 @@ public class DataLoader implements ApplicationRunner {
         bakeryItemRepository.save(fruits);
         BakeryItem plains = new BakeryItem("Plain Scone", "gluten", 19L, 13L, 0);
         bakeryItemRepository.save(plains);
+
+        //10
+        Image imageBagel = new Image("https://upload.wikimedia.org/wikipedia/commons/1/1d/Bagel-Plain-Alt.jpg", "Plain Bagel");
+        imageRepository.save(imageBagel);
+        //11
+        Image imageCinnBagel = new Image("https://iambaker.net/wp-content/uploads/2020/05/cinn-sugar-bagel-4-1200x900.jpg", "Cinnamon Bagel");
+        imageRepository.save(imageCinnBagel);
+        //12
+        Image imageEverythingBagel = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/20090424_Bagels_001.JPG/500px-20090424_Bagels_001.JPG", "Everything Bagel");
+        imageRepository.save(imageEverythingBagel);
+        //13
+        Image imagePoppyseedBagel = new Image("https://ohbagel.ca/wp-content/uploads/2020/01/OhBagel-Poppy.jpg", "Poppyseed Bagel");
+        imageRepository.save(imagePoppyseedBagel);
+        //14
+        Image imageShortbread = new Image("https://www.christinascucina.com/wp-content/uploads/2014/01/fullsizeoutput_e3eb-720x720.jpeg", "Shortbread");
+        imageRepository.save(imageShortbread);
+        //15
+        Image imageChocBrownie = new Image("https://handletheheat.com/wp-content/uploads/2019/09/Dark-Chocolate-Brownies-SQUARE-500x500.jpg", "Choc Brownie");
+        imageRepository.save(imageChocBrownie);
+        //16
+        Image imageEmpireBiscuit = new Image("https://www.christinascucina.com/wp-content/uploads/2019/04/fullsizeoutput_a86d-735x490.jpeg", "Empire Biscuit");
+        imageRepository.save(imageEmpireBiscuit);
+        //17
+        Image imageBakewellSlice = new Image("https://i0.wp.com/whatcharlottebaked.com/wp-content/uploads/2018/03/P1070239.jpg?w=720", "Bakewell Slice");
+        imageRepository.save(imageBakewellSlice);
+        //18
+        Image imageFruitScone = new Image("https://thehappyfoodie.co.uk/wp-content/uploads/2021/08/scones-splp1y4v1f_s900x0_c1573x918_l0x1227.jpg", "Fruit Scone");
+        imageRepository.save(imageFruitScone);
+        //19
+        Image imagePlainScone = new Image("https://www.fifteenspatulas.com/wp-content/uploads/2015/08/English-Style-Scones-Fifteen-Spatulas-1-640x960.jpg", "Plain Scone");
+        imageRepository.save(imagePlainScone);
+
+
 //
 //
 //        BakeryItem lemcran = new BakeryItem("Lemon & Cranberry Cake", "gluten", 123L, cakeMyDay, 0);
@@ -280,29 +339,7 @@ public class DataLoader implements ApplicationRunner {
 
 
 
-        Image imageCroissant = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Croissant-Petr_Kratochvil.jpg/320px-Croissant-Petr_Kratochvil.jpg");
-        imageRepository.save(imageCroissant);
 
-        Image imageRoll = new Image("https://i2-prod.glasgowlive.co.uk/incoming/article20880009.ece/ALTERNATES/s810/0_image2-4.png");
-        imageRepository.save(imageRoll);
-
-        Image imageWhiteLoaf = new Image("https://assets.sainsburys-groceries.co.uk/gol/6504660/1/640x640.jpg");
-        imageRepository.save(imageWhiteLoaf);
-
-        Image imageChocolateCake = new Image("https://www.cookingclassy.com/wp-content/uploads/2019/10/chocolate-cake-3.jpg");
-        imageRepository.save(imageChocolateCake);
-
-        Image imagePainAuxChoc = new Image("https://www.bridor.com/medias/sys_master/images/images/hcb/h25/8898062188574/Pain-au-Chocolat-Savoureux-SourceHD-1200Wx1200H.png");
-        imageRepository.save(imagePainAuxChoc);
-
-        Image imageSourdoughLoaf = new Image("https://assets.sainsburys-groceries.co.uk/gol/7972999/1/640x640.jpg");
-        imageRepository.save(imageSourdoughLoaf);
-
-        Image imageCinnamonBrioche = new Image("https://bakingwithbutter.com/wp-content/uploads/2021/03/brioche-cinnamon-rolls.jpg");
-        imageRepository.save(imageCinnamonBrioche);
-
-        Image imageCinnamonSwirl = new Image("https://assets.sainsburys-groceries.co.uk/gol/6543752/1/640x640.jpg");
-        imageRepository.save(imageCinnamonSwirl);
 
 
 
