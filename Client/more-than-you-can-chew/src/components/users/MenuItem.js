@@ -3,8 +3,8 @@ import React, {useState}from 'react'
 function MenuItem({item, images, selectedOrder, basket, setBasket, selectedBakery, selectedUser, handlePostOrder, orders}) {
 
     const getImageUrl = images.map((image, index) => {
-        console.log("Image" + image.id)
-        console.log("Item" + item.imageId)
+        // console.log("Image" + image.id)
+        // console.log("Item" + item.imageId)
         if (image.id === item.imageId){
             return image.imageUrl
         }
