@@ -2,6 +2,48 @@
   text-align: center;
 }
 
+.list-margin {
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.minus3margin{
+  margin-left: -3vw;
+
+}
+
+h1, h2, h3, h4, h5, p {
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+
+.leaflet-container{
+    width:94vw;
+    height: 25vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+  }
+
+select {
+    width: 330px;
+    overflow: hidden;
+    white-space: pre;
+    text-overflow: ellipsis;
+    -webkit-appearance: none;
+  }
+
+li {
+  text-decoration: none;
+  list-style-type: none;
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 3vw;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
