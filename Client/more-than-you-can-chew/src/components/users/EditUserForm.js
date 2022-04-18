@@ -70,11 +70,11 @@ function EditUserForm({selectedUser, onCreate, onUpdate, handleDelete}) {
                 <input type="text" placeholder='Email' name='email' onChange={handleChange} value={newUser.email}/>
 
             
-                <button type="submit">{buttonText}</button>
+                <div className="CenteredButton"><button className='ButtonUser' type="submit">{buttonText}</button></div>
             
             </form>
 
-            <div style={{textDecoration:"none"}} className="ButtonContainer"><button className='ButtonBaker' onClick={handleClick}type="button">Delete Profile</button></div>
+            <div className="CenteredButton"><button className='ButtonUser' onClick={handleClick}type="button">Delete Profile</button></div>
 
         </>
   )

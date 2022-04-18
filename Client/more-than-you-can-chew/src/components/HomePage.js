@@ -11,6 +11,7 @@ const HomePage = () => {
         <NavBar />
 
         <div className='HomePageContainer'>
+            {/* <div className="ItalicText"><h2>More than you can chew is the free-cycle bakery app with a difference. Free baked goods for you at the end of the day, less waste for bakers and the planet. Good chews for all!</h2></div> */}
         <div>
         <Link style={{textDecoration:"none"}} className="ButtonContainer" to={"/users"}><button className='ButtonUser' type="button">User</button></Link>
         </div>

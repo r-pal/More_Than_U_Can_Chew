@@ -2,10 +2,14 @@
     background-color: aquamarine;
     height:100vh;
     width:100vw;
-    
-    
 }
 
+.ItalicText{
+  font-style: italic;
+  text-align: left;
+  padding-top: 6%;
+  padding-bottom: 6%;
+}
 
 
 h2 {
@@ -197,6 +201,7 @@ button {
   -webkit-user-select: none;
   touch-action: manipulation;
 }
+
 
 .CenteredButton{
   display: flex;
